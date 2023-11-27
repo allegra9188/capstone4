@@ -14,13 +14,12 @@ model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   password String
-  tasks    Task[]
 }
 
-model Task {
+model Politician {
   id          Int     @id @default(autoincrement())
-  description String
-  done        Boolean @default(false)
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  party       String
+  district    String
+  role        String
 }
