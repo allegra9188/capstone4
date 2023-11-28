@@ -8,6 +8,8 @@ import store from "./store";
 
 import AuthForm from "./features/auth/AuthForm";
 import Tasks from "./features/tasks/Tasks";
+import Politicians from "./features/politicians/Politicians.jsx";
+import Companies from "./features/companies/Companies.jsx";
 import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,7 +19,8 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Tasks /> },
-      { path: "/tasks", element: <Tasks /> },
+      { path: "/politicians", element: <Politicians /> },
+      { path: "/companies", element: <Companies /> },
       { path: "/login", element: <AuthForm /> },
     ],
   },
