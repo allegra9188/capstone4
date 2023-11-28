@@ -23,3 +23,14 @@ model Politician {
   district    String
   role        String
 }
+
+model Company {
+  id            Int     @id @default(autoincrement())
+  symbol        String
+  security      String
+  sector        String
+  sub_industry  String
+  hq            String
+  founded       Int
+}
+
