@@ -18,6 +18,7 @@ function PolitcianCard({ politician }) {
           <h2>{politician.name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
+          <Link to={`/politicians/${politician.id}`}>More Info</Link>
           <button onClick={handleSubmit}>Favorite</button>
         </section>
         ) : (
@@ -25,6 +26,7 @@ function PolitcianCard({ politician }) {
           <h2>{politician.name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
+          <Link to={`/politicians/${politician.id}`}>More Info</Link>
         </section>
         )}   
              
