@@ -6,7 +6,7 @@ export default function ArticlesList({ articles }) {
   if (!articles || articles.length === 0) {
     return <p>No articles available.</p>;
   }
-  console.log(articles)
+  console.log(articles);
   return (
     <div>
       {articles.map((article) => (
