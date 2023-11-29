@@ -1,39 +1,33 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation, useRegisterMutation } from "./authSlice";
-import "./AuthForm.css"
+import './authForm.css';
 
-/** This form allows users to register or log in. */
 export default function AuthForm() {
   const navigate = useNavigate();
 
-  // Handles swapping between login and register
   const [isLogin, setIsLogin] = useState(true);
+  const [firstName, setFirstName] = useState(""); // New state for first name
+  const [lastName, setLastName] = useState("");   // New state for last name
+  const [email, setEmail] = useState("");         // New state for email
+
   const authAction = isLogin ? "Login" : "Register";
   const altCopy = isLogin
     ? "Need an account? Register here."
     : "Already have an account? Login here.";
 
-  // Controlled form fields
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // Form submission
-  const [login, { isLoading: loginLoading, error: loginError }] =
-    useLoginMutation();
-  const [register, { isLoading: registerLoading, error: registerError }] =
-    useRegisterMutation();
+  const [login, { isLoading: loginLoading, error: loginError }] = useLoginMutation();
+  const [register, { isLoading: registerLoading, error: registerError }] = useRegisterMutation();
 
-  /** Send the requested authentication action to the API */
   const attemptAuth = async (evt) => {
     evt.preventDefault();
 
     const authMethod = isLogin ? login : register;
-    const credentials = { username, password };
+    const credentials = { username, password, firstName, lastName, email };
 
-    // We don't want to navigate if there's an error.
-    // `unwrap` will throw an error if there is one
-    // so we can use a try/catch to handle it.
     try {
       await authMethod(credentials).unwrap();
       navigate("/");
@@ -45,11 +39,12 @@ export default function AuthForm() {
   return (
     <div className="login-Main">
       <h1>{authAction}</h1>
-      <form onSubmit={attemptAuth}>
+      <form onSubmit={attemptAuth} id="loginForm">
         <label className="username-label">
           Username
           <input
             className="loginInput"
+            id="usernameInput"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -60,12 +55,49 @@ export default function AuthForm() {
           Password
           <input
             className="loginInput"
+            id="passwordInput"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
           />
         </label>
+        
+        {/* Display additional fields for registration */}
+        {!isLogin && (
+          <div className="otherFields">
+            <label className="firstname-label">
+              First Name
+              <input
+                className="loginInput"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </label>
+            <label className="lastname-label" id="lastname">
+              Last Name
+              <input
+                className="loginInput"
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </label>
+            <label className="email-label">
+              Email
+              <input
+                className="loginInput"
+                id="emailInput"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+              />
+            </label>
+          </div>
+        )}
+        
         <button className="loginBtn">{authAction}</button>
       </form>
       <a className="needAccount-text" onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>

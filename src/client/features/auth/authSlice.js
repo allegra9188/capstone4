@@ -49,8 +49,12 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     // Store token when register or login succeeds
-    builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
-    builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+    builder.addMatcher(authApi.endpoints.register.matchFulfilled, (state, action) => {
+      storeToken(state, action);
+    });
+    builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
+      storeToken(state, action);
+    });
   },
 });
 
