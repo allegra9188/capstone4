@@ -2,13 +2,18 @@
 CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "username" TEXT NOT NULL,
-    "password" TEXT NOT NULL
+    "password" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "email" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Politician" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "name" TEXT NOT NULL,
+    "first_name" TEXT NOT NULL,
+    "middle_name" TEXT NOT NULL,
+    "last_name" TEXT NOT NULL,
     "party" TEXT NOT NULL,
     "district" TEXT NOT NULL,
     "role" TEXT NOT NULL
