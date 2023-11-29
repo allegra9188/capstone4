@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useGetPoliticianQuery } from './politicianSlice';
 
 function PoliticanDetails() {
     const { id } = useParams();
