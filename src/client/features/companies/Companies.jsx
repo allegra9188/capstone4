@@ -10,16 +10,13 @@ export default function Companies() {
   if(isLoading){
     return <li>loading</li>
   }
-  console.log(Array.isArray(companies))
 
-  //const firstCompany = companies[1]
   return (
-    <div>
+    <ul  className='company-list'>
        {companies?.map((company)=>(
-        <CompanyCard company ={company}/>
+            <CompanyCard company ={company} key={company.id}/>
        )
        )} 
-            
-    </div>
+    </ul>
   )
 }

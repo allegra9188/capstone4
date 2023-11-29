@@ -36,8 +36,8 @@ export default function CompanyCard({company}) {
       return (
         <>
         {company && (
-            <div>
-              <li>
+            <div >
+              
                 <h2>{company.symbol}</h2>
                 <p>Name: {company.security}</p>
                 <p>Sector: {company.sector}</p>
@@ -45,7 +45,7 @@ export default function CompanyCard({company}) {
                 <p>Headquarter: {company.hq}</p>
                 <p>Founded at year: {company.founded}</p>
                 <button onClick={handleSubmit}>Favorite</button>
-              </li>
+              
             </div>
           )
         }
