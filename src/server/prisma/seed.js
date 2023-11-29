@@ -13,7 +13,9 @@ async function seed() {
     for (const politician of politiciansData) {
       await prisma.politician.create({
         data: {
-          name: politician.name,
+          first_name: politician.first_name,
+          middle_name: politician.middle_name,
+          last_name: politician.last_name,
           party: politician.party,
           role: politician.role,
           district: politician.district,
