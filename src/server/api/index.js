@@ -28,4 +28,5 @@ router.use(async (req, res, next) => {
 
 router.use("/auth", require("./auth"));
 router.use("/tasks", require("./tasks"));
+router.use("/politicians", require("./politicians"));
 router.use("/companies", require("./companies"));

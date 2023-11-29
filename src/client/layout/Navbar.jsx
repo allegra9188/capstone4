@@ -26,17 +26,17 @@ export default function Navbar() {
   return (
     <nav className="top">
       <menu>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <form>
+        <form id="searchForm">
           <input 
           type="text"
+          id="searchInput"
           placeholder="Search..."
           onChange={(e) => setFilter(e.target.value)}
           />
         </form>
-        
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
         <li>
           <NavLink to="/politicians">Politicians</NavLink>
         </li>
