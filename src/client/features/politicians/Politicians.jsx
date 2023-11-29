@@ -1,5 +1,6 @@
 import React from 'react'
 import PolitcianCard from './PolitcianCard'
+import { useGetPoliticiansQuery } from './politicianSlice';
 
 export default function Politicians() {
   // useGetPoliticiansQuery() is currently a placeholder

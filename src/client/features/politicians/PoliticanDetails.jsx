@@ -1,8 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useGetPoliticianQuery } from './politicianSlice';
+import { useSelector } from 'react-redux'
+import { selectToken } from "../auth/authSlice";
 
 function PoliticanDetails() {
     const { id } = useParams();
+    const token = useSelector(selectToken);
     const { data: politician, isLoading, isError } = useGetPoliticianQuery(id)
     
     const handleSubmit = (e) => {
@@ -21,6 +25,8 @@ function PoliticanDetails() {
 
   return (
     <>
+      {token ? (
+      <>
       <section>
         <h2>{politician.name}</h2>
         <p>Party: {politician.party}</p>
@@ -37,6 +43,27 @@ function PoliticanDetails() {
         Should we limit it to last 3 trades or more?
         */}
       </section>
+      </>
+    ): (
+      <>
+      <section>
+        <h2>{politician.name}</h2>
+        <p>Party: {politician.party}</p>
+        <p>Role: {politician.role}</p>
+        <p>District: {politician.district}</p>
+      </section>
+      <section>
+        {/* 
+        Recent trades will go here?
+        Think that we could show what they have traded recently
+        that way people will be able to see most recent trades on home
+        and get recent trades by politician here.
+        Should we limit it to last 3 trades or more?
+        */}
+      </section>
+      </>
+    )
+}
     </>
   )
 }
