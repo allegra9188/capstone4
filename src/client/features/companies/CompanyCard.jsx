@@ -39,7 +39,7 @@ export default function CompanyCard({company}) {
             <div>
               <li>
                 <h2>{company.symbol}</h2>
-                <p>Security: {company.security}</p>
+                <p>Name: {company.security}</p>
                 <p>Sector: {company.sector}</p>
                 <p>Sub_industry: {company.sub_industry}</p>
                 <p>Headquarter: {company.hq}</p>
