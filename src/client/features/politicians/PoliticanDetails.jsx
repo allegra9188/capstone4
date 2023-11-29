@@ -24,21 +24,32 @@ function PoliticanDetails() {
           console.error(error);
         });
     }, [id]); // Add dependencies to re-run effect when the ID changes
-  
+    
+    // const test1data = houseData[0][1];
+    // console.log('Testing: ', test1data)
+
     const filterTransactions = (data, firstName, lastName) => {
       if (!data) {
         return [];
       }
-  
-      return data.filter((transaction) => {
-        return (
-          transaction.representative === firstName && // Assuming representative corresponds to first_name
-          transaction.last_name === lastName
-        );
-      });
+    
+      return data
+        .filter((transaction) => {
+          return (
+            transaction.representative === firstName &&
+            transaction.last_name === lastName
+          );
+        })
+        .slice(0, 5) // Limit to 5 most recent transactions;
     };
   
-    const houseTransactions = filterTransactions(houseData, politician?.first_name, politician?.last_name);
+    const houseTransactions = filterTransactions(
+      houseData,
+      politician?.first_name,
+      politician?.last_name
+    );
+
+    console.log('This is house transactions: ', houseTransactions)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,7 +70,7 @@ function PoliticanDetails() {
       {token ? (
       <>
       <section>
-        <h2>{politician.name}</h2>
+        <h2>{politician.first_name +" "+ politician.last_name}</h2>
         <p>Party: {politician.party}</p>
         <p>Role: {politician.role}</p>
         <p>District: {politician.district}</p>
@@ -78,20 +89,30 @@ function PoliticanDetails() {
     ): (
       <>
       <section>
-        <h2>{politician.name}</h2>
+        <h2>{politician.first_name +" "+ politician.last_name}</h2>
         <p>Party: {politician.party}</p>
         <p>Role: {politician.role}</p>
         <p>District: {politician.district}</p>
       </section>
+      <br />
       <section>
-        {/* 
-        Recent trades will go here?
-        Think that we could show what they have traded recently
-        that way people will be able to see most recent trades on home
-        and get recent trades by politician here.
-        Should we limit it to last 3 trades or more?
-        */}
-      </section>
+      <h2>Recent House Transactions</h2>
+      <ul>
+        {houseTransactions.map((transaction, index) => (
+          <li key={index}>
+            <p>Transaction Date: {transaction.transaction_date}</p>
+            <p>Disclosure Date: {transaction.disclosure_date}</p>
+            <p>Owner: {transaction.owner}</p>
+            <p>Ticker: {transaction.ticker}</p>
+            <p>Asset Description: {transaction.asset_description}</p>
+            <p>Asset Type: {transaction.type}</p>
+            <p>Amount: {transaction.amount}</p>
+            <p>Industry: {transaction.industry}</p>
+            <p>Sector: {transaction.sector}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
       </>
     )
 }
