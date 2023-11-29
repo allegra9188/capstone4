@@ -67,42 +67,4 @@ export default function CompanyCard({company}) {
       )
       
     }
-  return (
-    <>
-        {/* {token ?(
-        <section>
-          <h2>{company.symbol}</h2>
-          <p>Security: {company.security}</p>
-          <p>Sector: {company.sector}</p>
-          <p>Sub_industry: {company.sub_industry}</p>
-          <p>Headquarter: {company.hq}</p>
-          <p>Founded at year: {company.founded}</p>
-          <Link to={`/companies/${company.id}`}>More Info</Link>
-          <button onClick={handleSubmit}>Favorite</button>
-        </section>
-        ) : (
-        <section>
-          <h2>{politician.name}</h2>
-          <p>Security: {company.security}</p>
-          <p>Sector: {company.sector}</p>
-          <p>Sub_industry: {company.sub_industry}</p>
-          <p>Headquarter: {company.hq}</p>
-          <p>Founded at year: {company.founded}</p>
-          <Link to={`/companies/${company.id}`}>More Info</Link>
-        </section>
-        )}    */}
-             
-        <div>
-          <h2>{company.symbol}</h2>
-          <p>Security: {company.security}</p>
-          <p>Sector: {company.sector}</p>
-          <p>Sub_industry: {company.sub_industry}</p>
-          <p>Headquarter: {company.hq}</p>
-          <p>Founded at year: {company.founded}</p>
-          <Link to={`/companies/${company.id}`}>More Info</Link>
-          <button onClick={handleSubmit}>Favorite</button>
-        </div>
-        
-    </>
-  )
 }
