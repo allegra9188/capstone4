@@ -32,12 +32,6 @@ function PoliticanDetails() {
         });
     }, [id]); // Add dependencies to re-run effect when the ID changes
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // will add function to add to favorite list once api is functional
-        // need slice and connectivity to api and database
-    }
-
     useEffect(() => {
       // Fetch senate data
       fetchSenateData()
