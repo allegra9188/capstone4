@@ -41,7 +41,7 @@ const storeToken = (state, { payload }) => {
   state.token = payload.token;
   state.userId = payload.user.id;
   sessionStorage.setItem(TOKEN_KEY, payload.token);
-  // sessionStorage.setItem(USER_ID_KEY, payload.user.id)
+  sessionStorage.setItem(USER_ID_KEY, payload.user.id)
 };
 
 /** Keeps track of JWT sent from API */
@@ -49,7 +49,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: sessionStorage.getItem(TOKEN_KEY),
-    // userId: sessionStorage.getItem(USER_ID_KEY),
+    userId: sessionStorage.getItem(USER_ID_KEY),
   },
   reducers: {
     /** Logging out means wiping the stored token */
