@@ -15,6 +15,7 @@ import ErrorPage from "./features/ErrorPage.jsx";
 import Articles from "./features/homepage/Articles.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Account from "./features/Account/Account.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "/companies", element: <Companies /> },
       { path: "/login", element: <AuthForm /> },
       { path: "*", element: <ErrorPage /> },
+      { path: "/user/:id", element: <Account /> },
     ],
   },
 ]);
