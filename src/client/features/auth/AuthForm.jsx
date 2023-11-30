@@ -26,9 +26,15 @@ export default function AuthForm() {
     evt.preventDefault();
 
     const authMethod = isLogin ? login : register;
-    const credentials = { username, password, firstName, lastName, email };
-
+    //const credentials = { username, password, firstName, lastName, email };
+    const LoginCredentials = { username, password };
+    const RegisterCredential={username, password, firstName, lastName, email}
+      
     try {
+      let credentials={} // create an empty credential
+      // when login, we only need to send in username and password
+      // while register, we send in username, password along with other info
+      isLogin ? (credentials=LoginCredentials) : (credentials=RegisterCredential)
       await authMethod(credentials).unwrap();
       navigate("/");
     } catch (err) {
