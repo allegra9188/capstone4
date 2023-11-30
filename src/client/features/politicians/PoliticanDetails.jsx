@@ -4,7 +4,7 @@ import { useGetPoliticianQuery } from './politicianSlice';
 import { useSelector } from 'react-redux'
 import { selectToken } from "../auth/authSlice";
 import fetchHouseData from '../../../server/api/houseApi';
-// import fetchSenateData from '../../../server/api/senateApi';
+import fetchSenateData from '../../../server/api/senateApi';
 import { useState, useEffect } from 'react';
 
 import Transaction from './Transaction';
@@ -16,6 +16,7 @@ function PoliticianDetails() {
     const token = useSelector(selectToken);
     const { data: politician, isLoading, isError } = useGetPoliticianQuery(id)
     const [houseData, setHouseData] = useState(null); // Initialize useState
+    const [senateData, setSenateData] = useState(null);
     
     
     useEffect(() => {
@@ -25,6 +26,19 @@ function PoliticianDetails() {
           //console.log('Fetched House Data', houseData);
           
           setHouseData(houseData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, [id]); // Add dependencies to re-run effect when the ID changes
+
+    useEffect(() => {
+      // Fetch senate data
+      fetchSenateData()
+        .then((senateData) => {
+          
+          setSenateData(senateData);
+          console.log(senateData)
         })
         .catch((error) => {
           console.error(error);
@@ -55,6 +69,15 @@ function PoliticianDetails() {
           // it use nick name, for example, Mike Garcia is for Michael Garcia, we will need to do touch up later
         transaction.representative.includes(politician?.first_name) &&
         transaction.representative.includes(politician?.last_name)
+      );
+    }).slice(0,5) // slice to first 5 transactions
+  : [];
+
+  const firstFiveSenateTransactions = senateData
+  ? senateData.filter((transaction) => {
+      return (
+        transaction.senator.includes(politician?.first_name) &&
+        transaction.senator.includes(politician?.last_name)
       );
     }).slice(0,5) // slice to first 5 transactions
   : [];
@@ -102,7 +125,16 @@ function PoliticianDetails() {
             <Transaction ket ={transaction.id} transaction={transaction}/>
           ))
         }
-      </ul>
+        </ul>
+        <h2>Recent Senate Transactions</h2>
+
+        <ul className='politician-transaction-list'>
+        {
+          firstFiveSenateTransactions?.map((transaction)=>(
+            <Transaction ket ={transaction.id} transaction={transaction}/>
+          ))
+        }
+        </ul>
     </section>
       </>
     )
