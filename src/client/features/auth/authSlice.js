@@ -22,15 +22,20 @@ const authApi = api.injectEndpoints({
     }),
     getAccount: builder.query({
       query: (id) => `/user/${id}`,
-      // providesTags: ["user"],
+      providesTags: ["User"],
     }),
-    // getAccount: builder.query({
-    //   query: (id) => `/account/${id}`,
-    // }),
+    editUser: builder.mutation({
+      query: ({id, ...user}) => ({
+        url: `/user/${id}`,
+        method: "PUT",
+        body: user,
+      }),
+      invalidatesTags: ["User"],
+    })
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetAccountQuery } = authApi;
+export const { useRegisterMutation, useLoginMutation, useGetAccountQuery, useEditUserMutation } = authApi;
 
 /** Session storage key for auth token */
 const TOKEN_KEY = "token";
