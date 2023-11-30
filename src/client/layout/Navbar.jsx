@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { logout, selectToken } from "../features/auth/authSlice";
+import { logout, selectToken, selectUserId } from "../features/auth/authSlice";
 import { useState } from "react";
 
 import "./Navbar.less";
@@ -14,7 +14,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const token = useSelector(selectToken);
-
+  const userid= useSelector(selectUserId) 
   const handleLogout = async () => {
     await dispatch(logout());
     navigate("/");
@@ -46,7 +46,7 @@ export default function Navbar() {
         {token ? (
           <menu>
             <li>
-            <NavLink to="/user/:id">My Account</NavLink>
+            <NavLink to={`/user/${userid}`}>My Account</NavLink>
           </li>
           <li>
             <a onClick={handleLogout}>Log Out</a>
