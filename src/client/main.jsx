@@ -9,11 +9,13 @@ import store from "./store";
 import AuthForm from "./features/auth/AuthForm";
 import Tasks from "./features/tasks/Tasks";
 import Politicians from "./features/politicians/Politicians.jsx";
-import PoliticanDetails from "./features/politicians/PoliticanDetails";
+import PoliticianDetails from "./features/politicians/PoliticanDetails.jsx";
 import Companies from "./features/companies/Companies.jsx";
 import Root from "./layout/Root.jsx";
 import ErrorPage from "./features/ErrorPage.jsx";
 import Articles from "./features/homepage/Articles.jsx";
+import CompanyCard from "./features/companies/CompanyCard.jsx";
+import Account from "./features/Account/Account.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Articles /> },
       { path: "/politicians", element: <Politicians /> },
-      { path: "/politicians/:id", element: <PoliticanDetails /> },
+      { path: "/politicians/:id", element: <PoliticianDetails /> },
       { path: "/companies", element: <Companies /> },
       { path: "/companies/:id", element: <CompanyCard /> },
       { path: "/login", element: <AuthForm /> },
