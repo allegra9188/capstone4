@@ -15,7 +15,7 @@ function PolitcianCard({ politician }) {
     <>
         {token ?(
         <section>
-          <h2>{politician.name}</h2>
+          <h2>{politician.first_name + politician.last_name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
           <Link to={`/politicians/${politician.id}`}>More Info</Link>
@@ -23,7 +23,7 @@ function PolitcianCard({ politician }) {
         </section>
         ) : (
         <section>
-          <h2>{politician.name}</h2>
+          <h2>{politician.first_name +" "+ politician.last_name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
           <Link to={`/politicians/${politician.id}`}>More Info</Link>
