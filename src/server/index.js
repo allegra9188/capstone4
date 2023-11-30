@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const { createServer: createViteServer } = require("vite");
+const quiverQuantRouter = require("./api/quiverServer");
 
 const PORT = process.env.PORT ?? 3000;
 
