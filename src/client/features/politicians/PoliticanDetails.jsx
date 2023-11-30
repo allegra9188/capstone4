@@ -36,15 +36,7 @@ function PoliticianDetails() {
             <p>District: {politician.district}</p>
             <button onClick={handleSubmit}>Favorite</button>
           </section>
-          <section>
-            {
-              // if fetchSenate first name && last name === politician.first_name && politician.lastname
-              // limit to 5 most recent transactions
-              // return transaction date, disclosure date owner, ticker, asset description, asset type, type, amount, industry, sector
-              // if fetchHouse first name && last name === politician.first_name && politician.lastname
-              // return transaction date, disclosure date owner, ticker, asset description, asset type, type, amount, industry, sector
-            }
-          </section>
+          <PoliticianRecentTrade />
         </>
       ) : (
         // not sign in
@@ -57,22 +49,6 @@ function PoliticianDetails() {
             <p>District: {politician.district}</p>
           </section>
           <br />
-          {/* <section>
-            <h2>Recent House Transactions</h2>
-
-            <ul className="politician-transaction-list">
-              {firstFiveTransaction?.map((transaction) => (
-                <Transaction ket={transaction.id} transaction={transaction} />
-              ))}
-            </ul>
-            <h2>Recent Senate Transactions</h2>
-
-            <ul className="politician-senate-transaction-list">
-              {firstFiveSenateTransactions?.map((transaction) => (
-                <Transaction ket={transaction.id} transaction={transaction} />
-              ))}
-            </ul>
-          </section> */}
           <PoliticianRecentTrade />
         </>
       )}
