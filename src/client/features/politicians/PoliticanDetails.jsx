@@ -6,8 +6,10 @@ import { selectToken } from "../auth/authSlice";
 import fetchHouseData from '../../../server/api/houseApi';
 import fetchSenateData from '../../../server/api/senateApi';
 import { useState, useEffect } from 'react';
+
 import Transaction from './Transaction';
 import './PoliticianDetails.less'
+
 
 function PoliticanDetails() {
     const { id } = useParams();
