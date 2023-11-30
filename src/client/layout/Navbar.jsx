@@ -44,9 +44,15 @@ export default function Navbar() {
           <NavLink to="/companies">Companies</NavLink>
         </li>
         {token ? (
+          <menu>
+            <li>
+            <NavLink to="/user/:id">My Account</NavLink>
+          </li>
           <li>
             <a onClick={handleLogout}>Log Out</a>
           </li>
+          
+          </menu>
         ) : (
           <li>
             <NavLink to="/login">Log In</NavLink>
