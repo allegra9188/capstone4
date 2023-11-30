@@ -128,7 +128,7 @@ function PoliticianDetails() {
         </ul>
         <h2>Recent Senate Transactions</h2>
 
-        <ul className='politician-transaction-list'>
+        <ul className='politician-senate-transaction-list'>
         {
           firstFiveSenateTransactions?.map((transaction)=>(
             <Transaction ket ={transaction.id} transaction={transaction}/>
