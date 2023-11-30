@@ -1,5 +1,6 @@
 import React from "react";
 import ArticlesCard from "./articlesCard";
+import QuiverData from "./QuiverData";
 
 export default function ArticlesList({ articles }) {
   // Check if articles is undefined or empty
@@ -9,9 +10,10 @@ export default function ArticlesList({ articles }) {
   console.log(articles);
   return (
     <div>
-      {articles.map((article) => (
+      {/* {articles.map((article) => (
         <ArticlesCard key={article.uuid} article={article} />
-      ))}
+      ))} */}
+      <QuiverData />
     </div>
   );
 }
