@@ -4,14 +4,14 @@ import { useGetPoliticianQuery } from './politicianSlice';
 import { useSelector } from 'react-redux'
 import { selectToken } from "../auth/authSlice";
 import fetchHouseData from '../../../server/api/houseApi';
-import fetchSenateData from '../../../server/api/senateApi';
+// import fetchSenateData from '../../../server/api/senateApi';
 import { useState, useEffect } from 'react';
 
 import Transaction from './Transaction';
 import './PoliticianDetails.less'
 
 
-function PoliticanDetails() {
+function PoliticianDetails() {
     const { id } = useParams();
     const token = useSelector(selectToken);
     const { data: politician, isLoading, isError } = useGetPoliticianQuery(id)
@@ -143,4 +143,4 @@ function PoliticanDetails() {
   )
 }
 
-export default PoliticanDetails
+export default PoliticianDetails

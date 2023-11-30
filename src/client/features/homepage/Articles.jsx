@@ -9,7 +9,8 @@ export default function Articles() {
     fetch(
         // refactor api slice
       // "https://api.marketaux.com/v1/news/all?countries=us&filter_entities=true&limit=10&published_after=2023-11-27T17:04&api_token=lVsq6J81NrdSum7Ba0fdlihd1rxpFzA1lRk5YwLT",
-      // { method: "GET" }
+      "/api",
+      { method: "GET" }
     )
       .then((response) => response.text())
       .then((result) => setArticles(JSON.parse(result).data))
