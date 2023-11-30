@@ -38,6 +38,7 @@ function PoliticanDetails() {
         .then((senateData) => {
           
           setSenateData(senateData);
+          console.log(senateData)
         })
         .catch((error) => {
           console.error(error);
@@ -68,6 +69,15 @@ function PoliticanDetails() {
           // it use nick name, for example, Mike Garcia is for Michael Garcia, we will need to do touch up later
         transaction.representative.includes(politician?.first_name) &&
         transaction.representative.includes(politician?.last_name)
+      );
+    }).slice(0,5) // slice to first 5 transactions
+  : [];
+
+  const firstFiveSenateTransactions = senateData
+  ? senateData.filter((transaction) => {
+      return (
+        transaction.senator.includes(politician?.first_name) &&
+        transaction.senator.includes(politician?.last_name)
       );
     }).slice(0,5) // slice to first 5 transactions
   : [];
@@ -115,7 +125,16 @@ function PoliticanDetails() {
             <Transaction ket ={transaction.id} transaction={transaction}/>
           ))
         }
-      </ul>
+        </ul>
+        <h2>Recent Senate Transactions</h2>
+
+        <ul className='politician-transaction-list'>
+        {
+          firstFiveSenateTransactions?.map((transaction)=>(
+            <Transaction ket ={transaction.id} transaction={transaction}/>
+          ))
+        }
+        </ul>
     </section>
       </>
     )
