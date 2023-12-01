@@ -4,9 +4,9 @@ import QuiverData from "./QuiverData";
 
 export default function ArticlesList({ articles }) {
   // Check if articles is undefined or empty
-  if (!articles || articles.length === 0) {
-    return <p>No articles available.</p>;
-  }
+  // if (!articles || articles.length === 0) {
+  //   return <p>No articles available.</p>;
+  // }
   console.log(articles);
   return (
     <div>

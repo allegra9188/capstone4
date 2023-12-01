@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import fetchQuiverData from "../../../server/api/quiverApi";
+
 
 export default function QuiverData() {
   const [quiverData, setQuiverData] = useState([]);
@@ -7,7 +7,8 @@ export default function QuiverData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchQuiverData();
+        const response = await fetch("/api/quiverquant");
+        const data = await response.json()
         setQuiverData(data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching Quiver data: ", error.message);
@@ -16,7 +17,8 @@ export default function QuiverData() {
 
     fetchData();
   }, []);
-  console.log(quiverData)
+
+  console.log(quiverData);
   
   return (
     <div>
