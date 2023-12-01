@@ -8,8 +8,6 @@ export default function ArticlesList({ articles }) {
   //   return <p>No articles available.</p>;
   // }
 
-  console.log(articles);
-
   return (
     <>
       <div className="article-container">
@@ -18,9 +16,8 @@ export default function ArticlesList({ articles }) {
           <ArticlesCard key={article.uuid} article={article} />
         ))}
       </div>
-      <div>
-        <QuiverData />
-      </div>
+      
+      <QuiverData />
     </>
   );
 }

@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function seed() {
   try {
     // Seed Politicians from people.csv
-    const politiciansFilePath = "src/server/people.csv";
+    const politiciansFilePath = "src/server/csv_files/people.csv";
     const politiciansData = await readCSV(politiciansFilePath);
 
     for (const politician of politiciansData) {
@@ -25,7 +25,7 @@ async function seed() {
     }
 
     // Seed Companies from constituents.csv
-    const companiesFilePath = "src/server/constituents.csv";
+    const companiesFilePath = "src/server/csv_files/constituents.csv";
     const companiesData = await readCSV(companiesFilePath);
 
     for (const company of companiesData) {

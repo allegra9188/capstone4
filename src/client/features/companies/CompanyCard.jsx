@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectToken, selectUserId, useGetAccountQuery } from '../auth/authSlice';
-import { useParams, Link } from 'react-router-dom';
-import { useGetCompanyByIdQuery } from './companySlice';
-import { useAddFavoriteCompanyMutation, useFetchFavoriteCompaniesQuery, useRemoveFavoriteCompanyMutation } from '../Account/favorites/favSlice';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectToken,
+  selectUserId,
+  useGetAccountQuery,
+} from "../auth/authSlice";
+import { useParams, Link } from "react-router-dom";
+import { useGetCompanyByIdQuery } from "./companySlice";
+import {
+  useAddFavoriteCompanyMutation,
+  useFetchFavoriteCompaniesQuery,
+  useRemoveFavoriteCompanyMutation,
+} from "../Account/favorites/favSlice";
 
 export default function CompanyCard({ company }) {
   const { id } = useParams();
@@ -18,7 +26,9 @@ export default function CompanyCard({ company }) {
   // Check if the current company is a favorite
   useEffect(() => {
     if (favoriteCompanies) {
-      const isCompanyFavorite = favoriteCompanies.some(favorite => favorite.companyId === company.id);
+      const isCompanyFavorite = favoriteCompanies.some(
+        (favorite) => favorite.companyId === company.id
+      );
       setIsFavorite(isCompanyFavorite);
     }
   }, [favoriteCompanies, company]);
@@ -43,10 +53,9 @@ export default function CompanyCard({ company }) {
         setIsFavorite(!isFavorite);
       }
     } catch (error) {
-      console.error('Error updating favorite status:', error);
+      console.error("Error updating favorite status:", error);
     }
   };
-
 
   if (id !== undefined) {
     const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
@@ -73,7 +82,7 @@ export default function CompanyCard({ company }) {
             <p>Headquarter: {companyData.hq}</p>
             <p>Founded at year: {companyData.founded}</p>
             <button onClick={handleAddFavorite}>
-              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             </button>
           </div>
         )}
@@ -88,8 +97,8 @@ export default function CompanyCard({ company }) {
           <p> {company.security}</p>
           <Link to={`/companies/${company.id}`}>More Info</Link>
           <button onClick={handleAddFavorite}>
-              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-            </button>
+            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          </button>
         </div>
       </>
     );

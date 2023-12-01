@@ -12,7 +12,10 @@ router.post("/register", async (req, res, next) => {
 
     // Check if username and password provided
     if (!username || !password || !firstName || !lastName || !email) {
-      throw new ServerError(400, "All fields (username, password, firstName, lastName, email) are required.");
+      throw new ServerError(
+        400,
+        "All fields (username, password, firstName, lastName, email) are required."
+      );
     }
 
     // Check if account already exists
@@ -25,7 +28,6 @@ router.post("/register", async (req, res, next) => {
         `Account with username ${username} already exists.`
       );
     }
-  
 
     // Create new user
     const newUser = await prisma.user.create({

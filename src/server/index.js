@@ -47,5 +47,4 @@ const createApp = async () => {
   });
 };
 
-
 createApp();

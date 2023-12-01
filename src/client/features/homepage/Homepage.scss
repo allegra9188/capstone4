@@ -1,41 +1,40 @@
-.total-container{
-    display: inline-flex;
-    // background-color: darkblue;
-    justify-content: center;
+.total-container {
+  display: inline-flex;
+  // background-color: darkblue;
+  justify-content: center;
 }
 
-.article-container{
-    padding: 2em;
-    max-width: 50%;
-    h2{
+.article-container {
+  padding: 2em;
+  max-width: 50%;
+  h2 {
+    text-align: center;
+    padding: 10px;
+  }
+  .article-item {
+    padding: 15px;
+    border: black solid 2px;
+  }
+}
+
+.trades-container {
+  // background-color: green;
+  flex-direction: column;
+  padding: 2em;
+  max-width: 50%;
+  h2 {
+    order: 1;
+    text-align: center;
+    padding: 10px;
+  }
+  .trading-full-list {
+    order: 2;
+    .trading-item {
+      border-bottom: solid black 1px;
+      padding: 15px;
+      p {
         text-align: center;
-        padding: 10px;
+      }
     }
-    .article-item{
-        padding: 15px;
-        border: black solid 2px
-    }
+  }
 }
-
-.trades-container{
-    // background-color: green;
-    flex-direction: column;
-    padding: 2em;
-    max-width: 50%;
-    h2{
-        order: 1;
-        text-align: center;
-        padding: 10px;
-    }
-    .trading-full-list{
-        order: 2;
-        .trading-item{
-            border-bottom: solid black 1px;
-            padding: 15px;
-            p{
-                text-align: center;
-            }
-        }
-    }
-}
-
