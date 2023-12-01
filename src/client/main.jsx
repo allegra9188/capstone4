@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.less";
+import "./layout/Root.less"
+import "./layout/Navbar.less"
+import "./features/Account/Account.css"
+import "./features/politicians/PoliticianDetails.less"
 
 import { Provider } from "react-redux";
 import store from "./store";
