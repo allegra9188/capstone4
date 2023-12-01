@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Transaction({transaction}) {
   return (
-    <div>
+    <section>
         <li>Transaction Date: {transaction.transaction_date}</li>
         <li>Disclosure Date: {transaction.disclosure_date}</li>
         <li>Owner: {transaction.owner}</li>
@@ -12,6 +12,6 @@ export default function Transaction({transaction}) {
         <li>Amount: {transaction.amount}</li>
         <li>Industry: {transaction.industry}</li>
         <li className='end'>Sector: {transaction.sector}</li>
-    </div>
+    </section>
   )
 }

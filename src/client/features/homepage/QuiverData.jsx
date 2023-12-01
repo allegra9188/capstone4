@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 export default function QuiverData() {
   const [quiverData, setQuiverData] = useState([]);
 
@@ -8,7 +7,7 @@ export default function QuiverData() {
     const fetchData = async () => {
       try {
         const response = await fetch("/api/quiverquant");
-        const data = await response.json()
+        const data = await response.json();
         setQuiverData(data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching Quiver data: ", error.message);
@@ -18,10 +17,8 @@ export default function QuiverData() {
     fetchData();
   }, []);
 
-  console.log(quiverData);
-  
   return (
-    <div className="trades-container">
+    <section className="trades-container">
       <h2>Live Congress Trading</h2>
       <ul className="trading-full-list">
         {quiverData.map((entry) => (
@@ -37,6 +34,6 @@ export default function QuiverData() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }

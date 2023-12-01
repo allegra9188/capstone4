@@ -25,17 +25,22 @@ const authApi = api.injectEndpoints({
       providesTags: ["User"],
     }),
     editUser: builder.mutation({
-      query: ({id, ...user}) => ({
+      query: ({ id, ...user }) => ({
         url: `/user/${id}`,
         method: "PUT",
         body: user,
       }),
       invalidatesTags: ["User"],
-    })
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetAccountQuery, useEditUserMutation } = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetAccountQuery,
+  useEditUserMutation,
+} = authApi;
 
 /** Session storage key for auth token */
 const TOKEN_KEY = "token";
@@ -46,7 +51,7 @@ const storeToken = (state, { payload }) => {
   state.token = payload.token;
   state.userId = payload.user.id;
   sessionStorage.setItem(TOKEN_KEY, payload.token);
-  sessionStorage.setItem(USER_ID_KEY, payload.user.id)
+  sessionStorage.setItem(USER_ID_KEY, payload.user.id);
 };
 
 /** Keeps track of JWT sent from API */
@@ -67,12 +72,18 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     // Store token when register or login succeeds
-    builder.addMatcher(authApi.endpoints.register.matchFulfilled, (state, action) => {
-      storeToken(state, action);
-    });
-    builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
-      storeToken(state, action);
-    });
+    builder.addMatcher(
+      authApi.endpoints.register.matchFulfilled,
+      (state, action) => {
+        storeToken(state, action);
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.login.matchFulfilled,
+      (state, action) => {
+        storeToken(state, action);
+      }
+    );
   },
 });
 

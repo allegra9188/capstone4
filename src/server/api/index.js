@@ -27,10 +27,9 @@ router.use(async (req, res, next) => {
 });
 
 router.use("/auth", require("./auth"));
-router.use("/tasks", require("./tasks"));
 router.use("/companies", require("./companies"));
 
 router.use("/politicians", require("./politicians"));
 router.use("/user", require("./users"));
-router.use("/user-favorites", require("./favorites"))
-router.use("/quiverquant", require("./quiverServer"))
+router.use("/user-favorites", require("./favorites"));
+router.use("/quiverquant", require("./quiverServer"));

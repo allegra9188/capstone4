@@ -1,22 +1,20 @@
-import React from 'react'
-import CompanyCard from './CompanyCard'
-import { useGetCompaniesQuery } from './companySlice';
-
+import React from "react";
+import CompanyCard from "./CompanyCard";
+import { useGetCompaniesQuery } from "./companySlice";
 
 export default function Companies() {
-  const { data:companies, isLoading} = useGetCompaniesQuery();
+  const { data: companies, isLoading } = useGetCompaniesQuery();
   //console.log(typeof(companies))
-  
-  if(isLoading){
-    return <li>loading</li>
+
+  if (isLoading) {
+    return <li>loading</li>;
   }
 
   return (
-    <ul  className='company-list'>
-       {companies?.map((company)=>(
-            <CompanyCard company ={company} key={company.id}/>
-       )
-       )} 
+    <ul className="company-list">
+      {companies?.map((company) => (
+        <CompanyCard company={company} key={company.id} />
+      ))}
     </ul>
-  )
+  );
 }

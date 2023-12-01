@@ -39,7 +39,7 @@ function PoliticianDetails() {
           <PoliticianRecentTrade />
         </>
       ) : (
-        // not sign in
+        // not signed in
         <>
           <section>
             <h2>{politician?.first_name + " " + politician?.last_name}</h2>

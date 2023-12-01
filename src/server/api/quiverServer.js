@@ -9,7 +9,6 @@ const url = baseURL + endpoint;
 
 router.get("/", async (req, res, next) => {
   try {
-
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -21,7 +20,7 @@ router.get("/", async (req, res, next) => {
       throw new Error(`HTTPS error! Status: ${response.status}`);
     }
     const data = await response.json();
-    
+
     console.log("QuiverQuant API response: ", data);
     res.json(data);
   } catch (error) {
