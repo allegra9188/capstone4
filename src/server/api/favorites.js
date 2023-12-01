@@ -37,7 +37,7 @@ const router = require("express").Router();
 });
 
 // Remove company from user's favorites
-router.delete("/:userId/remove-favorite/:companyId", async (req, res, next) => {
+router.delete("/companies/:userId/remove-favorite/:companyId", async (req, res, next) => {
   try {
     const userId = +req.params.userId;
     const companyId = +req.params.companyId;
