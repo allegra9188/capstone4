@@ -7,13 +7,18 @@ export default function ArticlesList({ articles }) {
   // if (!articles || articles.length === 0) {
   //   return <p>No articles available.</p>;
   // }
-  console.log(articles);
+  // console.log(articles);
   return (
-    <div>
-      {/* {articles.map((article) => (
-        <ArticlesCard key={article.uuid} article={article} />
-      ))} */}
-      <QuiverData />
-    </div>
+    <>
+      <div className="article-container">
+        <h2>Latest Articles</h2>
+        {articles.map((article) => (
+          <ArticlesCard key={article.uuid} article={article} />
+        ))}
+      </div>
+      <div>
+        <QuiverData />
+      </div>
+    </>
   );
 }

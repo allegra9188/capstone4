@@ -21,18 +21,18 @@ export default function QuiverData() {
   console.log(quiverData);
   
   return (
-    <div>
-      <h2>Quiver Live Congress Trading Data:</h2>
-      <ul>
+    <div className="trades-container">
+      <h2>Live Congress Trading</h2>
+      <ul className="trading-full-list">
         {quiverData.map((entry) => (
-          <li key={entry.ReportDate}>
+          <li className="trading-item" key={entry.ReportDate}>
             <p>Representative: {entry.Representative}</p>
             <p>Transaction Date: {entry.TransactionDate}</p>
             <p>Ticker: {entry.Ticker}</p>
             <p>Transaction: {entry.Transaction}</p>
             <p>Range: {entry.Range}</p>
             <p>District: {entry.District}</p>
-            <p>Amount: {entry.Amount}</p>
+            <p>Amount: ${entry.Amount}</p>
             <p>Party: {entry.Party}</p>
           </li>
         ))}

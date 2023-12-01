@@ -1,17 +1,14 @@
 import React from "react";
-import "./Articles.scss";
-
 
 export default function ArticlesCard({article}){
     return(
         <>
-        <div className="article">
-            <h2>{article.title}</h2>
-            <p>{article.description}</p>
+        <div>
+            <div className="article-item">
+                <h3>{article.title}</h3>
+                <p>{article.description}</p>
+            </div>
         </div>
-        <section>
-            
-        </section>
         </>
     )
 }
