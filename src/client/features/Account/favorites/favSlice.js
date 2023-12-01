@@ -7,7 +7,7 @@ export const favoritesApi = createApi({
   endpoints: (builder) => ({
     addFavoriteCompany: builder.mutation({
         query: ({ userId, companyId }) => ({
-          url: `/favorites/companies/${userId}/add-favorite/${companyId}`,
+          url: `/user-favorites/companies/${userId}/add-favorite/${companyId}`,
           method: 'POST',
         }),
       }),
