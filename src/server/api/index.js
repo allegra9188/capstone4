@@ -32,4 +32,5 @@ router.use("/companies", require("./companies"));
 
 router.use("/politicians", require("./politicians"));
 router.use("/user", require("./users"));
+router.use("/user-favorites", require("./favorites"))
 router.use("/quiverquant", require("./quiverServer"))

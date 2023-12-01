@@ -17,6 +17,7 @@ model User {
   firstName String
   lastName  String
   email     String
+  favorites Favorite[]
 }
 
 model Politician {
@@ -37,5 +38,13 @@ model Company {
   sub_industry  String
   hq            String
   founded       Int
+  favorites     Favorite[]
 }
 
+model Favorite {
+  id  Int @id @default(autoincrement())
+  userId  Int
+  companyId Int
+  user  User @relation(fields: [userId], references: [id])
+  company Company @relation(fields: [companyId], references: [id])
+}
