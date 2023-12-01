@@ -70,6 +70,18 @@ function PoliticianRecentTrade() {
   if (isError) {
     return <h1>Error loading data</h1>;
   }
+  const checkActivity = () => {
+    if (Array.isArray(houseData) && Array.isArray(senateData)) {
+      return houseData.length === 0 && senateData.length === 0
+        ? "Inactive"
+        : "Active";
+    } else {
+      return console.log("waiting for response");
+    }
+  };
+
+  const activityStatus = checkActivity(id);
+  console.log(`Account is ${activityStatus}`);
 
   return (
     <section>
