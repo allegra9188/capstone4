@@ -1,10 +1,20 @@
-
 nav.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 15%,rgba(30,87,153,1) 19%,rgba(30,87,153,1) 20%,rgba(41,137,216,1) 50%,rgba(30,87,153,1) 80%,rgba(30,87,153,1) 81%,rgba(30,87,153,0.8) 85%,rgba(30,87,153,0) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 87, 153, 0) 0%,
+    rgba(30, 87, 153, 0.8) 15%,
+    rgba(30, 87, 153, 1) 19%,
+    rgba(30, 87, 153, 1) 20%,
+    rgba(41, 137, 216, 1) 50%,
+    rgba(30, 87, 153, 1) 80%,
+    rgba(30, 87, 153, 1) 81%,
+    rgba(30, 87, 153, 0.8) 85%,
+    rgba(30, 87, 153, 0) 100%
+  );
   height: 8vh;
   box-shadow: slategray 1px 2px 3px 1px;
   justify-content: right;
@@ -12,7 +22,7 @@ nav.top {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 10px;
-  #searchInput{
+  #searchInput {
     height: 3.5vh;
     width: 200px;
     padding-left: 2px;
@@ -32,27 +42,24 @@ nav.top {
     text-align: center;
     align-items: center;
     font-size: 20px;
-   
-    a{
+
+    a {
       color: white;
     }
   }
 }
 
-
 @media (max-width: 620px) {
- nav.top{ 
-  #searchInput {
-    height: 30px;
-    width: 150px;
-    padding-left: 2px;
-    font-size: 16px;
-    position: fixed;
-    top: 22.5px;
-    display: flex;
-    flex: 5 1 auto;
- 
+  nav.top {
+    #searchInput {
+      height: 30px;
+      width: 150px;
+      padding-left: 2px;
+      font-size: 16px;
+      position: fixed;
+      top: 22.5px;
+      display: flex;
+      flex: 5 1 auto;
+    }
   }
 }
-}
-

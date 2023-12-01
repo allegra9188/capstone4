@@ -14,24 +14,24 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const token = useSelector(selectToken);
-  const userid= useSelector(selectUserId) 
+  const userid = useSelector(selectUserId);
   const handleLogout = async () => {
     await dispatch(logout());
     navigate("/");
   };
 
-  const [filter, setFilter] = useState('')
-  const searchRegex = new RegExp(filter, 'i')
+  const [filter, setFilter] = useState("");
+  const searchRegex = new RegExp(filter, "i");
 
   return (
     <nav className="top">
       <menu>
         <form id="searchForm">
-          <input 
-          type="text"
-          id="searchInput"
-          placeholder="Search..."
-          onChange={(e) => setFilter(e.target.value)}
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            onChange={(e) => setFilter(e.target.value)}
           />
         </form>
         <li>
@@ -44,15 +44,14 @@ export default function Navbar() {
           <NavLink to="/companies">Companies</NavLink>
         </li>
         {token ? (
-          <menu>
+          <>
             <li>
-            <NavLink to={`/user/${userid}`}>My Account</NavLink>
-          </li>
-          <li>
-            <a onClick={handleLogout}>Log Out</a>
-          </li>
-          
-          </menu>
+              <NavLink to={`/user/${userid}`}>My Account</NavLink>
+            </li>
+            <li>
+              <a onClick={handleLogout}>Log Out</a>
+            </li>
+          </>
         ) : (
           <li>
             <NavLink to="/login">Log In</NavLink>

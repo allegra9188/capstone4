@@ -1,6 +1,6 @@
 import React from "react";
-import fetchHouseData from "../../../server/api/houseApi";
-import fetchSenateData from "../../../server/api/senateApi";
+import fetchHouseData from "../../../server/api/house";
+import fetchSenateData from "../../../server/api/senate";
 import { useState, useEffect } from "react";
 import Transaction from "./Transaction";
 import { useParams } from "react-router-dom";
