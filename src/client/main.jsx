@@ -6,7 +6,7 @@ import "./layout/Root.less";
 import "./layout/Navbar.less";
 import "./features/Account/Account.css";
 import "./features/politicians/PoliticianDetails.less";
-import "./features/homepage/Homepage.scss";
+import "./features/homepage/Homepage.less";
 
 import { Provider } from "react-redux";
 import store from "./store";
