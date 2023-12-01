@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.less";
+import "./layout/Root.less"
+import "./layout/Navbar.less"
+import "./features/Account/Account.css"
+import "./features/politicians/PoliticianDetails.less"
+import "./features/homepage/Homepage.scss"
 
 import { Provider } from "react-redux";
 import store from "./store";
 
 import AuthForm from "./features/auth/AuthForm";
-import Tasks from "./features/tasks/Tasks";
 import Politicians from "./features/politicians/Politicians.jsx";
 import PoliticianDetails from "./features/politicians/PoliticanDetails.jsx";
 import Companies from "./features/companies/Companies.jsx";
@@ -16,6 +20,7 @@ import ErrorPage from "./features/ErrorPage.jsx";
 import Articles from "./features/homepage/Articles.jsx";
 import CompanyCard from "./features/companies/CompanyCard.jsx";
 import Account from "./features/Account/Account.jsx";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([

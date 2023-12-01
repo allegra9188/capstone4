@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { logout } from "../auth/authSlice";
 import { useGetAccountQuery, useEditUserMutation } from "../auth/authSlice";
-import "./account.css";
 import { useState } from "react";
 
 export default function Account() {
