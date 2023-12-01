@@ -3,11 +3,28 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useParams, Link } from "react-router-dom"
 import { useGetCompanyByIdQuery } from './companySlice';
-export default function CompanyCard({company}) {
+import { useAddFavoriteCompanyMutation } from '../Account/favorites/favSlice';
 
+export default function CompanyCard({company}) {
   
   const {id} = useParams();
     const token = useSelector(selectToken);
+    const [addFavoriteCompany] = useAddFavoriteCompanyMutation();
+
+    const handleAddFavorite = async () => {
+      const userId = 123; // Replace with the actual userId
+      const companyId = 456; // Replace with the actual companyId
+  
+      try {
+        await addFavoriteCompany({ userId, companyId });
+        // Handle success or update the UI as needed
+      } catch (error) {
+        // Handle error
+        console.error('Error adding favorite company:', error);
+      }
+    };
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // will add function to add to favorite list once api is functional
@@ -23,7 +40,7 @@ export default function CompanyCard({company}) {
           <p>loading ......</p>
         )
       }
-      if(company ===null || isNaN(id)){
+      if(company === null || isNaN(id)){
         return (
           <>
             <br/>
@@ -44,7 +61,7 @@ export default function CompanyCard({company}) {
                 <p>Sub_industry: {company.sub_industry}</p>
                 <p>Headquarter: {company.hq}</p>
                 <p>Founded at year: {company.founded}</p>
-                <button onClick={handleSubmit}>Favorite</button>
+                <button onClick={handleAddFavorite}>Favorite</button>
               
             </div>
           )
@@ -61,7 +78,7 @@ export default function CompanyCard({company}) {
           <p> {company.security}</p>
           
           <Link to={`/companies/${company.id}`}>More Info</Link>
-          <button onClick={handleSubmit}>Favorite</button>
+          <button onClick={handleAddFavorite}>Favorite</button>
         </div>
         </>
       )
