@@ -18,7 +18,7 @@ function PolitcianCard({ politician }) {
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
           <Link to={`/politicians/${politician.id}`}>More Info</Link>
-          <button onClick={handleSubmit}>Favorite</button>
+          <button className=".favButton" onClick={handleSubmit}>Favorite</button>
         </section>
       ) : (
         <section>
