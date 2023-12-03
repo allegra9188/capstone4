@@ -131,10 +131,11 @@ export default function Account() {
           Logout
         </button>
       </section>
-      <section id="favCompanies-Section">
+      <section id="favCompanies-Section"> 
   <h2 id="FavComp-headerText" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
     Favorited Companies {isDropdownOpen ? "▼" : "▶"}
   </h2>
+  <div className={`favCompany-dropdownDiv ${isDropdownOpen ? 'expanded' : ''}`}>
   <h3>{!isDropdownOpen ? "Click Favorite Companies!" : ""}</h3>
   {isDropdownOpen && (
     favoriteCompanies && favoriteCompanies.length > 0 ? (
@@ -148,12 +149,15 @@ export default function Account() {
           <button className="favButton" onClick={() => handleRemoveFavorite(id, companyData.id)}>
               Remove from Favorites
           </button>
+          
         </div>
+        
       ))
     ) : (
       <p>No favorited companies</p>
     )
   )}
+  </div>
 </section>
     </div>
   );

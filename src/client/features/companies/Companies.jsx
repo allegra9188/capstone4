@@ -7,7 +7,7 @@ export default function Companies() {
   //console.log(typeof(companies))
 
   if (isLoading) {
-    return <li>loading</li>;
+    return <h1 className="Loading">loading</h1>;
   }
 
   return (
