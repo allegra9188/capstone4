@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   selectToken,
@@ -15,42 +15,32 @@ import {
 
 export default function CompanyCard({ company }) {
   const { id } = useParams();
-  const token = useSelector(selectToken);
   const userId = useSelector(selectUserId);
   const [addFavoriteCompany] = useAddFavoriteCompanyMutation();
   const [removeFavoriteCompany] = useRemoveFavoriteCompanyMutation();
-  const { data: user, isLoading } = useGetAccountQuery(userId);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const { data: favoriteCompanies } = useFetchFavoriteCompaniesQuery();
-
-  // Check if the current company is a favorite
-  useEffect(() => {
-    if (favoriteCompanies) {
-      const isCompanyFavorite = favoriteCompanies.some(
-        (favorite) => favorite.companyId === company.id
-      );
-      setIsFavorite(isCompanyFavorite);
-    }
-  }, [favoriteCompanies, company]);
+  const { data: user } = useGetAccountQuery(userId);
+  const { data: favoriteCompanies, refetch: refetchFavorites } = useFetchFavoriteCompaniesQuery(userId);
 
   const handleAddFavorite = async () => {
     try {
-      if (company && user) {
+      if (company && user && favoriteCompanies) {
         const userId = user.id;
         const companyId = company.id;
 
-        if (isFavorite) {
+        const isCompanyFavorite = favoriteCompanies.some(
+          (favorite) => favorite.companyId === company.id
+        );
+
+        if (isCompanyFavorite) {
           // If the company is already a favorite, remove it
-          // You might want to confirm this action with the user (e.g., show a confirmation modal)
-          // For now, we are removing it directly without confirmation
           await removeFavoriteCompany({ userId, companyId });
         } else {
           // If the company is not a favorite, add it
           await addFavoriteCompany({ userId, companyId });
         }
 
-        // Toggle the favorite state
-        setIsFavorite(!isFavorite);
+        // Refetch favorite companies to update the data
+        refetchFavorites();
       }
     } catch (error) {
       console.error("Error updating favorite status:", error);
@@ -73,8 +63,9 @@ export default function CompanyCard({ company }) {
     // this return is called by a single student to list the details
     return (
       <>
+      
         {companyData && (
-          <div>
+          <div className="company-card">
             <h2>{companyData.symbol}</h2>
             <p>Name: {companyData.security}</p>
             <p>Sector: {companyData.sector}</p>
@@ -82,7 +73,9 @@ export default function CompanyCard({ company }) {
             <p>Headquarter: {companyData.hq}</p>
             <p>Founded at year: {companyData.founded}</p>
             <button onClick={handleAddFavorite}>
-              {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+              {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
+                ? "Remove from Favorites"
+                : "Add to Favorites"}
             </button>
           </div>
         )}
@@ -92,12 +85,14 @@ export default function CompanyCard({ company }) {
     // this return is called by all companies component
     return (
       <>
-        <div>
+        <div className="company-card">
           <h2>{company.symbol}</h2>
           <p> {company.security}</p>
-          <Link to={`/companies/${company.id}`}>More Info</Link>
-          <button onClick={handleAddFavorite}>
-            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          <Link className="companyCard-Link" to={`/companies/${company.id}`}>More Info</Link>
+          <button className="favButton" onClick={handleAddFavorite}>
+            {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
           </button>
         </div>
       </>
