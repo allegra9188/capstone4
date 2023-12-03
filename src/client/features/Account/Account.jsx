@@ -142,9 +142,9 @@ export default function Account() {
         <div className="favCompanies" key={companyData.id}>
           <h3><span className="label">Company Name:</span> <span className="value">{companyData.security}</span></h3>
           <p><span className="label">Ticker Symbol:</span> <span className="value">{companyData.symbol}</span></p>
-<p><span className="label">Sub_Industry:</span> <span className="value">{companyData.sub_industry}</span></p>
-<p><span className="label">Headquarted in:</span> <span className="value">{companyData.hq}</span></p>
-<p><span className="label">Founded in:</span> <span className="value">{companyData.founded}</span></p>
+          <p><span className="label">Sub_Industry:</span> <span className="value">{companyData.sub_industry}</span></p>
+          <p><span className="label">Headquarted in:</span> <span className="value">{companyData.hq}</span></p>
+          <p><span className="label">Founded in:</span> <span className="value">{companyData.founded}</span></p>
           <button className="favButton" onClick={() => handleRemoveFavorite(id, companyData.id)}>
               Remove from Favorites
           </button>

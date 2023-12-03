@@ -11,10 +11,10 @@ export default function Companies() {
   }
 
   return (
-    <ul className="company-list">
+    <div className="company-list">
       {companies?.map((company) => (
         <CompanyCard company={company} key={company.id} />
       ))}
-    </ul>
+    </div>
   );
 }

@@ -13,11 +13,11 @@ export default function Politicians() {
   ) : (
     <section>
       <h1>Politicians</h1>
-      <ul>
+      <div>
         {[...politicians].map((politician) => (
           <PolitcianCard key={politician.id} politician={politician} />
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
