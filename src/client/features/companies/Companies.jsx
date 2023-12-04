@@ -7,14 +7,14 @@ export default function Companies() {
   //console.log(typeof(companies))
 
   if (isLoading) {
-    return <li>loading</li>;
+    return <h1 className="Loading">loading</h1>;
   }
 
   return (
-    <ul className="company-list">
+    <div className="company-list">
       {companies?.map((company) => (
         <CompanyCard company={company} key={company.id} />
       ))}
-    </ul>
+    </div>
   );
 }

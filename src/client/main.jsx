@@ -4,9 +4,12 @@ import ReactDOM from "react-dom/client";
 import "./index.less";
 import "./layout/Root.less";
 import "./layout/Navbar.less";
-import "./features/Account/Account.css";
+import "./features/auth/authForm.css"; 
+import "./features/Account/Account.less";
 import "./features/politicians/PoliticianDetails.less";
 import "./features/homepage/Homepage.less";
+import "./layout/main.less";
+import "./features/companies/companies.less";
 
 import { Provider } from "react-redux";
 import store from "./store";

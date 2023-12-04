@@ -1,16 +1,19 @@
-.login-Main {
+#login-div {
+  /* display: flex; */
   align-self: center;
+  justify-self: center;
   text-align: center;
   margin-top: 10em;
   background-color: #455d7a;
-  max-width: 50vw;
-  min-height: 40vh;
+  /* max-width: 50vw; */
+  height: 40vh;
+  /* width: 40vw; */
   padding: 10px;
   color: whitesmoke;
   border-radius: 3%;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  left: 33%;
+  left: 33%; */
   box-shadow: slategray 3px 3px 8px;
 }
 

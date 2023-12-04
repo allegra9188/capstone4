@@ -1,0 +1,146 @@
+#myaccount-html {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  padding-top: 25px;
+
+  section {
+    width: 30vw;
+    height: 400px;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
+  #favCompanies-Section {
+    display: inline-flex;
+    flex-direction: column;
+    // align-items: center;
+    margin-left: 5px;
+    padding: 5px;
+    gap: 15px;
+    // background-color: white;
+    height: 700px;
+    // overflow:auto;
+    width: 20%;
+  
+  }
+  .favCompany-dropdownDiv{
+    height: auto;
+    overflow: auto;
+   padding-top: 5px;
+   padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+  }
+
+  .favCompany-dropdownDiv.expanded {
+    border: 1px solid white;
+    
+  }
+
+}
+
+#myAccount-main {
+  display: inline-flex;
+  flex-direction: column;
+  // min-width: 100%;
+  // align-items: center;
+  // align-content: center;
+  // text-align: center;
+  // background-color: white;
+
+}
+
+.myAccount-btns {
+  background-color: #233142;
+  color: white;
+  margin-top: 10px;
+  position: relative;
+  top: 50px;
+  border-radius: 10px;
+  width: 65px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.myAccount-btns:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+  color: #233142;
+}
+
+#update-btn {
+  margin-right: 10px;
+}
+
+#save-btn {
+  margin-right: 10px;
+}
+
+.myAccount-inputs {
+  width: 15em;
+  height: 2em;
+  padding-left: 5px;
+}
+
+#firstName-Update {
+  display: flex;
+  // margin-left: 10px;
+  align-self: center;
+}
+
+.favCompanies {
+  display: grid;
+  gap: 5px;
+  p {
+    color: white;
+  }
+  .label {
+    color: black;
+    font-weight: 500;
+  }
+  
+  .value {
+    color: white;
+  }
+  .favButton {
+    margin-bottom: 30px;
+  }
+}
+
+
+
+.myAcct-info-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.username-text {
+  position: relative;
+  top: 0px;
+  margin-bottom: 20px;
+}
+
+#FavComp-headerText {
+  cursor: pointer;
+  padding-bottom: 5px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+
+}
+
+#details-name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: black;
+  font-weight: 700;
+}
+
+.value {
+  color: white;
+}

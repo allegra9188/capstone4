@@ -26,10 +26,12 @@ export const favoritesApi = createApi({
       invalidatesTags: ['Favorites'],
     }),
     fetchFavoriteCompanies: builder.query({
-      query: (userId) => `/${userId}/favorites`,
+      query: (userId) => `/user-favorites/${userId}/favorites`,
       // Provide the 'Favorites' tag when fetching the favorite companies
-      providesTags: ['Favorites'],
+      
     }),
+    providesTags: ['Favorites'],
+    // invalidatesTags: ['Favorites'],
   }),
 });
 

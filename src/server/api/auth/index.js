@@ -28,14 +28,14 @@ router.post("/register", async (req, res, next) => {
         `Account with username ${username} already exists.`
       );
     }
-
+  
     // Create new user
     const newUser = await prisma.user.create({
       data: { username, password, firstName, lastName, email },
     });
 
     const token = jwt.sign({ id: newUser.id });
-    res.json({ token });
+    res.json({ token, user: newUser });
   } catch (err) {
     next(err);
   }
@@ -73,4 +73,33 @@ router.post("/login", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+router.delete("/delete/:id", async (req, res, next) => {
+try {
+
+  const id = +req.params.id;
+
+  if (!id) {
+    throw new ServerError(400, "Id required.");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id },
+  });
+  if (!user) {
+    throw new ServerError(
+      400,
+      `Account with id ${id} does not exist.`
+    );
+  }
+
+  const deletedUser = await prisma.user.delete({
+    where: { id },
+  });
+  
+  res.json({ message: 'User deleted successfully', user: deletedUser });
+} catch (err) {
+  next(err);
+}
 });

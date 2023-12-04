@@ -34,7 +34,7 @@ function PoliticianDetails() {
             <p>Party: {politician.party}</p>
             <p>Role: {politician.role}</p>
             <p>District: {politician.district}</p>
-            <button onClick={handleSubmit}>Favorite</button>
+            <button className="favButton" onClick={handleSubmit}>Favorite</button>
           </section>
           <PoliticianRecentTrade />
         </>

@@ -2,7 +2,9 @@ nav.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     rgba(30, 87, 153, 0) 0%,
@@ -49,17 +51,5 @@ nav.top {
   }
 }
 
-@media (max-width: 620px) {
-  nav.top {
-    #searchInput {
-      height: 30px;
-      width: 150px;
-      padding-left: 2px;
-      font-size: 16px;
-      position: fixed;
-      top: 22.5px;
-      display: flex;
-      flex: 5 1 auto;
-    }
-  }
-}
+
+
