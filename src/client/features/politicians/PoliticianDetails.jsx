@@ -46,12 +46,10 @@ function PoliticianDetails() {
         <>
           <section>
             <h2>{politician?.first_name + " " + politician?.last_name}</h2>
-            <p>no token</p>
             <p>Party: {politician.party}</p>
             <p>Role: {politician.role}</p>
             <p>District: {politician.district}</p>
           </section>
-          <br />
           <PoliticianRecentTrade />
         </>
       )}

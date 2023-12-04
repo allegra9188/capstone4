@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PoliticianCard from "./PoliticianCard";
 import { useGetPoliticiansQuery } from "./politicianSlice";
 import PaginationLogic from "./PaginationLogic";
+import "./PoliticianDetails.less";
 
 export default function Politicians() {
   const { data: politicians, isLoading } = useGetPoliticiansQuery();

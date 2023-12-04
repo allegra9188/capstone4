@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useGetPoliticianQuery } from "./politicianSlice";
 import { useGetSenateDataQuery } from "./senateApiSlice";
 import { useGetHouseDataQuery } from "./houseApiSlice";
+import "./PoliticianDetails.less";
 import TradeActivityChecker from "./TradeActivityChecker";
 
 function PoliticianRecentTrade() {
@@ -48,33 +49,33 @@ function PoliticianRecentTrade() {
   }
 
   return (
-    <section>
+    <section className="recent-trades-container">
       {politician.role === "Rep" && (
         <div>
-          <h2>Recent Transactions</h2>
+          <h2>: Recent Transactions</h2>
           {firstFiveTransaction?.length > 0 ? (
-            <ul className="politician-transaction-list">
+            <ul className="rep-transaction-list">
               {firstFiveTransaction.map((transaction) => (
                 <Transaction key={transaction.id} transaction={transaction} />
               ))}
             </ul>
           ) : (
-            <p>No active trading.</p>
+            <p>No recent trades.</p>
           )}
         </div>
       )}
 
       {politician.role === "Sen" && (
         <div>
-          <h2>Recent Transactions</h2>
+          <h2>: Recent Transactions</h2>
           {firstFiveSenateTransactions?.length > 0 ? (
-            <ul className="politician-senate-transaction-list">
+            <ul className="senate-transaction-list">
               {firstFiveSenateTransactions.map((transaction) => (
                 <Transaction key={transaction.id} transaction={transaction} />
               ))}
             </ul>
           ) : (
-            <p>No active trading.</p>
+            <p>No recent trades.</p>
           )}
         </div>
       )}
