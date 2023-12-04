@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import ArticlesList from "./ArticlesList";
+import { useGetArticlesDataQuery } from "./articlesSlice";
 
 export default function Articles() {
+  // delete line below when ready to use useGetArticlesDataQuery();
   const [articles, setArticles] = useState([]);
+  // the query below works but I have not used it yet because I do not want to cause an
+  // issue with calling over the limit
+  const { data: articledata, isLoading, isError } = useGetArticlesDataQuery();
 
-  useEffect(() => {
-    // Commenting out the API call for testing purposes
-    // fetch(
-    //   "https://api.marketaux.com/v1/news/all?countries=us&filter_entities=true&limit=10&published_after=2023-11-27T17:04&api_token=lVsq6J81NrdSum7Ba0fdlihd1rxpFzA1lRk5YwLT",
-    //   { method: "GET" } // Correct usage of the fetch function with URL and options
-    // )
-    //   .then((response) => response.text())
-    //   .then((result) => setArticles(JSON.parse(result).data))
-    //   .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  if (isLoading) {
+    return <h1>Loading ...</h1>;
+  }
+
+  if (isError) {
+    return <h1>Error loading page</h1>;
+  }
+
+  // console.log(articledata);
 
   return (
     <div className="total-container">
