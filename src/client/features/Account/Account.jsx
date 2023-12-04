@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { logout } from "../auth/authSlice";
 import { useGetAccountQuery, useEditUserMutation } from "../auth/authSlice";
 import { useState, useEffect } from "react";
 import { useRemoveFavoriteCompanyMutation, useFetchFavoriteCompaniesQuery } from "./favorites/favSlice";
+import { useFetchFollowedPoliticiansQuery, useRemoveFollowedPoliticiansMutation } from "./followings/followSlice";
+
 
 export default function Account() {
   const { id } = useParams();
@@ -13,7 +15,10 @@ export default function Account() {
   const [editUser] = useEditUserMutation();
   const { data: favoriteCompanies, refetch } = useFetchFavoriteCompaniesQuery(id);
   const [removeFavoriteCompany] = useRemoveFavoriteCompanyMutation();
+  const { data: followedPoliticians, refetch: refetchFollowedPoliticians } = useFetchFollowedPoliticiansQuery(id); 
+  const [removeFollowedPolitician] = useRemoveFollowedPoliticiansMutation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFollowsDropdownOpen, setIsFollowsDropdownOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,6 +45,16 @@ export default function Account() {
     }
   };
 
+  const handleRemoveFollow = async (userId, politicianId) => {
+    try {
+      await removeFollowedPolitician({ userId, politicianId });
+      refetchFollowedPoliticians();
+    } catch (error) {
+      console.error("Failed to remove followed politician.", error);
+    }
+  };
+
+  
   useEffect(() => {
     refetch();
   }, []);
@@ -48,12 +63,41 @@ export default function Account() {
     return <div>Loading...</div>;
   }
 
-  //   if (isError) {return <div>Error loading account</div>}
+    if (isError) {return <div>Error loading account</div>}
 
     // console.log(favoriteCompanies)
 
   return (
     <div id="myaccount-html">
+      <section id="favCompanies-Section"> 
+  <h2 id="FavComp-headerText" onClick={() => setIsFollowsDropdownOpen(!isFollowsDropdownOpen)}>
+    Followed Politicians {isFollowsDropdownOpen ? "▼" : "▶"}
+  </h2>
+  <div className={`favCompany-dropdownDiv ${isFollowsDropdownOpen ? 'expanded' : ''}`}>
+  <h3 id="clickFav-text">{!isFollowsDropdownOpen ? "Click Followed Politicians!" : ""}</h3>
+  {isFollowsDropdownOpen && (
+    followedPoliticians && followedPoliticians.length > 0 ? (
+      followedPoliticians.map(({ politician: politicianData }) => (
+        <div className="favCompanies" key={politicianData.id}>
+          <h3><span className="label">Company Name:</span> <span className="value">{politicianData.first_name + " " + politicianData.last_name}</span></h3>
+          <p><span className="label">Ticker Symbol:</span> <span className="value">{politicianData.party}</span></p>
+          <p><span className="label">Sub_Industry:</span> <span className="value">{politicianData.role}</span></p>
+          <Link to={`/politicians/${politicianData.id}`}>More Info</Link>
+          <button className="favButton" onClick={() => handleRemoveFollow(id, politicianData.id)}>
+              Remove from Favorites
+          </button>
+
+        </div>
+        
+      ))
+    ) : (
+      <p>No followed politicians</p>
+    )
+  )}
+  </div>
+</section>
+
+
       <section id="myAccount-main">
       <h2><span className="username-text label">Hi, User:</span> <span className="value">{user.username}</span></h2>
         <h2 id="details-name">
@@ -142,6 +186,7 @@ export default function Account() {
           <p><span className="label">Sub_Industry:</span> <span className="value">{companyData.sub_industry}</span></p>
           <p><span className="label">Headquarted in:</span> <span className="value">{companyData.hq}</span></p>
           <p><span className="label">Founded in:</span> <span className="value">{companyData.founded}</span></p>
+          <Link className="companyCard-Link" to={`/companies/${companyData.id}`}>More Info</Link>
           <button className="favButton" onClick={() => handleRemoveFavorite(id, companyData.id)}>
               Remove from Favorites
           </button>
