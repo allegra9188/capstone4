@@ -16,10 +16,14 @@ import {
 export default function CompanyCard({ company }) {
   const { id } = useParams();
   const userId = useSelector(selectUserId);
+  const token = useSelector(selectToken); 
   const [addFavoriteCompany] = useAddFavoriteCompanyMutation();
   const [removeFavoriteCompany] = useRemoveFavoriteCompanyMutation();
-  const { data: user } = useGetAccountQuery(userId);
-  const { data: favoriteCompanies, refetch: refetchFavorites } = useFetchFavoriteCompaniesQuery(userId);
+
+  
+  const { data: user } = token ? useGetAccountQuery(userId) : { data: null };
+  const { data: favoriteCompanies, refetch: refetchFavorites } = token ? useFetchFavoriteCompaniesQuery(userId) : { data: null, refetch: null };
+
 
   const handleAddFavorite = async () => {
     try {
@@ -72,11 +76,13 @@ export default function CompanyCard({ company }) {
             <p>Sub_industry: {companyData.sub_industry}</p>
             <p>Headquarter: {companyData.hq}</p>
             <p>Founded at year: {companyData.founded}</p>
-            <button onClick={handleAddFavorite}>
-              {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
-                ? "Remove from Favorites"
-                : "Add to Favorites"}
-            </button>
+            {token && (
+          <button className="favButton" onClick={handleAddFavorite}>
+            {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
+          </button>
+          )}
           </div>
         )}
       </>
@@ -89,11 +95,13 @@ export default function CompanyCard({ company }) {
           <h2>{company.symbol}</h2>
           <p> {company.security}</p>
           <Link className="companyCard-Link" to={`/companies/${company.id}`}>More Info</Link>
+          {token && (
           <button className="favButton" onClick={handleAddFavorite}>
             {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
               ? "Remove from Favorites"
               : "Add to Favorites"}
           </button>
+          )}
         </div>
       </>
     );
