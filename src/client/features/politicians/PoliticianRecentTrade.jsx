@@ -5,13 +5,14 @@ import { useGetPoliticianQuery } from "./politicianSlice";
 import { useGetSenateDataQuery } from "./senateApiSlice";
 import { useGetHouseDataQuery } from "./houseApiSlice";
 import "./PoliticianDetails.less";
+import TradeActivityChecker from "./TradeActivityChecker";
 
 function PoliticianRecentTrade() {
   const { id } = useParams();
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { data: senateTrades } = useGetSenateDataQuery();
   const { data: houseTrades } = useGetHouseDataQuery();
-  console.log(houseTrades);
+  // console.log(houseTrades);
 
   const firstFiveTransaction = houseTrades
     ? houseTrades
@@ -46,18 +47,6 @@ function PoliticianRecentTrade() {
   if (isError) {
     return <h1>Error loading data</h1>;
   }
-  const checkActivity = () => {
-    if (Array.isArray(houseTrades) && Array.isArray(senateTrades)) {
-      return houseTrades.length === 0 && senateTrades.length === 0
-        ? "Inactive"
-        : "Active";
-    } else {
-      return console.log("waiting for response");
-    }
-  };
-
-  const activityStatus = checkActivity(id);
-  console.log(`Account is ${activityStatus}`);
 
   return (
     <section className="recent-trades-container">
@@ -89,6 +78,13 @@ function PoliticianRecentTrade() {
             <p>No recent trades.</p>
           )}
         </div>
+      )}
+      {politician.role && (
+        <TradeActivityChecker
+          politician={politician}
+          houseTrades={houseTrades}
+          senateTrades={senateTrades}
+        />
       )}
     </section>
   );
