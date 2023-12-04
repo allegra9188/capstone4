@@ -65,7 +65,7 @@ export default function CompanyCard({ company }) {
         </>
       );
     }
-    // this return is called by a single student to list the details
+    // this return is called by a single company to list the details
     return (
       <>
         {companyData && (
@@ -88,10 +88,10 @@ export default function CompanyCard({ company }) {
             {
               transactionForThisCompany?.map((element, index) => {
                 return (<div key={index}>
-                              <p>{element.Representative}</p>
+                              <p>Name: {element.Representative}</p>
                               <p>Report Date:{element.ReportDate}</p>
                               <p>Transaction Date:{element.TransactionDate}</p>
-                              <p>{element.Transaction}</p>
+                              <p>Transaction: {element.Transaction}</p>
                               <p>{element.House}</p>
                               <p>Amount: {element.Amount}</p>
                               <p>Party: {element.Party}</p>
