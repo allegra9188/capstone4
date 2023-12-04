@@ -50,8 +50,7 @@ function PoliticianCard({ politician }) {
   };
 
   return (
-    <>
-    <div id="cards-container">
+    <div className="cards-container">
       {token ? (
         <section className="politicianDetails-Card">
           <h2>{politician.first_name + " " + politician.last_name}</h2>
@@ -73,7 +72,6 @@ function PoliticianCard({ politician }) {
         </section>
       )}
     </div>
-    </>
   );
 }
 
