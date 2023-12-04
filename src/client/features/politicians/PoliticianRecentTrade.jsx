@@ -1,35 +1,19 @@
 import React from "react";
-import fetchHouseData from "../../../server/api/house";
-// import fetchSenateData from "../../../server/api/senate";
-import { useState, useEffect } from "react";
 import Transaction from "./Transaction";
 import { useParams } from "react-router-dom";
 import { useGetPoliticianQuery } from "./politicianSlice";
 import { useGetSenateDataQuery } from "./senateApiSlice";
+import { useGetHouseDataQuery } from "./houseApiSlice";
 
 function PoliticianRecentTrade() {
-  const [houseData, setHouseData] = useState(null); // Initialize useState
-  const [senateData, setSenateData] = useState(null);
   const { id } = useParams();
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { data: senateTrades } = useGetSenateDataQuery();
-  console.log(senateTrades);
+  const { data: houseTrades } = useGetHouseDataQuery();
+  console.log(houseTrades);
 
-  // useEffect(() => {
-  //   // Fetch house data
-  //   fetchHouseData()
-  //     .then((houseData) => {
-  //       //console.log('Fetched House Data', houseData);
-
-  //       setHouseData(houseData);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [id]); // Add dependencies to re-run effect when the ID changes
-
-  const firstFiveTransaction = houseData
-    ? houseData
+  const firstFiveTransaction = houseTrades
+    ? houseTrades
         .filter((transaction) => {
           return (
             // so since house data do not separate first name and last name, we will do fullname.includes to filter the politician
@@ -62,8 +46,8 @@ function PoliticianRecentTrade() {
     return <h1>Error loading data</h1>;
   }
   const checkActivity = () => {
-    if (Array.isArray(houseData) && Array.isArray(senateData)) {
-      return houseData.length === 0 && senateData.length === 0
+    if (Array.isArray(houseTrades) && Array.isArray(senateTrades)) {
+      return houseTrades.length === 0 && senateTrades.length === 0
         ? "Inactive"
         : "Active";
     } else {
