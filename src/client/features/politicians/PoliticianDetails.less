@@ -22,25 +22,36 @@
 
 .cards-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-
 
 .politicianDetails-Card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  row-gap: 5px;
-  margin-bottom: 40px;
+  box-sizing: border-box;
+  flex-basis: calc(33.33% - 20px);
+  flex-grow: 1; /* Ensure equal width for each card */
+  margin: 10px;
   text-align: center;
-  align-items: center;
   border: 2px solid black;
-  width: 30em;
-  height: 10em;
   padding: 10px;
- 
+
+  /* Other styling properties */
+
+  /* Optional: Adjust for smaller screens */
+  @media (max-width: 768px) {
+    flex-basis: calc(50% - 20px);
+  }
+
+  @media (max-width: 480px) {
+    flex-basis: calc(100% - 20px);
+  }
 }
+
+.more-info{
+  color: black;
+  text-decoration: underline;
+}
+
+
+
+
