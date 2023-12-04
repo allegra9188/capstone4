@@ -10,7 +10,7 @@ function PoliticianRecentTrade() {
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { data: senateTrades } = useGetSenateDataQuery();
   const { data: houseTrades } = useGetHouseDataQuery();
-  console.log(houseTrades);
+  // console.log(houseTrades);
 
   const firstFiveTransaction = houseTrades
     ? houseTrades
@@ -45,18 +45,38 @@ function PoliticianRecentTrade() {
   if (isError) {
     return <h1>Error loading data</h1>;
   }
-  const checkActivity = () => {
-    if (Array.isArray(houseTrades) && Array.isArray(senateTrades)) {
-      return houseTrades.length === 0 && senateTrades.length === 0
-        ? "Inactive"
-        : "Active";
-    } else {
-      return console.log("waiting for response");
+  const checkActivity = (politician, houseTrades, senateTrades) => {
+    const fullName = `${politician.first_name} ${politician.last_name}`;
+
+    if (politician.role === "Rep" && Array.isArray(houseTrades)) {
+      // Check if there are any transactions for the representative
+      const representativeTrades = houseTrades.filter((transaction) => {
+        return (
+          transaction.representative &&
+          transaction.representative
+            .toLowerCase()
+            .includes(fullName.toLowerCase())
+        );
+      });
+
+      return representativeTrades.length > 0;
+    } else if (politician.role === "Sen" && Array.isArray(senateTrades)) {
+      // Check if there are any transactions for the senator
+      const senatorTrades = senateTrades.filter((transaction) => {
+        return (
+          transaction.senator &&
+          transaction.senator.toLowerCase().includes(fullName.toLowerCase())
+        );
+      });
+
+      return senatorTrades.length > 0;
     }
+
+    return false; // Default to false if role is not recognized
   };
 
-  const activityStatus = checkActivity(id);
-  console.log(`Account is ${activityStatus}`);
+  const activityStatus = checkActivity(politician, houseTrades, senateTrades);
+  console.log(`Account is ${activityStatus ? "active" : "inactive"}`);
 
   return (
     <section>
