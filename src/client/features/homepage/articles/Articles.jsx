@@ -4,7 +4,7 @@ import { useGetArticlesDataQuery } from "./articlesSlice";
 
 export default function Articles() {
   // delete line below when ready to use useGetArticlesDataQuery();
-  const [articles, setArticles] = useState([]);
+  // const [articles, setArticles] = useState([]);
   // the query below works but I have not used it yet because I do not want to cause an
   // issue with calling over the limit
   const { data: articledata, isLoading, isError } = useGetArticlesDataQuery();
@@ -21,7 +21,7 @@ export default function Articles() {
 
   return (
     <div className="total-container">
-      <ArticlesList articles={articles} />
+      <ArticlesList articledata={articledata} />
     </div>
   );
 }
