@@ -100,7 +100,7 @@ export default function Account() {
           ) : (
             <p className="myAcct-info-text">{user.email}</p>
           )}
-
+        <div>
         <button
           className="myAccount-btns"
           id="update-btn"
@@ -125,6 +125,7 @@ export default function Account() {
         >
           Logout
         </button>
+        </div>
       </section>
       <section id="favCompanies-Section"> 
   <h2 id="FavComp-headerText" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>

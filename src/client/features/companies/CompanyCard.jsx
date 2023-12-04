@@ -78,7 +78,7 @@ export default function CompanyCard({ company }) {
             <p>Founded at year: {companyData.founded}</p>
             {token && (
           <button className="favButton" onClick={handleAddFavorite}>
-            {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
+            {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === companyData.id)
               ? "Remove from Favorites"
               : "Add to Favorites"}
           </button>

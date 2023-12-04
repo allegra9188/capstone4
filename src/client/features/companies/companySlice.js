@@ -7,7 +7,7 @@ const companyApi = api.injectEndpoints({
       //
     }),
     getCompanyById: builder.query({
-      query: (id) => `/${id}`,
+      query: (id) => `/companies/${id}`,
     }),
   }),
 });
