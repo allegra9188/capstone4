@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import PoliticianRecentTrade from "./politicianRecentTrade";
 import "./PoliticianDetails.less";
+import TradeActivityChecker from "./TradeActivityChecker";
 
 function PoliticianDetails() {
   const { id } = useParams();
@@ -34,7 +35,9 @@ function PoliticianDetails() {
             <p>Party: {politician.party}</p>
             <p>Role: {politician.role}</p>
             <p>District: {politician.district}</p>
-            <button className="favButton" onClick={handleSubmit}>Favorite</button>
+            <button className="favButton" onClick={handleSubmit}>
+              Favorite
+            </button>
           </section>
           <PoliticianRecentTrade />
         </>
