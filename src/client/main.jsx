@@ -16,7 +16,7 @@ import store from "./store";
 
 import AuthForm from "./features/auth/AuthForm";
 import Politicians from "./features/politicians/Politicians.jsx";
-import PoliticianDetails from "./features/politicians/PoliticanDetails.jsx";
+import PoliticianDetails from "./features/politicians/PoliticianDetails.jsx";
 import Companies from "./features/companies/Companies.jsx";
 import CompanyCard from "./features/companies/CompanyCard.jsx";
 import Root from "./layout/Root.jsx";

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { Link } from "react-router-dom";
 
-function PolitcianCard({ politician }) {
+function PoliticianCard({ politician }) {
   const token = useSelector(selectToken);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,4 +32,4 @@ function PolitcianCard({ politician }) {
   );
 }
 
-export default PolitcianCard;
+export default PoliticianCard;

@@ -21,19 +21,11 @@ export default function Navbar() {
   };
 
   const [filter, setFilter] = useState("");
-  const searchRegex = new RegExp(filter, "i");
+  
 
   return (
     <nav className="top">
       <menu>
-        <form id="searchForm">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search..."
-            onChange={(e) => setFilter(e.target.value)}
-          />
-        </form>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
