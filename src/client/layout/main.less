@@ -25,6 +25,7 @@
   left: 50%;
 }
 
+
 @media (max-width: 620px) {
   nav.top {
     #searchInput {
@@ -43,7 +44,7 @@
     display: flex;
     flex-direction:column;
     height: auto;
-    width: 100%;
+    width: fit-content;
     // flex-wrap: wrap;
   }
   .username-label,
@@ -177,7 +178,6 @@ right: 5px;
 
   #FavComp-headerText {
     font-size: percentage(1.5ch);
-
   }
 
 }
@@ -190,4 +190,22 @@ right: 5px;
   }
 
 
+}
+
+@media(max-width: 300px) {
+
+  #login-div {
+    display: flex;
+    flex-direction:column;
+    height: auto;
+    width: fit-content;
+    // flex-wrap: wrap;
+  }
+  .loginInput {
+    width: auto;
+  }
+
+  #emailInput {
+    margin-left: 45px;
+  }
 }
