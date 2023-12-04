@@ -14,14 +14,14 @@ function PoliticianCard({ politician }) {
     <div className="cards-container">
       {token ? (
         <section className="politicianDetails-Card">
-          <h2>{politician.first_name + politician.last_name}</h2>
+          <h2>{politician.first_name + " " + politician.last_name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
-          <Link to={`/politicians/${politician.id}`}>More Info</Link>
+          <Link className="more-info" to={`/politicians/${politician.id}`}>More Info</Link>
           <button className="favButton" onClick={handleSubmit}>Favorite</button>
         </section>
       ) : (
-        <section>
+        <section className="politicianDetails-Card">
           <h2>{politician.first_name + " " + politician.last_name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
