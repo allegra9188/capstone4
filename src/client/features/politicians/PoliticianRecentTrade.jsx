@@ -1,41 +1,32 @@
 import React from "react";
 import fetchHouseData from "../../../server/api/house";
-import fetchSenateData from "../../../server/api/senate";
+// import fetchSenateData from "../../../server/api/senate";
 import { useState, useEffect } from "react";
 import Transaction from "./Transaction";
 import { useParams } from "react-router-dom";
 import { useGetPoliticianQuery } from "./politicianSlice";
+import { useGetSenateDataQuery } from "./senateApiSlice";
 
 function PoliticianRecentTrade() {
   const [houseData, setHouseData] = useState(null); // Initialize useState
   const [senateData, setSenateData] = useState(null);
   const { id } = useParams();
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
+  const { data: senateTrades } = useGetSenateDataQuery();
+  console.log(senateTrades);
 
-  useEffect(() => {
-    // Fetch house data
-    fetchHouseData()
-      .then((houseData) => {
-        //console.log('Fetched House Data', houseData);
+  // useEffect(() => {
+  //   // Fetch house data
+  //   fetchHouseData()
+  //     .then((houseData) => {
+  //       //console.log('Fetched House Data', houseData);
 
-        setHouseData(houseData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [id]); // Add dependencies to re-run effect when the ID changes
-
-  useEffect(() => {
-    // Fetch senate data
-    fetchSenateData()
-      .then((senateData) => {
-        setSenateData(senateData);
-        console.log(senateData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [id]); // Add dependencies to re-run effect when the ID changes
+  //       setHouseData(houseData);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [id]); // Add dependencies to re-run effect when the ID changes
 
   const firstFiveTransaction = houseData
     ? houseData
@@ -52,8 +43,8 @@ function PoliticianRecentTrade() {
         .slice(0, 5) // slice to first 5 transactions
     : [];
 
-  const firstFiveSenateTransactions = senateData
-    ? senateData
+  const firstFiveSenateTransactions = senateTrades
+    ? senateTrades
         .filter((transaction) => {
           return (
             transaction.senator.includes(politician?.first_name) &&
