@@ -1,6 +1,6 @@
 import React from "react";
-import ArticlesCard from "./articlesCard";
-import QuiverData from "./QuiverData";
+import ArticlesCard from "./ArticlesCard";
+import QuiverData from "../QuiverData";
 
 export default function ArticlesList({ articles }) {
   // Check if articles is undefined or empty

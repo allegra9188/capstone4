@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ArticlesList from "./articlesList";
+import ArticlesList from "./ArticlesList";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
