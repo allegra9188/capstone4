@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { Link } from "react-router-dom";
+import "./PoliticianDetails.less";
 
 function PoliticianCard({ politician }) {
   const token = useSelector(selectToken);
