@@ -18,7 +18,7 @@ import Companies from "./features/companies/Companies.jsx";
 import CompanyCard from "./features/companies/CompanyCard.jsx";
 import Root from "./layout/Root.jsx";
 import ErrorPage from "./features/ErrorPage.jsx";
-import Articles from "./features/homepage/Articles.jsx";
+import Articles from "./features/homepage/articles/Articles.jsx";
 import Account from "./features/Account/Account.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
