@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
       throw new Error(`HTTPS error! Status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("Senate trading data", data);
     res.json(data);
   } catch (error) {
     next(error);
