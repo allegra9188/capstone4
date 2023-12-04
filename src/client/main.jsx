@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import "./index.less";
 import "./layout/Root.less";
 import "./layout/Navbar.less";
+import "./features/auth/authForm.css"; 
 import "./features/Account/Account.less";
 import "./features/politicians/PoliticianDetails.less";
 import "./features/homepage/Homepage.less";

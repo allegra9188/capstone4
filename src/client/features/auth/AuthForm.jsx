@@ -53,7 +53,7 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="login-Main">
+    <div id="login-div">
       <h1>{authAction}</h1>
       <form onSubmit={attemptAuth} id="loginForm">
         <label className="username-label">
@@ -86,6 +86,7 @@ export default function AuthForm() {
               First Name
               <input
                 className="loginInput"
+                id="firstnameInput"
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -95,6 +96,7 @@ export default function AuthForm() {
               Last Name
               <input
                 className="loginInput"
+                id="lastnameInput"
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}

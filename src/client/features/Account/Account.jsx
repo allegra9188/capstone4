@@ -55,12 +55,11 @@ export default function Account() {
   return (
     <div id="myaccount-html">
       <section id="myAccount-main">
-      <h2 className="username-text">Hi, User: {user.username}</h2>
-        <h2 className="details-name">
+      <h2><span className="username-text label">Hi, User:</span> <span className="value">{user.username}</span></h2>
+        <h2 id="details-name">
           <b>Name: </b>
           {showInputs ? (
             <>
-              <br />
               <input
                 className="myAccount-inputs"
                 id="firstName-Update"
@@ -86,9 +85,7 @@ export default function Account() {
             </p>
           )}
         </h2>
-        <br />
-        <div>
-          {/* <h2>Email: <a href={`mailto:${user.email}`}>{user.email}</a></h2> */}
+        
           <h2>Email: </h2>
           {showInputs ? (
             <input
@@ -103,9 +100,7 @@ export default function Account() {
           ) : (
             <p className="myAcct-info-text">{user.email}</p>
           )}
-        </div>
-        {/* <br /> */}
-        <br />
+
         <button
           className="myAccount-btns"
           id="update-btn"
@@ -133,10 +128,10 @@ export default function Account() {
       </section>
       <section id="favCompanies-Section"> 
   <h2 id="FavComp-headerText" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-    Favorited Companies {isDropdownOpen ? "▼" : "▶"}
+    Favorite Companies {isDropdownOpen ? "▼" : "▶"}
   </h2>
   <div className={`favCompany-dropdownDiv ${isDropdownOpen ? 'expanded' : ''}`}>
-  <h3>{!isDropdownOpen ? "Click Favorite Companies!" : ""}</h3>
+  <h3 id="clickFav-text">{!isDropdownOpen ? "Click Favorite Companies!" : ""}</h3>
   {isDropdownOpen && (
     favoriteCompanies && favoriteCompanies.length > 0 ? (
       favoriteCompanies.map(({ company: companyData }) => (
@@ -149,7 +144,7 @@ export default function Account() {
           <button className="favButton" onClick={() => handleRemoveFavorite(id, companyData.id)}>
               Remove from Favorites
           </button>
-          
+
         </div>
         
       ))

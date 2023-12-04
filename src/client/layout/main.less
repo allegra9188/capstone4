@@ -24,3 +24,170 @@
   top: 50%;
   left: 50%;
 }
+
+@media (max-width: 620px) {
+  nav.top {
+    #searchInput {
+      height: 30px;
+      width: 150px;
+      padding-left: 2px;
+      font-size: 16px;
+      position: fixed;
+      top: 22.5px;
+      display: flex;
+      flex: 5 1 auto;
+    }
+  }
+
+  #login-div {
+    display: flex;
+    flex-direction:column;
+    height: auto;
+    width: 100%;
+    // flex-wrap: wrap;
+  }
+  .username-label,
+  .password-label {
+    display: flex;
+    margin-right: 0;
+    // flex-wrap: wrap;
+    // align-self: center;
+    // justify-self: center;
+  }
+  .loginInput{
+    margin: 2px;
+    padding: 0;
+  }
+
+  #lastname {
+    position: relative;
+    left: 0;
+  }
+
+  #usernameInput{
+    position: relative;
+    right: 3px;
+  }
+
+ #emailInput{
+position: relative;
+right: 5px;
+ }
+
+  .otherFields {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    row-gap: 5px;
+    
+  }
+
+
+  #myAccount-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    align-items: center;
+    align-content: center;
+    text-align: center; 
+    // background-color: white;
+  }
+
+  #lastName-Update {
+    margin-bottom: 10px;
+  }
+
+  .myAccount-btns {
+    margin-top: 2px;
+  }
+
+  #acct-logout {
+    position: relative;
+    right: 5px;
+  }
+  .favCompany-dropdownDiv{
+   padding-top: 5px;
+   padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    font-size: percentage(.85%);
+    
+  
+  }
+  .favButton {
+    min-width: percentage(.7%);
+  }
+}
+
+
+
+@media (max-width: 860px) {
+  
+  .favCompanies {
+    display: grid;
+    gap: 5px;
+    p {
+      color: white;
+    }
+    .label {
+      color: black;
+      font-weight: 700;
+    }
+    
+    .value {
+      color: white;
+    }
+    .favButton {
+      margin-bottom: 30px;
+    }
+  }
+  .details-name {
+    margin-top: 10px;
+  }
+
+  #myaccount-html {
+    font-size: percentage(.8%);
+
+    button {
+      width: percentage(.5%);
+      // height: percentage(.1%);
+      font-size: percentage(.9%);
+    }
+  }
+
+  #favCompanies-Section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    // margin-top: -60px;
+  }
+
+  .favCompany-dropdownDiv{
+   padding-top: 5px;
+   padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    width: 70vw;
+
+    #clickFav-text{
+      text-align: center;
+    }
+  }
+
+  #FavComp-headerText {
+    font-size: percentage(1.5ch);
+
+  }
+
+}
+
+@media (max-width: 970px) {
+  #myaccount-html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+}

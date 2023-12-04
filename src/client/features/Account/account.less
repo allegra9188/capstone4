@@ -14,13 +14,14 @@
   #favCompanies-Section {
     display: inline-flex;
     flex-direction: column;
+    // align-items: center;
     margin-left: 5px;
     padding: 5px;
     gap: 15px;
     // background-color: white;
     height: 700px;
     // overflow:auto;
-    position: sticky;
+    width: 20%;
   
   }
   .favCompany-dropdownDiv{
@@ -29,12 +30,24 @@
    padding-top: 5px;
    padding-left: 10px;
     padding-bottom: 5px;
+    padding-right: 5px;
   }
 
   .favCompany-dropdownDiv.expanded {
     border: 1px solid white;
     
   }
+
+}
+
+#myAccount-main {
+  display: inline-flex;
+  flex-direction: column;
+  // min-width: 100%;
+  // align-items: center;
+  // align-content: center;
+  // text-align: center;
+  // background-color: white;
 
 }
 
@@ -71,7 +84,9 @@
 }
 
 #firstName-Update {
-  margin-right: 10px;
+  display: flex;
+  // margin-left: 10px;
+  align-self: center;
 }
 
 .favCompanies {
@@ -114,4 +129,18 @@
   top: 0px;
   z-index: 1;
 
+}
+
+#details-name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: black;
+  font-weight: 700;
+}
+
+.value {
+  color: white;
 }
