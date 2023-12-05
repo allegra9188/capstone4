@@ -36,7 +36,7 @@ const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
     return false; // Default to false if role is not recognized or trades are not arrays
   };
 
-  const activityStatus = checkActivity();
+  const activityStatus = checkActivity(politician);
   console.log(checkActivity(politician));
 
   return (
