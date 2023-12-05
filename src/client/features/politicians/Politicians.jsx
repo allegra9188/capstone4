@@ -48,7 +48,7 @@ export default function Politicians() {
           </select>
         </div>
       </div>
-      <h1>Politicians</h1>
+      <h1>Congress Politicians</h1>
       <PaginationLogic
         data={sortPoliticians(politicians, sortBy).filter((politician) =>
           (politician.first_name + politician.last_name).match(searchRegex)

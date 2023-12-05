@@ -29,6 +29,7 @@ export default function Companies() {
         <input
           type="text"
           id="search"
+          placeholder="Search..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />

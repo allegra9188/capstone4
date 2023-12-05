@@ -24,19 +24,7 @@ nav.top {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 10px;
-  #searchInput {
-    height: 3.5vh;
-    width: 200px;
-    padding-left: 2px;
-    font-size: 16px;
-    position: fixed;
-    top: 20px;
-    left: 10px;
-    // left: -110vh;
-    display: flex;
-    // flex: 5 1 auto;
-    position: sticky;
-  }
+
   menu {
     display: flex;
     gap: 1.5ch;
@@ -51,5 +39,20 @@ nav.top {
   }
 }
 
+@media screen and (max-width: 768px) {
+  nav.top {
+    height: auto;
+    padding: 10px;
+    justify-content: center;
+  }
 
+  menu {
+    
+    flex-direction: column;
+    flex-wrap: wrap; 
 
+    a {
+      margin-bottom: 10px;
+    }
+  }
+}
