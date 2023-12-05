@@ -62,6 +62,7 @@ export default function CompanyCard({ company }) {
                   </p>
                   <p>Range: {element.Range}</p>
                   <p>{element.Party}</p>
+                  <Link className="politician-detail" to={`/politicians/name/${element.Representative}`}>More Trading of {element.Representative} </Link>
                 </div>
               );
             })}

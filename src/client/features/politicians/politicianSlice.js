@@ -8,7 +8,11 @@ const politiciansApi = api.injectEndpoints({
     getPolitician: builder.query({
       query: (id) => `/politicians/${id}`,
     }),
+    // added Dec 5th
+    getPoliticianIdByName: builder.query({
+      query: (name) => `/politicians/name/${name}`
+    })
   }),
 });
 
-export const { useGetPoliticiansQuery, useGetPoliticianQuery } = politiciansApi;
+export const { useGetPoliticiansQuery, useGetPoliticianQuery, useGetPoliticianIdByNameQuery } = politiciansApi;
