@@ -26,6 +26,7 @@ export default function CompanyCard({ company }) {
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
   const {data:quiverData } = useGetQuiverDataQuery();
   const transactionForThisCompany = quiverData?.filter(transaction => transaction.Ticker===companyData?.symbol)
+  
   const handleAddFavorite = async () => {
     try {
       if (company && user && favoriteCompanies) {
@@ -95,7 +96,7 @@ export default function CompanyCard({ company }) {
                               <p>{element.House}</p>
                               <p>Amount: {element.Amount}</p>
                               <p>Party: {element.Party}</p>
-                              
+                              <Link className="politician-detail" to={`/politicians/name/${element.Representative}`}>More Trading of {element.Representative} </Link>
                         </div>)
               })
             }

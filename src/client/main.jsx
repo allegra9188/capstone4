@@ -23,8 +23,8 @@ import Root from "./layout/Root.jsx";
 import ErrorPage from "./features/ErrorPage.jsx";
 import Articles from "./features/homepage/articles/Articles.jsx";
 import Account from "./features/Account/Account.jsx";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import PoliticianRedirect from "./features/politicians/PoliticianRedirect.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +32,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Articles /> },
       { path: "/politicians", element: <Politicians /> },
+      { path: "/politicians/name/:name", element: <PoliticianRedirect /> },
       { path: "/politicians/:id", element: <PoliticianDetails /> },
       { path: "/companies", element: <Companies /> },
       { path: "/companies/:id", element: <CompanyCard /> },
