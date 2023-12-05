@@ -1,59 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-  selectToken,
-  selectUserId,
-  useGetAccountQuery,
-} from "../auth/authSlice";
+import { selectToken } from "../auth/authSlice";
 import { useParams, Link } from "react-router-dom";
 import { useGetCompanyByIdQuery } from "./companySlice";
-import {
-  useAddFavoriteCompanyMutation,
-  useFetchFavoriteCompaniesQuery,
-  useRemoveFavoriteCompanyMutation,
-} from "../Account/favorites/favSlice";
+import { useFavorites } from "../Account/favorites/favUtility";
 import { useGetQuiverDataQuery } from "../quiver/quiverSlice";
 export default function CompanyCard({ company }) {
   const { id } = useParams();
-  const userId = useSelector(selectUserId);
-  const token = useSelector(selectToken);
-  const [addFavoriteCompany] = useAddFavoriteCompanyMutation();
-  const [removeFavoriteCompany] = useRemoveFavoriteCompanyMutation();
-
-  const { data: user } = token ? useGetAccountQuery(userId) : { data: null };
-  const { data: favoriteCompanies, refetch: refetchFavorites } = token
-    ? useFetchFavoriteCompaniesQuery(userId)
-    : { data: null, refetch: null };
+  const token = useSelector(selectToken); 
+  const { handleAddFavorite, favoriteCompanies } = useFavorites();
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
   const { data: quiverData } = useGetQuiverDataQuery();
   const transactionForThisCompany = quiverData?.filter(
     (transaction) => transaction.Ticker === companyData?.symbol
   );
-  const handleAddFavorite = async () => {
-    try {
-      if (company && user && favoriteCompanies) {
-        const userId = user.id;
-        const companyId = company.id;
-
-        const isCompanyFavorite = favoriteCompanies.some(
-          (favorite) => favorite.companyId === company.id
-        );
-
-        if (isCompanyFavorite) {
-          // If the company is already a favorite, remove it
-          await removeFavoriteCompany({ userId, companyId });
-        } else {
-          // If the company is not a favorite, add it
-          await addFavoriteCompany({ userId, companyId });
-        }
-
-        // Refetch favorite companies to update the data
-        refetchFavorites();
-      }
-    } catch (error) {
-      console.error("Error updating favorite status:", error);
-    }
-  };
 
   if (id !== undefined) {
     if (isLoading) {
@@ -81,17 +41,13 @@ export default function CompanyCard({ company }) {
               <p>Founding Year: {companyData.founded}</p>
             </div>
             {token && (
-              <button className="favButton" onClick={handleAddFavorite}>
-                {favoriteCompanies &&
-                favoriteCompanies.some(
-                  (favorite) => favorite.companyId === companyData.id
-                )
-                  ? "Remove from Favorites"
-                  : "Add to Favorites"}
-              </button>
-            )}
-
-            <h2>Politician Trading Activity</h2>
+          <button className="favButton" onClick={() => handleAddFavorite(companyData)}>
+          {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === companyData.id)
+            ? "Remove from Favorites"
+            : "Add to Favorites"}
+        </button>
+          )}
+          <h2>Politician Trading Activity</h2>
             {transactionForThisCompany?.map((element, index) => {
               return (
                 <div className="trade-card" key={index}>
@@ -124,14 +80,11 @@ export default function CompanyCard({ company }) {
             More Info
           </Link>
           {token && (
-            <button className="favButton" onClick={handleAddFavorite}>
-              {favoriteCompanies &&
-              favoriteCompanies.some(
-                (favorite) => favorite.companyId === company.id
-              )
-                ? "Remove from Favorites"
-                : "Add to Favorites"}
-            </button>
+          <button className="favButton" onClick={() => handleAddFavorite(company)}>
+          {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
+            ? "Remove from Favorites"
+            : "Add to Favorites"}
+        </button>
           )}
         </div>
       </>
