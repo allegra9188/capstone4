@@ -14,10 +14,10 @@ export default function QuiverData() {
       <ul className="trading-full-list">
         {quiverData?.map((entry) => (
           <li className="trading-item" key={entry.ReportDate}>
-            <p>{entry.Representative}</p>
+            <p><span id="trade-rep">{entry.Representative}</span></p>
             <p>{entry.House}</p>
             <p>Transaction Date: {entry.TransactionDate}</p>
-            <p>Ticker: {entry.Ticker}</p>
+            <p>Ticker: <span id="trade-ticker">{entry.Ticker}</span></p>
             <p>{entry.Transaction}</p>
             <p>{entry.Range}</p>
             <p>{entry.District}</p>

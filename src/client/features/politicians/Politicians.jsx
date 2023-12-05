@@ -43,7 +43,8 @@ export default function Politicians() {
   ) : (
     <section>
       <div className="search-and-sort-container">
-        <form>
+        <form className="search-bar">
+          <label htmlFor="search">Search: </label>
           <input
             type="text"
             placeholder="Search Name..."

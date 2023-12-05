@@ -18,6 +18,7 @@ model User {
   lastName  String
   email     String
   favorites Favorite[]
+  following Following[]
 }
 
 model Politician {
@@ -28,6 +29,7 @@ model Politician {
   party       String
   district    String
   role        String
+  following Following[]
 }
 
 model Company {
@@ -47,4 +49,12 @@ model Favorite {
   companyId Int
   user  User @relation(fields: [userId], references: [id])
   company Company @relation(fields: [companyId], references: [id])
+}
+
+model Following {
+  id  Int @id @default(autoincrement())
+  userId  Int
+  politicianId Int
+  user  User @relation(fields: [userId], references: [id])
+  politician Politician @relation(fields: [politicianId], references: [id])
 }
