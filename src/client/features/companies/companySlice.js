@@ -9,7 +9,10 @@ const companyApi = api.injectEndpoints({
     getCompanyById: builder.query({
       query: (id) => `/companies/${id}`,
     }),
+    getCompanyIdByTicker: builder.query({
+      query: (ticker)=> `/companies/name/${ticker}`
+    })
   }),
 });
 
-export const { useGetCompaniesQuery, useGetCompanyByIdQuery } = companyApi;
+export const { useGetCompaniesQuery, useGetCompanyByIdQuery, useGetCompanyIdByTickerQuery } = companyApi;
