@@ -3,11 +3,13 @@ import PoliticianCard from "./PoliticianCard";
 import { useGetPoliticiansQuery } from "./politicianSlice";
 import PaginationLogic from "./PaginationLogic";
 import "./PoliticianDetails.less";
+import checkActivity from "./TradeActivityChecker";
 
 export default function Politicians() {
   const { data: politicians, isLoading } = useGetPoliticiansQuery();
   const [filter, setFilter] = useState("");
   const [sortBy, setSortBy] = useState("first-name"); // Set default sorting by first_name
+  const [showActiveOnly, setShowActiveOnly] = useState(false);
 
   const searchRegex = new RegExp(filter, "i");
 
@@ -20,13 +22,21 @@ export default function Politicians() {
     const sortedPoliticians = [...politicians];
 
     if (sortBy === "first-name") {
-      return sortedPoliticians.sort((a, b) => a.first_name.localeCompare(b.first_name));
+      return sortedPoliticians.sort((a, b) =>
+        a.first_name.localeCompare(b.first_name)
+      );
     } else if (sortBy === "last-name") {
-      return sortedPoliticians.sort((a, b) => a.last_name.localeCompare(b.last_name));
+      return sortedPoliticians.sort((a, b) =>
+        a.last_name.localeCompare(b.last_name)
+      );
     } else {
       return sortedPoliticians; // No sorting
     }
   };
+
+  const filteredPoliticians = showActiveOnly
+    ? politicians.filter((politician) => checkActivity(politician))
+    : politicians;
 
   return isLoading ? (
     <h2>Loading...</h2>
@@ -47,6 +57,16 @@ export default function Politicians() {
             <option value="last-name">Last Name</option>
           </select>
         </div>
+        <section>
+          <input
+            type="checkbox"
+            id="Active"
+            name="Active"
+            checked={showActiveOnly}
+            onChange={() => setShowActiveOnly(!showActiveOnly)}
+          />
+          <label htmlFor="Active">Show Active Only</label>
+        </section>
       </div>
       <h1>Congress Politicians</h1>
       <PaginationLogic

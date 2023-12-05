@@ -1,7 +1,10 @@
 import React from "react";
 
 const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
-  const checkActivity = () => {
+  const checkActivity = (politician) => {
+    if (!politician) {
+      return false;
+    }
     const fullName = `${politician.first_name} ${politician.last_name}`;
 
     if (politician.role === "Rep" && Array.isArray(houseTrades)) {
@@ -32,6 +35,7 @@ const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
   };
 
   const activityStatus = checkActivity();
+  console.log(checkActivity(politician));
 
   return (
     <div>
