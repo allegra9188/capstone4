@@ -24,7 +24,7 @@ export default function Companies() {
 
   return (
     <div>
-      <div>
+      <div className="search-bar">
         <label htmlFor="search">Search: </label>
         <input
           type="text"

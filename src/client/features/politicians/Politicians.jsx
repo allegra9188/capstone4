@@ -20,9 +20,13 @@ export default function Politicians() {
     const sortedPoliticians = [...politicians];
 
     if (sortBy === "first-name") {
-      return sortedPoliticians.sort((a, b) => a.first_name.localeCompare(b.first_name));
+      return sortedPoliticians.sort((a, b) =>
+        a.first_name.localeCompare(b.first_name)
+      );
     } else if (sortBy === "last-name") {
-      return sortedPoliticians.sort((a, b) => a.last_name.localeCompare(b.last_name));
+      return sortedPoliticians.sort((a, b) =>
+        a.last_name.localeCompare(b.last_name)
+      );
     } else {
       return sortedPoliticians; // No sorting
     }
@@ -33,7 +37,8 @@ export default function Politicians() {
   ) : (
     <section>
       <div className="search-and-sort-container">
-        <form>
+        <form className="search-bar">
+          <label htmlFor="search">Search: </label>
           <input
             type="text"
             placeholder="Search Name..."
