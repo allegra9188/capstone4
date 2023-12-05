@@ -19,7 +19,7 @@ router.get("/name/:name", async (req, res, next) => {
     const name = req.params.name;
     const fullName= name.split(' ')
     const firstName = fullName[0]
-    const lastName = fullName.slice(1).join(' ')
+    const lastName = fullName.slice(-1).join(' ')
 
     const politician = await prisma.politician.findFirst({
       where: {first_name: firstName,last_name: lastName }
