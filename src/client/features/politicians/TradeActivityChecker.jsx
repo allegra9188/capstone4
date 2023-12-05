@@ -5,7 +5,9 @@ const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
     if (!politician) {
       return false;
     }
-    const fullName = `${politician.first_name} ${politician.last_name}`;
+    const fullName = `${politician.first_name} ${
+      politician.middle_name ? politician.middle_name + " " : ""
+    }${politician.last_name}`;
 
     if (politician.role === "Rep" && Array.isArray(houseTrades)) {
       // Check if there are any transactions for the representative
