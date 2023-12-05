@@ -18,7 +18,7 @@ export default function PoliticianRedirect() {
     [politician,navigate])
   return (
     <div>
-      This component is here only for redirect
+      This politician is not in our database
     </div>
   )
 }

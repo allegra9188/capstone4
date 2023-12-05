@@ -25,6 +25,7 @@ import Articles from "./features/homepage/articles/Articles.jsx";
 import Account from "./features/Account/Account.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PoliticianRedirect from "./features/politicians/PoliticianRedirect.jsx";
+import CompanyRedirect from "./features/companies/CompanyRedirect.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: "/politicians/name/:name", element: <PoliticianRedirect /> },
       { path: "/politicians/:id", element: <PoliticianDetails /> },
       { path: "/companies", element: <Companies /> },
+      { path: "/companies/name/:name", element: <CompanyRedirect /> },
       { path: "/companies/:id", element: <CompanyCard /> },
       { path: "/login", element: <AuthForm /> },
       { path: "*", element: <ErrorPage /> },

@@ -22,7 +22,19 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+// find company by using ticker, for example JPM for JP Morgan
+router.get("/name/:name", async (req, res, next) => {
+  try {
+    const ticker = req.params.name;
 
+    const company = await prisma.company.findFirst({
+      where: {symbol: ticker }
+    })
+    res.json(company);
+  } catch (err) {
+    next(err);
+  }
+});
 /** Display the corresponding company when the url matches /companies/:companyId */
 router.get("/:companyId", async (req, res, next) => {
   try {
