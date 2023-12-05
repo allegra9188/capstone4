@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
-import { Link } from "react-router-dom";
-import "./PoliticianDetails.less";
+import { Link, useParams } from "react-router-dom";
+import { useFollows } from "../Account/follows/followUtility";
+
 
 function PoliticianCard({ politician }) {
+  const { id } = useParams();
   const token = useSelector(selectToken);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // will add function to add to favorite list once api is functional
-    // need slice and connectivity to api and database
-  };
+  const { handleAddFollow, followedPoliticians } = useFollows();
+  
+
   return (
     <div className="cards-container">
       {token ? (
@@ -18,8 +18,12 @@ function PoliticianCard({ politician }) {
           <h2>{politician.first_name + " " + politician.last_name}</h2>
           <p>Party: {politician.party}</p>
           <p>Role: {politician.role}</p>
-          <Link className="more-info" to={`/politicians/${politician.id}`}>More Info</Link>
-          <button className="favButton" onClick={handleSubmit}>Favorite</button>
+          <Link to={`/politicians/${politician.id}`}>More Info</Link>
+          <button className="favButton" onClick={() => handleAddFollow(politician)}>
+            {followedPoliticians && followedPoliticians.some((followed) => followed.politicianId === politician.id)
+              ? "Unfollow"
+              : "Follow"}
+          </button>
         </section>
       ) : (
         <section className="politicianDetails-Card">
