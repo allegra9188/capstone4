@@ -36,3 +36,4 @@ router.use("/user-follows", require("./following"));
 router.use("/quiverquant", require("./quiverServer"));
 router.use("/senate", require("./senate"));
 router.use("/house", require("./house"));
+router.use("/articles", require("./articles"));
