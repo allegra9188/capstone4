@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice";
 import api from "./api";
 import { favoritesApi } from "../features/Account/favorites/favSlice";
-import followsApi from "../features/Account/followings/followSlice";
+import followsApi from "../features/Account/follows/followSlice";
 
 const store = configureStore({
   reducer: {

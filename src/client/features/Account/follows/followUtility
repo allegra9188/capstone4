@@ -1,0 +1,58 @@
+import {
+  useAddFollowedPoliticiansMutation,
+  useFetchFollowedPoliticiansQuery,
+  useRemoveFollowedPoliticiansMutation,
+} from "./followSlice";
+import { useGetAccountQuery } from "../../auth/authSlice";
+import { useSelector } from "react-redux";
+import { selectToken, selectUserId } from "../../auth/authSlice";
+
+
+export function useFollows() {
+const userId = useSelector(selectUserId);
+const token = useSelector(selectToken);
+const [addFollowedPolitician] = useAddFollowedPoliticiansMutation();
+const [removeFollowedPolitician] = useRemoveFollowedPoliticiansMutation();
+const { data: user } = token ? useGetAccountQuery(userId) : { data: null };
+const { data: followedPoliticians, refetch: refetchFollows } = token
+? useFetchFollowedPoliticiansQuery(userId)
+: { data: null, refetch: null };
+
+
+const handleAddFollow = async (politician) => {
+    try {
+      if (politician && user && followedPoliticians) {
+        const userId = user.id;
+        const politicianId = politician.id;
+
+        const isPoliticianFollowed = followedPoliticians.some(
+            (followed) => followed.politicianId === politician.id
+        );
+
+        if (isPoliticianFollowed) {
+            // remove from followed
+            await removeFollowedPolitician({ userId, politicianId });
+        } else {
+            // add to followed
+            await addFollowedPolitician({ userId, politicianId });
+        }
+
+        refetchFollows();
+      }
+    } catch (error) {
+      // handle error
+      console.error("Error updating followed status:", error);
+    }
+  };
+
+  const handleRemoveFollow = async (userId, politicianId) => {
+    try {
+      await removeFollowedPolitician({ userId, politicianId });
+      refetchFollows();
+    } catch (error) {
+      console.error("Failed to remove followed politician.", error);
+    }
+  };
+
+  return { handleAddFollow, handleRemoveFollow, followedPoliticians }
+}

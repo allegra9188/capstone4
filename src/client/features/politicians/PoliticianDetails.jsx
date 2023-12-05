@@ -4,12 +4,14 @@ import { useGetPoliticianQuery } from "./politicianSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import PoliticianRecentTrade from "./politicianRecentTrade";
+import { useFollows } from "../Account/follows/followUtility";
 import "./PoliticianDetails.less";
 
 function PoliticianDetails() {
   const { id } = useParams();
   const token = useSelector(selectToken);
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
+  const { handleAddFollow, followedPoliticians } = useFollows();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +36,11 @@ function PoliticianDetails() {
             <p>Party: {politician.party}</p>
             <p>Role: {politician.role}</p>
             <p>District: {politician.district}</p>
-            <button className="favButton" onClick={handleSubmit}>Favorite</button>
+            <button className="favButton" onClick={() => handleAddFollow(politician)}>
+            {followedPoliticians && followedPoliticians.some((followed) => followed.politicianId === politician.id)
+              ? "Unfollow"
+              : "Follow"}
+          </button>
           </section>
           <PoliticianRecentTrade />
         </>

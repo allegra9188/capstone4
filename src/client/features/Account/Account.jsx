@@ -2,9 +2,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { logout } from "../auth/authSlice";
 import { useGetAccountQuery, useEditUserMutation } from "../auth/authSlice";
-import { useState, useEffect } from "react";
-import { useRemoveFavoriteCompanyMutation, useFetchFavoriteCompaniesQuery } from "./favorites/favSlice";
-import { useFetchFollowedPoliticiansQuery, useRemoveFollowedPoliticiansMutation } from "./followings/followSlice";
+import { useState } from "react";
+import { useFavorites } from "../Account/favorites/favUtility";
+import { useFollows } from "../Account/follows/followUtility";
+import { useFetchFollowedPoliticiansQuery, useRemoveFollowedPoliticiansMutation } from "./follows/followSlice";
 
 
 export default function Account() {
@@ -13,10 +14,8 @@ export default function Account() {
   const [updatedUser, setUpdatedUser] = useState({});
   const [showInputs, setShowInputs] = useState(false);
   const [editUser] = useEditUserMutation();
-  const { data: favoriteCompanies, refetch } = useFetchFavoriteCompaniesQuery(id);
-  const [removeFavoriteCompany] = useRemoveFavoriteCompanyMutation();
-  const { data: followedPoliticians, refetch: refetchFollowedPoliticians } = useFetchFollowedPoliticiansQuery(id); 
-  const [removeFollowedPolitician] = useRemoveFollowedPoliticiansMutation();
+  const { handleRemoveFavorite, favoriteCompanies } = useFavorites();
+  const { handleRemoveFollow, followedPoliticians } = useFollows();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFollowsDropdownOpen, setIsFollowsDropdownOpen] = useState(false);
 
@@ -36,28 +35,7 @@ export default function Account() {
     navigate("/");
   };
 
-  const handleRemoveFavorite = async (userId, companyId) => {
-    try {
-      await removeFavoriteCompany({ userId, companyId });
-      refetch();
-    } catch (error) {
-      console.error("Failed to remove favorite company:", error);
-    }
-  };
 
-  const handleRemoveFollow = async (userId, politicianId) => {
-    try {
-      await removeFollowedPolitician({ userId, politicianId });
-      refetchFollowedPoliticians();
-    } catch (error) {
-      console.error("Failed to remove followed politician.", error);
-    }
-  };
-
-  
-  useEffect(() => {
-    refetch();
-  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -84,7 +62,7 @@ export default function Account() {
           <p><span className="label">Sub_Industry:</span> <span className="value">{politicianData.role}</span></p>
           <Link to={`/politicians/${politicianData.id}`}>More Info</Link>
           <button className="favButton" onClick={() => handleRemoveFollow(id, politicianData.id)}>
-              Remove from Favorites
+              Unfollow
           </button>
 
         </div>
