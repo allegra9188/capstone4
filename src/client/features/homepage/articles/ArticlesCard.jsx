@@ -6,7 +6,9 @@ export default function ArticlesCard({ article }) {
       <h3>{article.title}</h3>
       <p>{article.image_url}</p>
       <p>{article.snippet}</p>
-      <p><a href={article.url}>Link To Article</a></p>
+      <p>
+        <a href={article.url}>Link To Article</a>
+      </p>
     </div>
   );
 }

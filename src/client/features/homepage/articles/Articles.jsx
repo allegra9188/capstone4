@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ArticlesList from "./ArticlesList";
 import { useGetArticlesDataQuery } from "./articlesSlice";
 
@@ -16,9 +16,6 @@ export default function Articles() {
   if (isError) {
     return <h1>Error loading page</h1>;
   }
-
-  // console.log(articledata);
-
   return (
     <div className="total-container">
       <ArticlesList articledata={articledata} />
