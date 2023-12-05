@@ -13,9 +13,9 @@ export default function ArticlesList({ article }) {
     <>
       <div className="article-container">
         <h2>Latest Articles</h2>
-        {articledata.data.map((article) => (
+        {/* {articledata.data.map((article) => (
           <ArticlesCard key={article.uuid} article={article} />
-        ))}
+        ))} */}
       </div>
 
       <QuiverData />
