@@ -51,8 +51,8 @@ export default function CompanyCard({ company }) {
                 favoriteCompanies.some(
                   (favorite) => favorite.companyId === companyData.id
                 )
-                  ? "Remove from Favorites"
-                  : "Add to Favorites"}
+                  ? "Unfavorite"
+                  : "Favorite"}
               </button>
             )}
             <h2>Politician Trading Activity</h2>
@@ -101,8 +101,8 @@ export default function CompanyCard({ company }) {
               favoriteCompanies.some(
                 (favorite) => favorite.companyId === company.id
               )
-                ? "Remove from Favorites"
-                : "Add to Favorites"}
+                ? "Unfavorite"
+                : "Favorite"}
             </button>
           )}
         </div>
