@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PoliticianCard from "./PoliticianCard";
 import { useGetPoliticiansQuery } from "./politicianSlice";
 import PaginationLogic from "./PaginationLogic";
-import "./PoliticianDetails.less";
+import "./PoliticiansList.less";
 import { checkActivity } from "./TradeActivityChecker";
 import { useGetSenateDataQuery } from "./senateApiSlice";
 import { useGetHouseDataQuery } from "./houseApiSlice";

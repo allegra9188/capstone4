@@ -1,26 +1,33 @@
 #myaccount-html {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   height: auto;
   padding-top: 25px;
 
   section {
     width: 30vw;
     height: 400px;
- 
+    // text-align: center;
+    align-content: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #followedPoliticians-Section{
+    display: flex;
+    gap: 15px;
+    box-sizing: border-box;
+    align-self: center;
   }
 
   #favCompanies-Section {
-    display: inline-flex;
-    flex-direction: column;
-    // align-items: center;
-    margin-left: 5px;
-    padding: 5px;
+    display: flex;
     gap: 15px;
-    // background-color: white;
-    height: 700px;
-    // overflow:auto;
+    height: auto;
     min-width: 30%;
+    box-sizing: border-box;
+
   
   }
   .favCompany-dropdownDiv{
@@ -41,9 +48,7 @@
 }
 
 #myAccount-main {
-  display: inline-flexbox ;
-  flex-direction: column;
-  padding: 5px;
+  align-items: center;
   // min-width: 100%;
   // align-items: center;
   // align-content: center;
@@ -86,7 +91,6 @@
 
 #firstName-Update {
   display: flex;
-  // margin-left: 10px;
   align-self: center;
 }
 
@@ -111,7 +115,6 @@
 }
 
 
-
 .myAcct-info-text {
   font-size: 24px;
   font-weight: 700;
@@ -133,6 +136,17 @@
   flex-wrap: nowrap;
 }
 
+#FollowPolitician-headerText{
+  cursor: pointer;
+  padding-bottom: 5px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  flex-wrap: nowrap;
+  // text-align: center;
+}
+
+
 #details-name {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -145,4 +159,38 @@
 
 .value {
   color: white;
+}
+
+@media (max-width: 1000px) {
+  #myaccount-html {
+    flex-direction: column; /* Adjusted to column for stacking on small screens */
+    align-items: center; /* Adjusted to center on small screens */
+  }
+
+  #myAccount-main {
+    width: 100%;
+  }
+
+  section {
+    width: 100%; /* Full width on small screens */
+    margin-bottom: 10px; /* Added margin for spacing */
+  }
+
+  #followedPoliticians-Section,
+  #favCompanies-Section {
+    display: block; /* Show sections on small screens */
+  }
+
+  .sidebar.expanded {
+    width: 100%; /* Full width when expanded on small screens */
+  }
+
+  .sidebar-content {
+    padding: 10px; /* Adjusted padding for small screens */
+  }
+
+  #FollowPolitician-headerText,
+  #FavComp-headerText {
+    text-align: center; /* Centered text on small screens */
+  }
 }

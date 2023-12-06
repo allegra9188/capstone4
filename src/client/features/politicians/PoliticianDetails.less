@@ -1,69 +1,29 @@
-// .rep-transaction-list {
-//   gap: 2rem;
-//   padding: 2rem;
-//   li {
-//     width: 18rem;
-//     border-style: solid;
-//   }
-// }
-
-// .senate-transaction-list {
-//   gap: 2rem;
-//   padding: 2rem;
-//   li {
-//     width: 18rem;
-//     border-style: solid;
-//   }
-// }
-
-.recent-trades-container{
-  background-color: white;
-
-  .rep-transaction-list{
-    background-color: blue;
-    border: 3px;
-  }
-
-  .senate-transaction-list{
-    background-color: blue;
-  }
-}
-
-// .end {
-//   background-color: green;
-// }
-
-.cards-container {
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.politicianDetails-Card {
-  width: 160px;
-  height: 200px;
-  padding: 10px;
+.details-container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  row-gap: 5px;
-  margin-bottom: 40px;
-  text-align: center;
-  align-items: center;
-  border: 2px solid black;
+  gap: 1em;
+  padding: 15px;
+  max-width: 50%;
+  max-height: fit-content;
+}
 
-  /* Other styling properties */
+.politician-details{
+  order: 1;
+  background-color: floralwhite;
+  border: black solid 2px;
+  padding: 0.75em;
+}
 
-  /* Optional: Adjust for smaller screens */
-  @media (max-width: 768px) {
-    flex-basis: calc(50% - 20px);
-  }
+.recent-trades-container{
+  order: 2;
+}
 
-  @media (max-width: 480px) {
-    flex-basis: calc(100% - 20px);
-  }
+.recent-trades-item{
+ margin-bottom: 1em;
+ border: 1px black solid;
+ background-color: floralwhite;
+ border: black solid 2px;
+ padding: 0.75em;
 }
 
 .more-info{

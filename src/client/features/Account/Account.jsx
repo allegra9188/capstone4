@@ -47,34 +47,7 @@ export default function Account() {
 
   return (
     <div id="myaccount-html">
-      <section id="favCompanies-Section"> 
-  <h2 id="FavComp-headerText" onClick={() => setIsFollowsDropdownOpen(!isFollowsDropdownOpen)}>
-    Followed Politicians {isFollowsDropdownOpen ? "▼" : "▶"}
-  </h2>
-  <div className={`favCompany-dropdownDiv ${isFollowsDropdownOpen ? 'expanded' : ''}`}>
-  <h3 id="clickFav-text">{!isFollowsDropdownOpen ? "Click Followed Politicians!" : ""}</h3>
-  {isFollowsDropdownOpen && (
-    followedPoliticians && followedPoliticians.length > 0 ? (
-      followedPoliticians.map(({ politician: politicianData }) => (
-        <div className="favCompanies" key={politicianData.id}>
-          <h3><span className="label">Company Name:</span> <span className="value">{politicianData.first_name + " " + politicianData.last_name}</span></h3>
-          <p><span className="label">Ticker Symbol:</span> <span className="value">{politicianData.party}</span></p>
-          <p><span className="label">Sub_Industry:</span> <span className="value">{politicianData.role}</span></p>
-          <Link to={`/politicians/${politicianData.id}`}>More Info</Link>
-          <button className="favButton" onClick={() => handleRemoveFollow(id, politicianData.id)}>
-              Unfollow
-          </button>
-
-        </div>
-        
-      ))
-    ) : (
-      <p>No followed politicians</p>
-    )
-  )}
-  </div>
-</section>
-
+      
 
       <section id="myAccount-main">
       <h2><span className="username-text label">Hi, User:</span> <span className="value">{user.username}</span></h2>
@@ -178,6 +151,35 @@ export default function Account() {
   )}
   </div>
 </section>
+
+<section id="followedPoliticians-Section"> 
+  <h2 id="FollowPolitician-headerText" onClick={() => setIsFollowsDropdownOpen(!isFollowsDropdownOpen)}>
+    Followed Politicians {isFollowsDropdownOpen ? "▼" : "▶"}
+  </h2>
+  <div className={`folPolitician-dropdownDiv ${isFollowsDropdownOpen ? 'expanded' : ''}`}>
+  <h3 id="clickFollow-text">{!isFollowsDropdownOpen ? "Click Followed Politicians!" : ""}</h3>
+  {isFollowsDropdownOpen && (
+    followedPoliticians && followedPoliticians.length > 0 ? (
+      followedPoliticians.map(({ politician: politicianData }) => (
+        <div className="favCompanies" key={politicianData.id}>
+          <h3><span className="label">Company Name:</span> <span className="value">{politicianData.first_name + " " + politicianData.last_name}</span></h3>
+          <p><span className="label">Ticker Symbol:</span> <span className="value">{politicianData.party}</span></p>
+          <p><span className="label">Sub_Industry:</span> <span className="value">{politicianData.role}</span></p>
+          <Link to={`/politicians/${politicianData.id}`}>More Info</Link>
+          <button className="favButton" onClick={() => handleRemoveFollow(id, politicianData.id)}>
+              Unfollow
+          </button>
+
+        </div>
+        
+      ))
+    ) : (
+      <p>No followed politicians</p>
+    )
+  )}
+  </div>
+</section>
+
     </div>
   );
 }
