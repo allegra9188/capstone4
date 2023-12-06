@@ -35,9 +35,6 @@ router.get("/", async (req, res, next) => {
       throw new Error(`HTTPS error! Status: ${response.status}`);
     }
      const data = await response.json();
-     
-     console.log(typeof(data.data))
-     console.log(Array.isArray(data.data))
      if(Array.isArray(data.data) && data.data.length>0){
        await saveDataToCsvFile(data.data)
        res.json('data saved to csv file');
@@ -57,7 +54,6 @@ router.get("/csv", async (req, res, next) => {
       fs.createReadStream('./src/server/csv_files/article.csv')
       .pipe(csv())
       .on('data', (row) => {
-        // Assuming 'item1', 'item2', and 'item3' are the headers in your CSV file
         const { uuid, title, snippet, url} = row;
         console.log(row)
         data.push({ uuid, title, snippet, url });
