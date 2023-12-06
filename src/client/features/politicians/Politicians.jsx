@@ -66,7 +66,7 @@ export default function Politicians() {
             <option value="last-name">Last Name</option>
           </select>
         </div>
-        <section>
+        <section className="toggle-active-only">
           <input
             type="checkbox"
             id="Active"
