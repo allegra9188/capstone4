@@ -43,8 +43,6 @@ export default function Politicians() {
         checkActivity(politician, houseTrades, senateTrades)
       )
     : politicians;
-  console.log(filteredPoliticians);
-  console.log(politicians);
 
   return isLoading ? (
     <h2>Loading...</h2>
@@ -74,7 +72,7 @@ export default function Politicians() {
             checked={showActiveOnly}
             onChange={() => setShowActiveOnly(!showActiveOnly)}
           />
-          <label for="Active">Show Active Only</label>
+          <label htmlFor="Active">Show Active Only</label>
         </section>
       </div>
       <h1 className="politicians-header">Congress Politicians</h1>
