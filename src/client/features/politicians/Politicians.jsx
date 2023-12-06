@@ -52,15 +52,15 @@ export default function Politicians() {
     <section>
       <div className="search-and-sort-container">
         <form className="search-bar">
-          <label htmlFor="search">Search: </label>
+          <label htmlFor="search"></label>
           <input
             type="text"
-            placeholder="Search Name..."
+            placeholder="  Search Name...  "
             onChange={(e) => setFilter(e.target.value)}
           />
         </form>
         <div>
-          <label>Sort By:</label>
+          <label></label>
           <select id="sort-by" onChange={handleSort} value={sortBy}>
             <option value="first-name">First Name</option>
             <option value="last-name">Last Name</option>
