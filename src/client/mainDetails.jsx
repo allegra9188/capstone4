@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from "./layout/Root.jsx";
-import Articles from "./features/homepage/articles/Articles.jsx";
+import ArticlesList from "./features/homepage/articles/ArticlesList.jsx";
 import Politicians from "./features/politicians/Politicians.jsx";
 import PoliticianRedirect from "./features/politicians/PoliticianRedirect.jsx";
 import PoliticianDetails from "./features/politicians/PoliticianDetails.jsx";
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Articles /> },
+      { path: "/", element: <ArticlesList /> },
       { path: "/politicians", element: <Politicians /> },
       { path: "/politicians/name/:name", element: <PoliticianRedirect /> },
       { path: "/politicians/:id", element: <PoliticianDetails /> },
