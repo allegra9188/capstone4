@@ -29,13 +29,12 @@ function PoliticianDetails() {
   }
 
   return (
-    <>
+    <div className="details-container">
       {token ? (
         <>
-          <section>
+          <section className="politician-details">
             <h2>{politician?.first_name + " " + politician.last_name}</h2>
-            <p>Party: {politician.party}</p>
-            <p>Role: {politician.role}</p>
+            <p>{politician.role}, {politician.party}</p>       
             <p>District: {politician.district}</p>
             <button className="favButton" onClick={() => handleAddFollow(politician)}>
             {followedPoliticians && followedPoliticians.some((followed) => followed.politicianId === politician.id)
@@ -48,16 +47,15 @@ function PoliticianDetails() {
       ) : (
         // not signed in
         <>
-          <section>
+          <section className="politician-details">
             <h2>{politician?.first_name + " " + politician?.last_name}</h2>
-            <p>Party: {politician.party}</p>
-            <p>Role: {politician.role}</p>
+            <p>{politician.role}, {politician.party}</p>       
             <p>District: {politician.district}</p>
           </section>
           <PoliticianRecentTrade />
         </>
       )}
-    </>
+    </div>
   );
 }
 

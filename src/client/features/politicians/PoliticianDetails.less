@@ -1,37 +1,28 @@
-// .rep-transaction-list {
-//   gap: 2rem;
-//   padding: 2rem;
-//   li {
-//     width: 18rem;
-//     border-style: solid;
-//   }
-// }
-
-// .senate-transaction-list {
-//   gap: 2rem;
-//   padding: 2rem;
-//   li {
-//     width: 18rem;
-//     border-style: solid;
-//   }
-// }
-
-.recent-trades-container{
-  background-color: white;
-
-  .rep-transaction-list{
-    background-color: blue;
-    border: 3px;
-  }
-
-  .senate-transaction-list{
-    background-color: blue;
-  }
+.details-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 15px;
 }
 
-// .end {
-//   background-color: green;
-// }
+.politician-details{
+  order: 1;
+  background-color: floralwhite;
+  border: black solid 2px;
+  padding: 0.75em;
+}
+
+.recent-trades-container{
+  order: 2;
+}
+
+.recent-trades-item{
+ margin-bottom: 1em;
+ border: 1px black solid;
+ background-color: floralwhite;
+ border: black solid 2px;
+ padding: 0.75em;
+}
 
 .more-info{
   color: #233142;
