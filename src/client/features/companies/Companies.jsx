@@ -22,9 +22,9 @@ export default function Companies() {
   });
 
   return (
-    <div>
+    <div className="search-bar-container">
       <div className="search-bar">
-        <label htmlFor="search">Search: </label>
+        <label htmlFor="search"></label>
         <input
           type="text"
           id="search"
