@@ -17,15 +17,23 @@ const PaginationLogic = ({ data, renderItem }) => {
 
   return (
     <>
-      <div>
+      <div className="politicians-list-container">
         {paginatedData.map((item) => renderItem(item))}
       </div>
       <div className="pagination">
-        <p>Page {currentPage} of {totalPages}</p>
-        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
           Previous
         </button>
-        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
           Next
         </button>
       </div>
