@@ -3,9 +3,6 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
   if (!politician) {
     return false;
   }
-  const fullName = `${politician.first_name} ${
-    politician.middle_name ? politician.middle_name + " " : ""
-  }${politician.last_name}`;
 
   if (politician.role === "Rep" && Array.isArray(houseTrades)) {
     // Check if there are any transactions for the representative
@@ -14,7 +11,10 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
         transaction.representative &&
         transaction.representative
           .toLowerCase()
-          .includes(fullName.toLowerCase())
+          .includes(politician.first_name.toLowerCase()) &&
+          transaction.representative
+          .toLowerCase()
+          .includes(politician.last_name.toLowerCase())
       );
     });
 
@@ -24,7 +24,9 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
     const senatorTrades = senateTrades.filter((transaction) => {
       return (
         transaction.senator &&
-        transaction.senator.toLowerCase().includes(fullName.toLowerCase())
+        transaction.senator.toLowerCase().includes(politician.first_name.toLowerCase())
+        &&
+        transaction.senator.toLowerCase().includes(politician.last_name.toLowerCase())
       );
     });
 
