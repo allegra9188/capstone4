@@ -24,32 +24,40 @@ export default function Navbar() {
   
 
   return (
-    <nav className="top">
-      <menu>
-        <li>
+    <>
+    <input type="checkbox" id="toggle"/>
+    <nav id="top">
+      <label class="navbar-toggler" for="toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+      <menu class="nav-list">
+        <li className="nav-item">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li className="nav-item">
           <NavLink to="/politicians">Politicians</NavLink>
         </li>
-        <li>
+        <li className="nav-item">
           <NavLink to="/companies">Companies</NavLink>
         </li>
         {token ? (
           <>
-            <li>
+            <li className="nav-item">
               <NavLink to={`/user/${userid}`}>My Account</NavLink>
             </li>
-            <li>
+            <li className="nav-item">
               <a onClick={handleLogout}>Log Out</a>
             </li>
           </>
         ) : (
-          <li>
+          <li className="nav-item">
             <NavLink to="/login">Log In</NavLink>
           </li>
         )}
       </menu>
     </nav>
+    </>
   );
 }
