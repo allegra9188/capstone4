@@ -7,7 +7,7 @@ import { useFavorites } from "../Account/favorites/favUtility";
 import { useGetQuiverDataQuery } from "../quiver/quiverSlice";
 export default function CompanyCard({ company }) {
   const { id } = useParams();
-  const token = useSelector(selectToken); 
+  const token = useSelector(selectToken);
   const { handleAddFavorite, favoriteCompanies } = useFavorites();
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
   const { data: quiverData } = useGetQuiverDataQuery();
@@ -34,25 +34,38 @@ export default function CompanyCard({ company }) {
           <div className="company-card">
             <h2>{companyData.symbol}</h2>
             <div className="company-detail">
-              <p>Company: <span id="company-name">{companyData.security}</span></p>
+              <p>
+                Company: <span id="company-name">{companyData.security}</span>
+              </p>
               <p>Sector: {companyData.sector}</p>
               <p>Sub Industry: {companyData.sub_industry}</p>
               <p>Headquarter: {companyData.hq}</p>
               <p>Founding Year: {companyData.founded}</p>
             </div>
             {token && (
-          <button className="favButton" onClick={() => handleAddFavorite(companyData)}>
-          {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === companyData.id)
-            ? "Remove from Favorites"
-            : "Add to Favorites"}
-        </button>
-          )}
-          <h2>Politician Trading Activity</h2>
+              <button
+                className="favButton"
+                onClick={() => handleAddFavorite(companyData)}
+              >
+                {favoriteCompanies &&
+                favoriteCompanies.some(
+                  (favorite) => favorite.companyId === companyData.id
+                )
+                  ? "Remove from Favorites"
+                  : "Add to Favorites"}
+              </button>
+            )}
+            <h2>Politician Trading Activity</h2>
             {transactionForThisCompany?.map((element, index) => {
               return (
                 <div className="trade-card" key={index}>
                   <p>
-                    <span id="rep-name">{element.Representative}</span>
+                    <Link
+                      className="politician-detail"
+                      to={`/politicians/name/${element.Representative}`}
+                    >
+                      <span id="rep-name">{element.Representative}</span>
+                    </Link>
                   </p>
                   <p>{element.House}</p>
                   <p>Date Reported: {element.ReportDate}</p>
@@ -62,7 +75,6 @@ export default function CompanyCard({ company }) {
                   </p>
                   <p>Range: {element.Range}</p>
                   <p>{element.Party}</p>
-                  <Link className="politician-detail" to={`/politicians/name/${element.Representative}`}>More Trading of {element.Representative} </Link>
                 </div>
               );
             })}
@@ -81,11 +93,17 @@ export default function CompanyCard({ company }) {
             More Info
           </Link>
           {token && (
-          <button className="favButton" onClick={() => handleAddFavorite(company)}>
-          {favoriteCompanies && favoriteCompanies.some((favorite) => favorite.companyId === company.id)
-            ? "Remove from Favorites"
-            : "Add to Favorites"}
-        </button>
+            <button
+              className="favButton"
+              onClick={() => handleAddFavorite(company)}
+            >
+              {favoriteCompanies &&
+              favoriteCompanies.some(
+                (favorite) => favorite.companyId === company.id
+              )
+                ? "Remove from Favorites"
+                : "Add to Favorites"}
+            </button>
           )}
         </div>
       </>
