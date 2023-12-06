@@ -5,9 +5,13 @@ const articlesApi = api.injectEndpoints({
     getArticlesData: builder.query({
       query: () => "/articles",
     }),
+    getArticlesDataFromCsv: builder.query({
+      query:()=> '/articles/csv'
+    }),
   }),
 });
 
-export const { useGetArticlesDataQuery } = articlesApi;
+export const { useGetArticlesDataQuery,
+useGetArticlesDataFromCsvQuery } = articlesApi;
 
 export default articlesApi;

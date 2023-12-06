@@ -21,7 +21,7 @@ import Companies from "./features/companies/Companies.jsx";
 import CompanyCard from "./features/companies/CompanyCard.jsx";
 import Root from "./layout/Root.jsx";
 import ErrorPage from "./features/ErrorPage.jsx";
-import Articles from "./features/homepage/articles/Articles.jsx";
+import ArticlesList from "./features/homepage/articles/ArticlesList.jsx";
 import Account from "./features/Account/Account.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PoliticianRedirect from "./features/politicians/PoliticianRedirect.jsx";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Articles /> },
+      { path: "/", element: <ArticlesList /> },
       { path: "/politicians", element: <Politicians /> },
       { path: "/politicians/name/:name", element: <PoliticianRedirect /> },
       { path: "/politicians/:id", element: <PoliticianDetails /> },
