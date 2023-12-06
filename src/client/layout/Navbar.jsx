@@ -20,19 +20,19 @@ export default function Navbar() {
     navigate("/");
   };
 
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
   
 
   return (
     <>
     <input type="checkbox" id="toggle"/>
     <nav id="top">
-      <label class="navbar-toggler" for="toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+      <label className="navbar-toggler" htmlFor="toggle">
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
             </label>
-      <menu class="nav-list">
+      <menu className="nav-list">
         <li className="nav-item">
           <NavLink to="/">Home</NavLink>
         </li>
