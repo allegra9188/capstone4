@@ -22,8 +22,8 @@ export default function Companies() {
   });
 
   return (
-    <div className="search-bar-container">
-      <div className="search-bar">
+    <div>
+      <div className="search-bar-companies">
         <label htmlFor="search"></label>
         <input
           type="text"
