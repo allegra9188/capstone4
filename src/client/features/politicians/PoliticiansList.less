@@ -1,8 +1,12 @@
 .search-and-sort-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     background-color: #f7f7f7;
+    width: 75vw;
+    margin: auto;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -64,20 +68,16 @@
     color: black;
   }
   
-  /* Animation */
-  .search-and-sort-container {
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
   
     .politicians-header{
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 .politicians-list-container{
     padding: 10px;
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
