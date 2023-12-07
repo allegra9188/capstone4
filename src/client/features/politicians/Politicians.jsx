@@ -43,8 +43,6 @@ export default function Politicians() {
         checkActivity(politician, houseTrades, senateTrades)
       )
     : politicians;
-  console.log(filteredPoliticians);
-  console.log(politicians);
 
   return isLoading ? (
     <h2>Loading...</h2>
@@ -52,21 +50,21 @@ export default function Politicians() {
     <section>
       <div className="search-and-sort-container">
         <form className="search-bar">
-          <label htmlFor="search">Search: </label>
+          <label htmlFor="search"></label>
           <input
             type="text"
-            placeholder="Search Name..."
+            placeholder="  Search Name...  "
             onChange={(e) => setFilter(e.target.value)}
           />
         </form>
         <div>
-          <label>Sort By:</label>
+          <label></label>
           <select id="sort-by" onChange={handleSort} value={sortBy}>
             <option value="first-name">First Name</option>
             <option value="last-name">Last Name</option>
           </select>
         </div>
-        <section>
+        <section className="toggle-active-only">
           <input
             type="checkbox"
             id="Active"
@@ -74,10 +72,10 @@ export default function Politicians() {
             checked={showActiveOnly}
             onChange={() => setShowActiveOnly(!showActiveOnly)}
           />
-          <label for="Active">Show Active Only</label>
+          <label htmlFor="Active">Show Active Only</label>
         </section>
       </div>
-      <h1>Congress Politicians</h1>
+      <h1 className="politicians-header">Congress Politicians</h1>
       <PaginationLogic
         data={sortPoliticians(filteredPoliticians, sortBy).filter(
           (politician) =>

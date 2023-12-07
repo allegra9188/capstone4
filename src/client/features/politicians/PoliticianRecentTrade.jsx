@@ -49,10 +49,11 @@ function PoliticianRecentTrade() {
   }
 
   return (
+    
     <section className="recent-trades-container">
+      <h2>Recent Transactions</h2>
       {politician.role === "Rep" && (
-        <div>
-          <h2>: Recent Transactions</h2>
+        <>
           {firstFiveTransaction?.length > 0 ? (
             <ul className="rep-transaction-list">
               {firstFiveTransaction.map((transaction) => (
@@ -62,12 +63,12 @@ function PoliticianRecentTrade() {
           ) : (
             <p>No recent trades.</p>
           )}
-        </div>
+        </>
       )}
 
+  
       {politician.role === "Sen" && (
-        <div>
-          <h2>: Recent Transactions</h2>
+        <>
           {firstFiveSenateTransactions?.length > 0 ? (
             <ul className="senate-transaction-list">
               {firstFiveSenateTransactions.map((transaction) => (
@@ -77,7 +78,7 @@ function PoliticianRecentTrade() {
           ) : (
             <p>No recent trades.</p>
           )}
-        </div>
+        </>
       )}
       {politician.role && (
         <TradeActivityChecker

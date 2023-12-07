@@ -17,15 +17,14 @@ export default function Companies() {
   const filteredCompanies = companies.filter((company) => {
     // Check if the symbol or security matches the search filter
     return (
-      searchRegex.test(company.symbol) ||
-      searchRegex.test(company.security)
+      searchRegex.test(company.symbol) || searchRegex.test(company.security)
     );
   });
 
   return (
     <div>
-      <div className="search-bar">
-        <label htmlFor="search">Search: </label>
+      <div className="search-bar-companies">
+        <label htmlFor="search"></label>
         <input
           type="text"
           id="search"
