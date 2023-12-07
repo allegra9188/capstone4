@@ -67,14 +67,13 @@ export default function CompanyCard({ company }) {
                       <span id="rep-name">{element.Representative}</span>
                     </Link>
                   </p>
-                  <p>{element.House}</p>
+                  <p>{element.House}, {element.Party}</p>
                   <p>Date Reported: {element.ReportDate}</p>
                   <p>Transaction Date: {element.TransactionDate}</p>
                   <p>
                     <span id="transaction-type">{element.Transaction}</span>
                   </p>
                   <p>Range: {element.Range}</p>
-                  <p>{element.Party}</p>
                 </div>
               );
             })}
