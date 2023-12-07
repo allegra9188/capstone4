@@ -1,15 +1,11 @@
 import React from "react";
 import ArticlesCard from "./ArticlesCard";
 import QuiverData from "../../quiver/QuiverData";
-import { useGetArticlesDataQuery } from "./articlesSlice";
 import { useGetArticlesDataFromCsvQuery } from "./articlesSlice";
 export default function ArticlesList({ article }) {
-  // get data from api call
-  //const { data: articledata, isLoading, isError } = useGetArticlesDataQuery();
 
-  // read data from cvs
   const { data: articledata, isLoading, isError } = useGetArticlesDataFromCsvQuery();
-  // add comment to test main
+
   if (!articledata || articledata.length === 0) {
     return <p>No articles available.</p>;
   }

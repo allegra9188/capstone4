@@ -16,8 +16,7 @@ function PoliticianCard({ politician }) {
       {token ? (
         <section className="politicianDetails-Card">
           <h2>{politician.first_name + " " + politician.last_name}</h2>
-          <p>Party: {politician.party}</p>
-          <p>Role: {politician.role}</p>
+          <p>{politician.role}, {politician.party}</p>
           <Link to={`/politicians/${politician.id}`}>More Info</Link>
           <button className="favButton" onClick={() => handleAddFollow(politician)}>
             {followedPoliticians && followedPoliticians.some((followed) => followed.politicianId === politician.id)
@@ -28,8 +27,7 @@ function PoliticianCard({ politician }) {
       ) : (
         <section className="politicianDetails-Card">
           <h2>{politician.first_name + " " + politician.last_name}</h2>
-          <p>Party: {politician.party}</p>
-          <p>Role: {politician.role}</p>
+          <p>{politician.role}, {politician.party}</p>
           <Link to={`/politicians/${politician.id}`}>More Info</Link>
         </section>
       )}

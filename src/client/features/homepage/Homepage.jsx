@@ -1,0 +1,43 @@
+// Homepage.jsx:
+import React from "react";
+import ArticlesCard from "./articles/ArticlesCard";
+import QuiverData from "../quiver/QuiverData";
+import {
+  useGetArticlesDataQuery,
+  useGetArticlesDataFromCsvQuery,
+} from "./articles/articlesSlice";
+
+export default function Homepage({ article }) {
+  const {
+    data: articledata,
+    isLoading,
+    isError,
+  } = useGetArticlesDataFromCsvQuery();
+
+  if (!articledata || articledata.length === 0) {
+    return <p>No articles available.</p>;
+  }
+
+  return (
+    <div className="total-container">
+      <div className="copy-container">
+        <h2>Welcome To Capstone 4!</h2>
+        <div className="copy-item">
+          <h3>
+            See recent congress trading activity by politician or company!
+          </h3>
+          <h3>Sign up to see your politicians and companies.</h3>
+        </div>
+      </div>
+      <div className="article-trade-container">
+        <div className="article-container">
+          <h2>Latest Articles</h2>
+          {articledata?.map((article) => (
+            <ArticlesCard key={article.uuid} article={article} />
+          ))}
+        </div>
+        <QuiverData />
+      </div>
+    </div>
+  );
+}

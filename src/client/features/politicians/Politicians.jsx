@@ -75,7 +75,7 @@ export default function Politicians() {
           <label htmlFor="Active">Show Active Only</label>
         </section>
       </div>
-      <h1 className="politicians-header">Congress Politicians</h1>
+      <h1 className="politicians-header">Congress Members</h1>
       <PaginationLogic
         data={sortPoliticians(filteredPoliticians, sortBy).filter(
           (politician) =>
