@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export default function CompanyRedirect() {
   const { name, isloading: isloading2 } = useParams();
   if (isloading2) {
-    return <h1>redirecting</h1>;
+    return <h1 className="loading">redirecting</h1>;
   }
   const { data: company } = useGetCompanyIdByTickerQuery(name);
 

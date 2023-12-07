@@ -21,7 +21,7 @@ function PoliticianDetails() {
   };
 
   if (isLoading) {
-    return <h1>Loading Politician...</h1>;
+    return <h1 className="loading">Loading Politician...</h1>;
   }
   //console.log('politician', politician)
   if (isError) {
@@ -34,13 +34,21 @@ function PoliticianDetails() {
         <>
           <section className="politician-details">
             <h2>{politician?.first_name + " " + politician.last_name}</h2>
-            <p>{politician.role}, {politician.party}</p>       
+            <p>
+              {politician.role}, {politician.party}
+            </p>
             <p>District: {politician.district}</p>
-            <button className="favButton" onClick={() => handleAddFollow(politician)}>
-            {followedPoliticians && followedPoliticians.some((followed) => followed.politicianId === politician.id)
-              ? "Unfollow"
-              : "Follow"}
-          </button>
+            <button
+              className="favButton"
+              onClick={() => handleAddFollow(politician)}
+            >
+              {followedPoliticians &&
+              followedPoliticians.some(
+                (followed) => followed.politicianId === politician.id
+              )
+                ? "Unfollow"
+                : "Follow"}
+            </button>
           </section>
           <PoliticianRecentTrade />
         </>
@@ -49,7 +57,9 @@ function PoliticianDetails() {
         <>
           <section className="politician-details">
             <h2>{politician?.first_name + " " + politician?.last_name}</h2>
-            <p>{politician.role}, {politician.party}</p>       
+            <p>
+              {politician.role}, {politician.party}
+            </p>
             <p>District: {politician.district}</p>
           </section>
           <PoliticianRecentTrade />
