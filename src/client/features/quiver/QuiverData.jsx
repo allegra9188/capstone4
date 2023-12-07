@@ -8,7 +8,7 @@ export default function QuiverData() {
   if (isloading) {
     return <h1>Loading</h1>;
   }
-  const quiverData = quiverData2?.slice(0, 5);
+  const quiverData = quiverData2?.slice(0, 4);
   return (
     <section className="trades-container">
       <h2>Live Congress Trading</h2>
@@ -23,7 +23,7 @@ export default function QuiverData() {
                 <span id="trade-rep">{entry.Representative}</span>
               </p>
             </Link>
-            <p>{entry.House}</p>
+            <p>{entry.House} {entry.Party}</p>
             <p>Transaction Date: {entry.TransactionDate}</p>
             <Link to={`/companies/name/${entry.Ticker}`}>
               <p>
@@ -33,7 +33,6 @@ export default function QuiverData() {
             <p>{entry.Transaction}</p>
             <p>{entry.Range}</p>
             <p>{entry.District}</p>
-            <p>Party: {entry.Party}</p>
           </li>
         ))}
       </ul>
