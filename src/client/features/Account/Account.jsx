@@ -5,7 +5,7 @@ import { useGetAccountQuery, useEditUserMutation } from "../auth/authSlice";
 import { useState } from "react";
 import { useFavorites } from "../Account/favorites/favUtility";
 import { useFollows } from "../Account/follows/followUtility";
-import { useFetchFollowedPoliticiansQuery, useRemoveFollowedPoliticiansMutation } from "./follows/followSlice";
+
 
 
 export default function Account() {
@@ -16,8 +16,9 @@ export default function Account() {
   const [editUser] = useEditUserMutation();
   const { handleRemoveFavorite, favoriteCompanies } = useFavorites();
   const { handleRemoveFollow, followedPoliticians } = useFollows();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isFollowsDropdownOpen, setIsFollowsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
+  const [isFollowsDropdownOpen, setIsFollowsDropdownOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,14 +44,16 @@ export default function Account() {
 
     if (isError) {return <div>Error loading account</div>}
 
-    // console.log(favoriteCompanies)
 
   return (
-    <div id="myaccount-html">
-      
-
-      <section id="myAccount-main">
-      <h2><span className="username-text label">Hi, User:</span> <span className="value">{user.username}</span></h2>
+    <div id="myAccount-html">
+      <div id="sidebar"
+  className={isSidebarOpen ? 'expanded' : ''}
+  onClick={() => setIsSidebarOpen(!isSidebarOpen)}> 
+  {!isSidebarOpen && <div className="vertical-text">Account Details</div>}
+  <div className="sidebar-content">
+    <section id="myAccount-main">
+      <h2><span className="username-text label">Hi,</span> <span className="value">{user.username}</span></h2>
         <h2 id="details-name">
           <b>Name: </b>
           {showInputs ? (
@@ -61,8 +64,8 @@ export default function Account() {
                 type="text"
                 placeholder={updatedUser.firstName || user.firstName}
                 onChange={(e) =>
-                  setUpdatedUser({ ...updatedUser, firstName: e.target.value })
-                }
+                  setUpdatedUser({ ...updatedUser, firstName: e.target.value })}
+                  onClick={(e) => e.stopPropagation()}
               />
               <input
                 className="myAccount-inputs"
@@ -70,8 +73,8 @@ export default function Account() {
                 type="text"
                 placeholder={updatedUser.lastName || user.lastName}
                 onChange={(e) =>
-                  setUpdatedUser({ ...updatedUser, lastName: e.target.value })
-                }
+                  setUpdatedUser({ ...updatedUser, lastName: e.target.value })}
+                  onClick={(e) => e.stopPropagation()}
               />
             </>
           ) : (
@@ -80,26 +83,28 @@ export default function Account() {
             </p>
           )}
         </h2>
-        
-          <h2>Email: </h2>
+          <h2 id="details-email">Email: 
           {showInputs ? (
             <input
               className="myAccount-inputs"
-              id="email-input"
+              id="email-update"
               type="text"
               placeholder={updatedUser.email || user.email}
-              onChange={(e) =>
-                setUpdatedUser({ ...updatedUser, email: e.target.value })
-              }
+              onChange={(e) => 
+                setUpdatedUser({ ...updatedUser, email: e.target.value })}
+                onClick={(e) => e.stopPropagation()}
             />
           ) : (
-            <p className="myAcct-info-text">{user.email}</p>
+            <p className="myAcct-info-text"> {user.email}</p>
           )}
+          </h2>
         <div>
         <button
           className="myAccount-btns"
           id="update-btn"
-          onClick={() => setShowInputs(!showInputs)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowInputs(!showInputs)}}
         >
           {showInputs ? "Hide" : "Update"}
         </button>
@@ -121,13 +126,18 @@ export default function Account() {
           Logout
         </button>
         </div>
-      </section>
-      <section id="favCompanies-Section"> 
-  <h2 id="FavComp-headerText" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-    Favorite Companies {isDropdownOpen ? "▼" : "▶"}
-  </h2>
-  <div className={`favCompany-dropdownDiv ${isDropdownOpen ? 'expanded' : ''}`}>
-  <h3 id="clickFav-text">{!isDropdownOpen ? "Click Favorite Companies!" : ""}</h3>
+        </section>
+        </div>
+        </div>
+
+          <section id="favCompanies-Section">
+            <h2
+              id="FavComp-headerText"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              Favorite Companies {isDropdownOpen ? "▼" : "▶"}
+            </h2>
+          <div className={`favCompany-dropdownDiv ${isDropdownOpen ? 'expanded' : ''}`}>
   {isDropdownOpen && (
     favoriteCompanies && favoriteCompanies.length > 0 ? (
       favoriteCompanies.map(({ company: companyData }) => (
@@ -141,9 +151,7 @@ export default function Account() {
           <button className="favButton" onClick={() => handleRemoveFavorite(id, companyData.id)}>
               Remove from Favorites
           </button>
-
         </div>
-        
       ))
     ) : (
       <p>No favorited companies</p>
@@ -152,12 +160,16 @@ export default function Account() {
   </div>
 </section>
 
-<section id="followedPoliticians-Section"> 
-  <h2 id="FollowPolitician-headerText" onClick={() => setIsFollowsDropdownOpen(!isFollowsDropdownOpen)}>
-    Followed Politicians {isFollowsDropdownOpen ? "▼" : "▶"}
-  </h2>
-  <div className={`folPolitician-dropdownDiv ${isFollowsDropdownOpen ? 'expanded' : ''}`}>
-  <h3 id="clickFollow-text">{!isFollowsDropdownOpen ? "Click Followed Politicians!" : ""}</h3>
+          <section id="followedPoliticians-Section">
+            <h2
+              id="FollowPolitician-headerText"
+              onClick={() => {
+                setIsFollowsDropdownOpen(!isFollowsDropdownOpen);
+              }}
+            >
+              Followed Politicians {isFollowsDropdownOpen ? "▼" : "▶"}
+            </h2>
+            <div className={`folPolitician-dropdownDiv ${isFollowsDropdownOpen ? 'expanded' : ''}`}>
   {isFollowsDropdownOpen && (
     followedPoliticians && followedPoliticians.length > 0 ? (
       followedPoliticians.map(({ politician: politicianData }) => (
@@ -169,7 +181,6 @@ export default function Account() {
           <button className="favButton" onClick={() => handleRemoveFollow(id, politicianData.id)}>
               Unfollow
           </button>
-
         </div>
         
       ))
@@ -178,8 +189,8 @@ export default function Account() {
     )
   )}
   </div>
-</section>
-
-    </div>
+          </section>
+        </div>
+ 
   );
 }

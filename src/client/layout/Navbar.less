@@ -1,63 +1,13 @@
-// nav.top {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   position: sticky;
-//   top: 0;
-//   z-index: 1;
-  // background: linear-gradient(
-  //   to bottom,
-  //   rgba(30, 87, 153, 0) 0%,
-  //   rgba(30, 87, 153, 0.8) 15%,
-  //   rgba(30, 87, 153, 1) 19%,
-  //   rgba(30, 87, 153, 1) 20%,
-  //   rgba(41, 137, 216, 1) 50%,
-  //   rgba(30, 87, 153, 1) 80%,
-  //   rgba(30, 87, 153, 1) 81%,
-  //   rgba(30, 87, 153, 0.8) 85%,
-  //   rgba(30, 87, 153, 0) 100%
-  // );
-//   height: 8vh;
-//   box-shadow: slategray 1px 2px 3px 1px;
-//   justify-content: right;
-//   text-align: center;
-//   padding-top: 5px;
-//   padding-bottom: 5px;
-//   padding-right: 10px;
-
-//   menu {
-//     display: flex;
-//     gap: 1.5ch;
-//     flex-direction: row;
-//     text-align: center;
-//     align-items: center;
-//     font-size: 20px;
-
-//     a {
-//       color: white;
-//     }
-//   }
-// }
-
-//   menu {
-    
-//     flex-direction: column;
-//     flex-wrap: wrap; 
-
-//     a {
-//       margin-bottom: 10px;
-//     }
-//   }
-// }
-
 #top {
   display: flex;
   justify-content: right;
+  position: sticky;
   padding: 0 15%;
   height: 75px;
   line-height: 75px;
   align-items: center;
   justify-items: right;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     rgba(30, 87, 153, 0) 0%,
@@ -117,22 +67,19 @@
 @media (max-width: 935px) {
   #top { 
       padding: 0 2rem;
+      position: sticky;
+      top: 0;
 }
 #top .nav-list .nav-item {
   padding: 0 20px;
+  }
 }
 
-}
-
-// @media screen and (max-width: 768px) {
-//   nav.top {
-//     height: auto;
-//     padding: 10px;
-//     justify-content: center;
-//   }
-// }
 
 @media (max-width: 675px) {
+  nav {
+    position: sticky;
+  }
   #top  .nav-list {
       display: none;
       position: absolute;
@@ -154,7 +101,6 @@
       z-index: -2;
       transition: .6s;
       box-shadow: 0 0 12px -2px black;
-
   }
   
   #top .nav-list .nav-item {
