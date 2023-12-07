@@ -1,61 +1,86 @@
-#myaccount-html {
+#myAccount-html {
   display: flex;
-  justify-content: space-evenly;
-  height: auto;
+  justify-content: center; 
+  height: 100%;
+  width: 100%;
   padding-top: 25px;
+  padding-right: 15px;
+  overflow: hidden;
+  gap: 10px;
 
   section {
-    width: 30vw;
-    height: 400px;
-    // text-align: center;
-    align-content: center;
+    height: auto;
     display: inline-flex;
     flex-direction: column;
     padding: 5px;
+    width: 400px; 
+    margin-bottom: 10px;
   }
-
-  #followedPoliticians-Section{
-    display: flex;
-    gap: 15px;
-    box-sizing: border-box;
-    align-self: center;
-  }
-
-  #favCompanies-Section {
-    display: flex;
-    gap: 15px;
-    height: auto;
-    min-width: 30%;
-    box-sizing: border-box;
-
-  
-  }
-  .favCompany-dropdownDiv{
-    // height: auto;
-    overflow: auto;
-   padding-top: 5px;
-   padding-left: 10px;
-    padding-bottom: 5px;
-    padding-right: 5px;
-    min-width: 25vw;
-  }
-
-  .favCompany-dropdownDiv.expanded {
-    border: 1px solid white;
-    
-  }
-
 }
 
 #myAccount-main {
-  align-items: center;
-  // min-width: 100%;
-  // align-items: center;
-  // align-content: center;
-  // text-align: center;
-  // background-color: white;
-
+  display: none; 
 }
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  position: relative;
+  top: 300px;
+  left: -30px;
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#followedPoliticians-Section,
+#favCompanies-Section {
+  display: flex; 
+  align-items: center;
+}
+
+#sidebar {
+  // display: none;
+  width: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  height: 75.3%; 
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  padding-left: 40px;
+  margin-top: 75px;
+}
+
+#sidebar.expanded {
+  width: 22vw; 
+  padding: 2px;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.favCompany-dropdownDiv,
+.folPolitician-dropdownDiv {
+  overflow: auto;
+  height: 700px;
+  padding: 10px;
+  width: 350px; 
+  transition: 0.5s;
+}
+
+  .favCompany-dropdownDiv.expanded {
+    // border: 1px solid white;
+    background-color:  rgba(70, 87, 153, 1);
+  }
+  .folPolitician-dropdownDiv.expanded {
+    // border: 1px solid white;
+    background-color:  rgba(70, 87, 153, 1);
+  }
 
 .myAccount-btns {
   background-color: #233142;
@@ -94,9 +119,19 @@
   align-self: center;
 }
 
+#email-update {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+#sidebar-text{
+  display: inline;
+  flex-direction: column;
+}
+
 .favCompanies {
   display: grid;
-  width: auto;
   gap: 5px;
   p {
     color: white;
@@ -105,7 +140,7 @@
     color: black;
     font-weight: 500;
   }
-  
+
   .value {
     color: white;
   }
@@ -114,83 +149,191 @@
   }
 }
 
-
 .myAcct-info-text {
-  font-size: 24px;
+  display: inline;
+  font-size: 23px;
   font-weight: 700;
   color: whitesmoke;
-}
-
-.username-text {
-  position: relative;
-  top: 0px;
-  margin-bottom: 20px;
 }
 
 #FavComp-headerText {
   cursor: pointer;
   padding-bottom: 5px;
-  position: sticky;
   top: 0px;
-  z-index: 1;
   flex-wrap: nowrap;
+  color: white;
 }
 
 #FollowPolitician-headerText{
   cursor: pointer;
   padding-bottom: 5px;
-  position: sticky;
   top: 0px;
-  z-index: 1;
   flex-wrap: nowrap;
-  // text-align: center;
+  color: white;
 }
-
 
 #details-name {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.label {
-  color: black;
-  font-weight: 700;
+#details-email {
+  display: inline;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .value {
   color: white;
 }
 
+#followedPoliticians-Section,
+#favCompanies-Section {
+  display: none; 
+}
+
+.sidebar-content {
+  padding: 10px; 
+}
+
+#FollowPolitician-headerText,
+#FavComp-headerText {
+  text-align: center; 
+}
+
+// Media queries for small screens -------------
+
 @media (max-width: 1000px) {
-  #myaccount-html {
-    flex-direction: column; /* Adjusted to column for stacking on small screens */
-    align-items: center; /* Adjusted to center on small screens */
+  #myAccount-html {
+    display: grid; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: fit-content;
+    font-size: percentage(.8%);
+    justify-content: center;
+
+    button {
+      font-size: percentage(.9%);
+    }
+
+    #sidebar {
+      overflow: hidden;
+      transition: 0.5s;
+      position: fixed;
+      top: 75px;
+      left: 0;
+      height: 100%; 
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      // border-radius: 0% 80% 80% 0%;
+      margin-top: 0;
+    }
+
+    .vertical-text {
+      display: flex;
+      justify-self: center;
+      align-self: center;
+      text-align: center;
+      text-justify: center;
+      position: relative;
+      top: 30%;
+      left: -30px;
+    }
+
+    #followedPoliticians-Section,
+    #favCompanies-Section {
+      max-width: 80vw;
+    }
+
+}
+    .favCompanies {
+      display: grid;
+      gap: 5px;
+      p {
+        color: white;
+      }
+      .label {
+        color: black;
+        font-weight: 700;
+      }
+      
+      .value {
+        color: white;
+      }
+      .favButton {
+        margin-bottom: 30px;
+      }
+    }
+
+  #sidebar.expanded {
+    width: 100%; 
+  }
+#sidebar {
+  overflow: hidden;
+}
+
+.sidebar-content{
+  padding-right: -50px;
+}
+  #myAccount-main {
+    min-width: 100%;
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #lastName-Update {
+    margin-bottom: 10px;
+  }
+
+  .myAccount-btns {
+    margin-top: 2px;
+  }
+
+   #sidebar {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #myAccount-html{
+    padding-right: 0;
   }
 
   #myAccount-main {
-    width: 100%;
+  padding-right: 0;
   }
 
-  section {
-    width: 100%; /* Full width on small screens */
-    margin-bottom: 10px; /* Added margin for spacing */
-  }
+#favCompanies-Section {
+  height: 0;
+}
 
-  #followedPoliticians-Section,
-  #favCompanies-Section {
-    display: block; /* Show sections on small screens */
-  }
+.favCompany-dropdownDiv {
+  height: 0;
+  border: none;
+}
+.favCompany-dropdownDiv.expanded {
+height: 700px;
+}
 
-  .sidebar.expanded {
-    width: 100%; /* Full width when expanded on small screens */
-  }
+#followedPoliticians-Section {
+  height: 0;
+}
 
-  .sidebar-content {
-    padding: 10px; /* Adjusted padding for small screens */
-  }
+.folPolitician-dropdownDiv {
+  height: 0;
+  border: none;
+}
+.folPolitician-dropdownDiv.expanded {
+height: 700px;
+}
 
-  #FollowPolitician-headerText,
-  #FavComp-headerText {
-    text-align: center; /* Centered text on small screens */
-  }
+.favCompany-dropdownDiv,
+.folPolitician-dropdownDiv {
+  width: 300px; 
+
+}
 }
