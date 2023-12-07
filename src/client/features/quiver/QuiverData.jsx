@@ -6,7 +6,7 @@ export default function QuiverData() {
   const { data: quiverData2, isloading } = useGetQuiverDataQuery();
 
   if (isloading) {
-    return <h1>Loading</h1>;
+    return <h1 className="loading">Loading</h1>;
   }
   const quiverData = quiverData2?.slice(0, 4);
   return (
@@ -27,7 +27,8 @@ export default function QuiverData() {
             <p>Transaction Date: {entry.TransactionDate}</p>
             <Link to={`/companies/name/${entry.Ticker}`}>
               <p>
-                <span id="ticker">Ticker: </span><span id="trade-ticker">{entry.Ticker}</span>
+                <span id="ticker">Ticker: </span>
+                <span id="trade-ticker">{entry.Ticker}</span>
               </p>
             </Link>
             <p>{entry.Transaction}</p>

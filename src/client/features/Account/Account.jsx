@@ -35,7 +35,7 @@ export default function Account() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (isError) {

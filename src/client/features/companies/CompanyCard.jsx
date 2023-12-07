@@ -17,7 +17,7 @@ export default function CompanyCard({ company }) {
 
   if (id !== undefined) {
     if (isLoading) {
-      return <p>Loading ......</p>;
+      return <p className="loading">Loading ......</p>;
     }
     if (companyData === null || isNaN(id)) {
       return (
@@ -67,7 +67,9 @@ export default function CompanyCard({ company }) {
                       <span id="rep-name">{element.Representative}</span>
                     </Link>
                   </p>
-                  <p>{element.House}, {element.Party}</p>
+                  <p>
+                    {element.House}, {element.Party}
+                  </p>
                   <p>Date Reported: {element.ReportDate}</p>
                   <p>Transaction Date: {element.TransactionDate}</p>
                   <p>

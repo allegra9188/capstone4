@@ -45,7 +45,7 @@ export default function Politicians() {
     : politicians;
 
   return isLoading ? (
-    <h2>Loading...</h2>
+    <h2 className="loading">Loading...</h2>
   ) : (
     <section>
       <div className="search-and-sort-container">
