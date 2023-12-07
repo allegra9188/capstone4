@@ -6,8 +6,6 @@ import { useState } from "react";
 import { useFavorites } from "../Account/favorites/favUtility";
 import { useFollows } from "../Account/follows/followUtility";
 
-
-
 export default function Account() {
   const { id } = useParams();
   const { data: user, isLoading, isError } = useGetAccountQuery(id);
@@ -36,13 +34,13 @@ export default function Account() {
     navigate("/");
   };
 
-
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-    if (isError) {return <div>Error loading account</div>}
+  if (isError) {
+    return <div>Error loading account</div>;
+  }
 
 
   return (
@@ -83,6 +81,7 @@ export default function Account() {
             </p>
           )}
         </h2>
+
           <h2 id="details-email">Email: 
           {showInputs ? (
             <input
@@ -111,21 +110,30 @@ export default function Account() {
         {showInputs && (
           <button
             className="myAccount-btns"
-            id="save-btn"
-            onClick={handleUpdate}
+            id="update-btn"
+            onClick={() => setShowInputs(!showInputs)}
           >
-            Save
+            {showInputs ? "Hide" : "Update"}
           </button>
-        )}
+          {showInputs && (
+            <button
+              className="myAccount-btns"
+              id="save-btn"
+              onClick={handleUpdate}
+            >
+              Save
+            </button>
+          )}
 
-        <button
-          className="myAccount-btns"
-          id="acct-logout"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+          <button
+            className="myAccount-btns"
+            id="acct-logout"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
+
         </section>
         </div>
         </div>
