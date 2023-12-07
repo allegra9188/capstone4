@@ -6,7 +6,6 @@ import { selectToken } from "../auth/authSlice";
 import PoliticianRecentTrade from "./politicianRecentTrade";
 import { useFollows } from "../Account/follows/followUtility";
 import "./PoliticianDetails.less";
-import TradeActivityChecker from "./TradeActivityChecker";
 
 function PoliticianDetails() {
   const { id } = useParams();

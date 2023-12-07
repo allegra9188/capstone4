@@ -174,19 +174,19 @@ export default function Account() {
                     <span className="value">{companyData.security}</span>
                   </h3>
                   <p>
-                    <span className="label">Ticker Symbol:</span>{" "}
+                    <span className="label">Ticker:</span>{" "}
                     <span className="value">{companyData.symbol}</span>
                   </p>
                   <p>
-                    <span className="label">Sub_Industry:</span>{" "}
+                    <span className="label">Sub Industry:</span>{" "}
                     <span className="value">{companyData.sub_industry}</span>
                   </p>
                   <p>
-                    <span className="label">Headquarted in:</span>{" "}
+                    <span className="label">Headquarters:</span>{" "}
                     <span className="value">{companyData.hq}</span>
                   </p>
                   <p>
-                    <span className="label">Founded in:</span>{" "}
+                    <span className="label">Founded:</span>{" "}
                     <span className="value">{companyData.founded}</span>
                   </p>
                   <Link
@@ -199,7 +199,7 @@ export default function Account() {
                     className="favButton"
                     onClick={() => handleRemoveFavorite(id, companyData.id)}
                   >
-                    Remove from Favorites
+                    Remove
                   </button>
                 </div>
               ))
@@ -228,7 +228,7 @@ export default function Account() {
               followedPoliticians.map(({ politician: politicianData }) => (
                 <div className="favCompanies" key={politicianData.id}>
                   <h3>
-                    <span className="label">Company Name:</span>{" "}
+                    <span className="label">Name:</span>{" "}
                     <span className="value">
                       {politicianData.first_name +
                         " " +
@@ -236,11 +236,11 @@ export default function Account() {
                     </span>
                   </h3>
                   <p>
-                    <span className="label">Ticker Symbol:</span>{" "}
+                    <span className="label">Party:</span>{" "}
                     <span className="value">{politicianData.party}</span>
                   </p>
                   <p>
-                    <span className="label">Sub_Industry:</span>{" "}
+                    <span className="label">Role: </span>{" "}
                     <span className="value">{politicianData.role}</span>
                   </p>
                   <Link to={`/politicians/${politicianData.id}`}>
