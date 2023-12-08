@@ -55,8 +55,11 @@ function PoliticianRecentTrade() {
         <>
           {firstFiveTransaction?.length > 0 ? (
             <ul className="rep-transaction-list">
-              {firstFiveTransaction.map((transaction) => (
-                <Transaction key={transaction.id} transaction={transaction} />
+              {firstFiveTransaction.map((transaction, i) => (
+                <Transaction
+                  key={String(transaction.id) + i}
+                  transaction={transaction}
+                />
               ))}
             </ul>
           ) : (
