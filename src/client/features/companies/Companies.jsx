@@ -11,7 +11,7 @@ export default function Companies() {
 
   // Check if companies is still loading or undefined
   if (isLoading || !companies) {
-    return <h1 className="Loading">loading</h1>;
+    return <h1 className="loading"></h1>;
   }
 
   const filteredCompanies = companies.filter((company) => {

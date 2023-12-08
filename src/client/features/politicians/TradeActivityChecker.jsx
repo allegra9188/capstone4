@@ -38,7 +38,6 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
 
 const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
   const activityStatus = checkActivity(politician, houseTrades, senateTrades);
-  console.log(checkActivity(politician));
 
   return (
     <div>

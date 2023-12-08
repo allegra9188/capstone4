@@ -41,7 +41,7 @@ function PoliticianRecentTrade() {
     : [];
 
   if (isLoading) {
-    return <h1>Loading Politician...</h1>;
+    return <h1 className="loading">Loading Politician...</h1>;
   }
   //console.log('politician', politician)
   if (isError) {
@@ -49,7 +49,6 @@ function PoliticianRecentTrade() {
   }
 
   return (
-    
     <section className="recent-trades-container">
       <h2>Recent Transactions</h2>
       {politician.role === "Rep" && (
@@ -66,7 +65,6 @@ function PoliticianRecentTrade() {
         </>
       )}
 
-  
       {politician.role === "Sen" && (
         <>
           {firstFiveSenateTransactions?.length > 0 ? (
