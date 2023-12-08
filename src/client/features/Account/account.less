@@ -18,10 +18,6 @@
   }
 }
 
-#myAccount-main {
-  display: none; 
-}
-
 .vertical-text {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -42,7 +38,7 @@
 #sidebar {
   width: 0;
   overflow: hidden;
-  transition: 0.5s;
+  transition: 0.2s;
   position: fixed;
   top: 75px;
   left: 0;
@@ -54,12 +50,20 @@
   margin-top: 75px;
 }
 
+
 #sidebar.expanded {
   width: 22vw; 
-  padding: 2px;
+  padding-left: 10px;
+
+ .sidebar-content{
+  display: flex;
+  min-width: 100%;
+  min-height: 100%;
+  }
 }
 
 .sidebar-content {
+  display: none;
   padding: 20px;
 }
 
@@ -72,12 +76,10 @@
 }
 
   .favCompany-dropdownDiv.expanded {
-    // border: 1px solid white;
-    background-color:  /* rgba(70, 87, 153, 1) */ #233142;
+    background-color: #233142;
   }
   .folPolitician-dropdownDiv.expanded {
-    // border: 1px solid white;
-    background-color:  /* rgba(70, 87, 153, 1) */ #233142;
+    background-color: #233142;
   }
 
 .myAccount-btns {
@@ -135,7 +137,7 @@
     color: white;
   }
   .label {
-    color: wheat;
+    color: rgb(179, 200, 233);
     font-weight: 700;
   }
 
@@ -144,7 +146,9 @@
   }
   .favButton {
     margin-bottom: 30px;
-
+  }
+  a {
+    font-weight: 700;
   }
 }
 
@@ -152,7 +156,7 @@
   display: inline;
   font-size: 23px;
   font-weight: 700;
-  color: whitesmoke;
+  color: rgb(179, 200, 233);
 }
 
 #FavComp-headerText {
@@ -182,7 +186,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 
 #followedPoliticians-Section,
 #favCompanies-Section {
@@ -222,7 +225,6 @@
       height: 100%; 
       color: white;
       cursor: pointer;
-      // border-radius: 0% 80% 80% 0%;
       margin-top: 0;
     }
 
@@ -333,6 +335,5 @@ height: 700px;
 .favCompany-dropdownDiv,
 .folPolitician-dropdownDiv {
   width: 300px; 
-
-}
+  }
 }
