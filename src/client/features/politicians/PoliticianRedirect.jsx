@@ -18,5 +18,10 @@ export default function PoliticianRedirect() {
       navigate(`/politicians/${politician?.id}`);
     }
   }, [politician, navigate]);
-  return <div>This politician is not in our database</div>;
+  return (
+    <div className="politicians-redirect">
+      We're sorry! Unfortunatetly the politician you are looking for is not in
+      our database.
+    </div>
+  );
 }
