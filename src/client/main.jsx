@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import "./index.less";
+import "./main/index.less";
 import "./layout/Root.less";
 import "./layout/Navbar.less";
 import "./features/auth/authForm.css";

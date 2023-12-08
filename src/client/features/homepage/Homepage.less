@@ -5,14 +5,17 @@
 
 .article-trade-container{
   display: inline-flex;
+  justify-content: center;
 }
 
 .copy-container {
   padding: 2em;
-  max-width: 80%;
+  width: 100%;
   row-gap: 1em;
   text-align: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
   h3{
     line-height: 30px;
   }
@@ -25,12 +28,13 @@
     border-radius: 15px;
     border: 2px solid black;
     background-color: floralwhite;
+    width: fit-content;
   }
 }
 
 .article-container {
   padding: 2em;
-  max-width: 50%;
+  max-width: 30%;
   row-gap: 1em;
   h2 {
     text-align: center;

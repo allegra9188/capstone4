@@ -3,8 +3,9 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 
 // Add politician to user's favorites
-// router.post("/:userId/add-favorite/:politicianId", async (req, res, next) => {
-router.post("/politicians/:userId/add-follow/:politicianId", async (req, res, next) => {
+router.post(
+  "/politicians/:userId/add-follow/:politicianId",
+  async (req, res, next) => {
     try {
       const userId = +req.params.userId;
       const politicianId = +req.params.politicianId;
@@ -30,7 +31,9 @@ router.post("/politicians/:userId/add-follow/:politicianId", async (req, res, ne
         },
       });
 
-      res.status(201).json({ message: "Politician added to follow list", follow });
+      res
+        .status(201)
+        .json({ message: "Politician added to follow list", follow });
     } catch (error) {
       console.error(error);
       next(new ServerError("Internal Server Error"));
@@ -39,7 +42,9 @@ router.post("/politicians/:userId/add-follow/:politicianId", async (req, res, ne
 );
 
 // Remove politician from user's favorites
-router.delete("/politicians/:userId/remove-follow/:politicianId", async (req, res, next) => {
+router.delete(
+  "/politicians/:userId/remove-follow/:politicianId",
+  async (req, res, next) => {
     try {
       const userId = +req.params.userId;
       const politicianId = +req.params.politicianId;
@@ -77,7 +82,7 @@ router.delete("/politicians/:userId/remove-follow/:politicianId", async (req, re
 router.get("/:userId/following", async (req, res, next) => {
   try {
     const userId = +req.params.userId;
-    
+
     const followings = await prisma.following.findMany({
       where: {
         userId: userId,

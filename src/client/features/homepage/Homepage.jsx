@@ -26,7 +26,7 @@ export default function Homepage({ article }) {
           <h3>
             See recent congress trading activity by politician or company!
           </h3>
-          <h3>Sign up to see your politicians and companies.</h3>
+          <h3>Sign up to follow trading activity of any congress members.</h3>
         </div>
       </div>
       <div className="article-trade-container">
