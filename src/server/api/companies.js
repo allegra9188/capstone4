@@ -4,15 +4,6 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-/** User must be logged in to access tasks. */
-// router.use((req, res, next) => {
-//   if (!res.locals.user) {
-//     return next(new ServerError(401, "You must be logged in."));
-//   }
-//   next();
-// });
-
-/** get all students */
 router.get("/", async (req, res, next) => {
   try {
     const companies = await prisma.company.findMany();
@@ -28,8 +19,8 @@ router.get("/name/:name", async (req, res, next) => {
     const ticker = req.params.name;
 
     const company = await prisma.company.findFirst({
-      where: {symbol: ticker }
-    })
+      where: { symbol: ticker },
+    });
     res.json(company);
   } catch (err) {
     next(err);
