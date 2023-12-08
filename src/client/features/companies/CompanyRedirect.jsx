@@ -22,8 +22,9 @@ export default function CompanyRedirect() {
   }, [company, navigate]);
 
   return (
-    <div>
-      This company is not in our database, which consist of only 503 companies
+    <div className="company-redirect">
+      Unfortunately this company is not in our database, which consists of the
+      top 500+ performing companies.
     </div>
   );
 }
