@@ -54,7 +54,7 @@ export default function Account() {
           <section id="myAccount-main">
             <h2>
               <span className="username-text label">Hi,</span>{" "}
-              <span className="value">{user.username}</span>
+              <span className="myAcct-info-text">{user.username}</span>
             </h2>
             <h2 id="details-name">
               <b>Name: </b>
