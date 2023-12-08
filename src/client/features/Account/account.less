@@ -26,7 +26,7 @@
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   position: relative;
-  top: 300px;
+  top: 250px;
   left: -30px;
   margin-right: 10px;
   font-size: 24px;
@@ -47,7 +47,7 @@
   top: 75px;
   left: 0;
   height: 75.3%; 
-  background-color: #333;
+  background-color: #233142;
   color: white;
   cursor: pointer;
   padding-left: 40px;
@@ -69,20 +69,19 @@
   height: 700px;
   padding: 10px;
   width: 350px; 
-  transition: 0.5s;
 }
 
   .favCompany-dropdownDiv.expanded {
     // border: 1px solid white;
-    background-color: rgba(70, 87, 153, 1);
+    background-color:  /* rgba(70, 87, 153, 1) */ #233142;
   }
   .folPolitician-dropdownDiv.expanded {
     // border: 1px solid white;
-    background-color:  rgba(70, 87, 153, 1);
+    background-color:  /* rgba(70, 87, 153, 1) */ #233142;
   }
 
 .myAccount-btns {
-  background-color: #233142;
+  background-color: #333;
   color: white;
   margin-top: 10px;
   position: relative;
@@ -136,15 +135,16 @@
     color: white;
   }
   .label {
-    color: black;
-    font-weight: 500;
+    color: wheat;
+    font-weight: 700;
   }
 
   .value {
-    color: white;
+    color: floralwhite;
   }
   .favButton {
     margin-bottom: 30px;
+
   }
 }
 
@@ -160,7 +160,8 @@
   padding-bottom: 5px;
   top: 0px;
   flex-wrap: nowrap;
-  color: white;
+  color: floralwhite;
+  
 }
 
 #FollowPolitician-headerText{
@@ -182,9 +183,6 @@
   margin-bottom: 20px;
 }
 
-.value {
-  color: white;
-}
 
 #followedPoliticians-Section,
 #favCompanies-Section {
@@ -222,7 +220,6 @@
       top: 75px;
       left: 0;
       height: 100%; 
-      background-color: #333;
       color: white;
       cursor: pointer;
       // border-radius: 0% 80% 80% 0%;
@@ -246,6 +243,11 @@
     }
 
 }
+
+.favCompany-dropdownDiv,
+.folPolitician-dropdownDiv {
+  transition: 0.5s;
+}
     .favCompanies {
       display: grid;
       gap: 5px;
@@ -253,13 +255,11 @@
         color: white;
       }
       .label {
-        color: black;
+        
         font-weight: 700;
       }
       
-      .value {
-        color: white;
-      }
+   
       .favButton {
         margin-bottom: 30px;
       }

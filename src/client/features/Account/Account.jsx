@@ -126,13 +126,6 @@ export default function Account() {
                 <>
                   <button
                     className="myAccount-btns"
-                    id="update-btn"
-                    onClick={() => setShowInputs(!showInputs)}
-                  >
-                    {showInputs ? "Hide" : "Update"}
-                  </button>
-                  <button
-                    className="myAccount-btns"
                     id="save-btn"
                     onClick={handleUpdate}
                   >
@@ -199,7 +192,7 @@ export default function Account() {
                     className="favButton"
                     onClick={() => handleRemoveFavorite(id, companyData.id)}
                   >
-                    Remove
+                    Unfavorite
                   </button>
                 </div>
               ))
