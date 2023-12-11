@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import PoliticianRecentTrade from "./PoliticianRecentTrade";
 import { useFollows } from "../Account/follows/followUtility";
-import "./PoliticianDetails.less";
+import "./styling/PoliticianDetails.less";
 
 function PoliticianDetails() {
   const { id } = useParams();
