@@ -95,7 +95,7 @@ export default function Account() {
             </h2>
 
             <h2 id="details-email">
-              Email:
+              <b>Email: </b>
               {showInputs ? (
                 <input
                   className="myAccount-inputs"
@@ -108,7 +108,8 @@ export default function Account() {
                   onClick={(e) => e.stopPropagation()}
                 />
               ) : (
-                <p className="myAcct-info-text"> {user.email}</p>
+                <p className="myAcct-info-text">
+                  {user.email}</p>
               )}
             </h2>
             <div>

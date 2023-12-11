@@ -7,14 +7,15 @@
   padding-right: 15px;
   overflow: hidden;
   gap: 10px;
-
+  box-sizing: border-box;
+  // background-color: #233142;
   section {
     height: auto;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     padding: 5px;
     width: 400px; 
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
   }
 }
 
@@ -23,7 +24,7 @@
   transform: rotate(180deg);
   position: relative;
   top: 250px;
-  left: -30px;
+  left: -40px;
   margin-right: 10px;
   font-size: 24px;
   font-weight: 800;
@@ -33,38 +34,48 @@
 #favCompanies-Section {
   display: flex; 
   align-items: center;
+  height: auto;
 }
 
 #sidebar {
   width: 0;
   overflow: hidden;
-  transition: 0.2s;
-  position: fixed;
-  top: 75px;
+  transition: 0.5s;
+  position: absolute;
+  top: 150px;
   left: 0;
-  height: 75.3%; 
+  // height: 75.3%; 
+  height: 700px;
   background-color: #233142;
-  color: white;
+  color: whitesmoke;
   cursor: pointer;
   padding-left: 40px;
-  margin-top: 75px;
+  // margin-top: 75px;
 }
 
 
 #sidebar.expanded {
   width: 22vw; 
-  padding-left: 10px;
+  // padding-left: 10px;
+  // padding-left: 30px;
 
  .sidebar-content{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-width: 100%;
   min-height: 100%;
+  }
+  #myAccount-main{
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 }
 
 .sidebar-content {
   display: none;
-  padding: 20px;
+  // padding: 20px;
 }
 
 .favCompany-dropdownDiv,
@@ -183,8 +194,8 @@
 
 #details-email {
   display: inline;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  flex-direction: row;
+  // margin-top: 20px;
 }
 
 #followedPoliticians-Section,
@@ -192,9 +203,9 @@
   display: none; 
 }
 
-.sidebar-content {
-  padding: 10px; 
-}
+// .sidebar-content {
+//   padding: 10px; 
+// }
 
 #FollowPolitician-headerText,
 #FavComp-headerText {
@@ -229,14 +240,14 @@
     }
 
     .vertical-text {
-      display: flex;
-      justify-self: center;
-      align-self: center;
-      text-align: center;
-      text-justify: center;
+      // display: flex;
+      // justify-self: center;
+      // align-self: center;
+      // text-align: center;
+      // text-justify: center;
       position: relative;
       top: 30%;
-      left: -30px;
+      left: -33px;
     }
 
     #followedPoliticians-Section,
@@ -313,7 +324,7 @@
 }
 
 .favCompany-dropdownDiv {
-  height: 0;
+  height: auto;
   border: none;
 }
 .favCompany-dropdownDiv.expanded {
@@ -335,5 +346,13 @@ height: 700px;
 .favCompany-dropdownDiv,
 .folPolitician-dropdownDiv {
   width: 300px; 
+  }
+}
+
+
+@media (max-width: 361px) {
+  .favCompany-dropdownDiv,
+.folPolitician-dropdownDiv {
+  width: 280px; 
   }
 }
