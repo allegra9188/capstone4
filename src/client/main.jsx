@@ -9,11 +9,11 @@ import "./layout/Root.less";
 import "./layout/Navbar.less";
 import "./features/auth/authForm.css";
 import "./features/Account/Account.less";
-import "./features/politicians/PoliticianDetails.less";
+import "./features/politicians/styling/PoliticianDetails.less";
 import "./features/homepage/Homepage.less";
 import "./layout/main.less";
 import "./features/companies/companies.less";
-import "./features/politicians/PoliticiansList.less";
+import "./features/politicians/styling/PoliticiansList.less";
 
 import store from "./store";
 import router from "./mainDetails";

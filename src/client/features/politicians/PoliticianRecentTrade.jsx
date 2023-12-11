@@ -1,11 +1,11 @@
 import React from "react";
-import Transaction from "./Transaction";
+import Transaction from "./transactions/Transaction";
 import { useParams } from "react-router-dom";
-import { useGetPoliticianQuery } from "./politicianSlice";
-import { useGetSenateDataQuery } from "./senateApiSlice";
-import { useGetHouseDataQuery } from "./houseApiSlice";
-import "./PoliticianDetails.less";
-import TradeActivityChecker from "./TradeActivityChecker";
+import { useGetPoliticianQuery } from "./slices/politicianSlice";
+import { useGetSenateDataQuery } from "./slices/senateApiSlice";
+import { useGetHouseDataQuery } from "./slices/houseApiSlice";
+import "./styling/PoliticianDetails.less";
+import TradeActivityChecker from "./transactions/TradeActivityChecker";
 
 function PoliticianRecentTrade() {
   const { id } = useParams();

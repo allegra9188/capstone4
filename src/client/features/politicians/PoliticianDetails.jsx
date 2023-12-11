@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetPoliticianQuery } from "./politicianSlice";
+import { useGetPoliticianQuery } from "./slices/politicianSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
-import PoliticianRecentTrade from "./politicianRecentTrade";
+import PoliticianRecentTrade from "./PoliticianRecentTrade";
 import { useFollows } from "../Account/follows/followUtility";
-import "./PoliticianDetails.less";
+import "./styling/PoliticianDetails.less";
 
 function PoliticianDetails() {
   const { id } = useParams();
