@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PoliticianCard from "./PoliticianCard";
-import { useGetPoliticiansQuery } from "./politicianSlice";
+import { useGetPoliticiansQuery } from "./slices/politicianSlice";
 import PaginationLogic from "./PaginationLogic";
 import "./PoliticiansList.less";
-import { checkActivity } from "./TradeActivityChecker";
-import { useGetSenateDataQuery } from "./senateApiSlice";
-import { useGetHouseDataQuery } from "./houseApiSlice";
+import { checkActivity } from "./transactions/TradeActivityChecker";
+import { useGetSenateDataQuery } from "./slices/senateApiSlice";
+import { useGetHouseDataQuery } from "./slices/houseApiSlice";
 
 export default function Politicians() {
   const { data: politicians, isLoading } = useGetPoliticiansQuery();
