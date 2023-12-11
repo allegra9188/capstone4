@@ -1,4 +1,5 @@
-@bg: #ffffff;
+// @bg: darkslategrey;
+@bg: #233142;
 @text: #333;
 @link-color: #428bca; // sea blue
 @link-color-hover: darken(@link-color, 10%);
@@ -10,9 +11,9 @@
 
 :root {
   font-family: Inter, sans-serif;
-
+  --animation-timing: 200ms ease-in-out;
   color: @text;
-  background-color: @bg;
+  background-color: lighten(@bg, 20%);
 }
 
 * {
