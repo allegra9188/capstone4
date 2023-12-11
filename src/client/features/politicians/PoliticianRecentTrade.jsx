@@ -1,9 +1,9 @@
 import React from "react";
 import Transaction from "./Transaction";
 import { useParams } from "react-router-dom";
-import { useGetPoliticianQuery } from "./politicianSlice";
-import { useGetSenateDataQuery } from "./senateApiSlice";
-import { useGetHouseDataQuery } from "./houseApiSlice";
+import { useGetPoliticianQuery } from "./slices/politicianSlice";
+import { useGetSenateDataQuery } from "./slices/senateApiSlice";
+import { useGetHouseDataQuery } from "./slices/houseApiSlice";
 import "./PoliticianDetails.less";
 import TradeActivityChecker from "./TradeActivityChecker";
 

@@ -1,4 +1,4 @@
-import api from "../../store/api";
+import api from "../../../store/api";
 
 const politiciansApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,9 +10,13 @@ const politiciansApi = api.injectEndpoints({
     }),
     // added Dec 5th
     getPoliticianIdByName: builder.query({
-      query: (name) => `/politicians/name/${name}`
-    })
+      query: (name) => `/politicians/name/${name}`,
+    }),
   }),
 });
 
-export const { useGetPoliticiansQuery, useGetPoliticianQuery, useGetPoliticianIdByNameQuery } = politiciansApi;
+export const {
+  useGetPoliticiansQuery,
+  useGetPoliticianQuery,
+  useGetPoliticianIdByNameQuery,
+} = politiciansApi;
