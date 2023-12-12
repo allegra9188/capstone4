@@ -52,6 +52,7 @@ export default function Account() {
         {!isSidebarOpen && <div className="vertical-text">Account Details</div>}
         <div className="sidebar-content">
           <section id="myAccount-main">
+            <h1 id="updateYourAccount">Update Your Account</h1>
             <h2>
               <span className="username-text label">Hi,</span>{" "}
               <span className="myAcct-info-text">{user.username}</span>
