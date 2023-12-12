@@ -8,15 +8,21 @@
   overflow: hidden;
   gap: 10px;
   box-sizing: border-box;
-  // background-color: #233142;
-  section {
+  #favCompanies-Section, #followedPoliticians-Section {
     height: auto;
     display: flex;
     flex-direction: column;
     padding: 5px;
     width: 400px; 
-    // margin-bottom: 10px;
   }
+}
+
+#myAccount-main{
+  height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 310px;
 }
 
 .vertical-text {
@@ -50,14 +56,11 @@
   color: whitesmoke;
   cursor: pointer;
   padding-left: 40px;
-  // margin-top: 75px;
 }
 
 
 #sidebar.expanded {
   width: 22vw; 
-  // padding-left: 10px;
-  // padding-left: 30px;
 
  .sidebar-content{
   display: flex;
@@ -75,7 +78,6 @@
 
 .sidebar-content {
   display: none;
-  // padding: 20px;
 }
 
 .favCompany-dropdownDiv,
@@ -195,7 +197,6 @@
 #details-email {
   display: inline;
   flex-direction: row;
-  // margin-top: 20px;
 }
 
 #followedPoliticians-Section,
@@ -203,13 +204,16 @@
   display: none; 
 }
 
-// .sidebar-content {
-//   padding: 10px; 
-// }
-
 #FollowPolitician-headerText,
 #FavComp-headerText {
   text-align: center; 
+}
+
+#updateYourAccount{
+  position: relative;
+  top: -100px;
+  text-decoration: underline
+  ;
 }
 
 // Media queries for small screens -------------
@@ -240,11 +244,6 @@
     }
 
     .vertical-text {
-      // display: flex;
-      // justify-self: center;
-      // align-self: center;
-      // text-align: center;
-      // text-justify: center;
       position: relative;
       top: 30%;
       left: -33px;
@@ -259,7 +258,7 @@
 
 .favCompany-dropdownDiv,
 .folPolitician-dropdownDiv {
-  transition: 0.5s;
+  transition: 0.6s;
 }
     .favCompanies {
       display: grid;
@@ -309,6 +308,7 @@
     padding-left: 30px;
   }
 }
+//-------------------------------------------
 
 @media screen and (max-width: 900px) {
   #myAccount-html{
@@ -347,6 +347,10 @@ height: 700px;
 .folPolitician-dropdownDiv {
   width: 300px; 
   }
+
+  #myAccount-main{
+    align-items:flex-start;
+  }
 }
 
 
@@ -356,3 +360,15 @@ height: 700px;
   width: 280px; 
   }
 }
+
+@media screen and (min-width: 500px) and (max-width: 920px) {
+  #sidebar.expanded {
+    width: 80%; 
+  }
+  }
+
+@media screen and (min-width: 1001px) and (max-width: 1025px) {
+  #sidebar.expanded {
+    width: 50%; 
+  }
+  }
