@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useGetQuiverDataQuery } from "./quiverSlice";
+import { useGetQuiverDataFromCsvQuery } from "./quiverSlice";
 import { Link } from "react-router-dom";
 
 export default function QuiverData() {
-  const { data: quiverData2, isloading } = useGetQuiverDataQuery();
+  const { data: quiverData2, isloading } = useGetQuiverDataFromCsvQuery();
 
   if (isloading) {
     return <h1 className="loading">Loading</h1>;
@@ -34,6 +34,7 @@ export default function QuiverData() {
             <p>{entry.Transaction}</p>
             <p>{entry.Range}</p>
             <p>{entry.District}</p>
+            <p>{entry.Tyle} {entry.Option_Type} {entry.Strike} {entry.Expiry}</p>
           </li>
         ))}
       </ul>

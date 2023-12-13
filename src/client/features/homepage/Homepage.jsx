@@ -6,6 +6,7 @@ import {
   useGetArticlesDataQuery,
   useGetArticlesDataFromCsvQuery,
 } from "./articles/articlesSlice";
+import Example from "./Graph";
 
 export default function Homepage({ article }) {
   const {
@@ -28,7 +29,9 @@ export default function Homepage({ article }) {
           </h3>
           <h3>Sign up to follow trading activity of any congress members.</h3>
         </div>
+        <h2>Past 3 Years Trading Volume by Sector:</h2>
       </div>
+      <Example />
       <div className="article-trade-container">
         <div className="article-container">
           <h2>Latest Articles</h2>

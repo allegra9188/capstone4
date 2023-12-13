@@ -15,9 +15,8 @@
 .username-label,
 .password-label {
   margin-right: 17px;
+  color: whitesmoke;
 }
-
-
 
 .loginInput {
   margin-left: 8px;
@@ -76,17 +75,3 @@
   color: #233142;
 }
 
-/* 	background: #233142; 
-}
-	
-.second-color { 
-	background: #455d7a; 
-}
-
-.third-color { 
-	background: #f95959; 
-}
-
-.fourth-color { 
-	background: #e3e3e3; 
-} */
