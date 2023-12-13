@@ -4,13 +4,13 @@ import { selectToken } from "../auth/authSlice";
 import { useParams, Link } from "react-router-dom";
 import { useGetCompanyByIdQuery } from "./companySlice";
 import { useFavorites } from "../Account/favorites/favUtility";
-import { useGetQuiverDataQuery } from "../quiver/quiverSlice";
+import { useGetQuiverDataFromApiQuery } from "../quiver/quiverSlice";
 export default function CompanyCard({ company }) {
   const { id } = useParams();
   const token = useSelector(selectToken);
   const { handleAddFavorite, favoriteCompanies } = useFavorites();
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
-  const { data: quiverData } = useGetQuiverDataQuery();
+  const { data: quiverData } = useGetQuiverDataFromApiQuery();
   const transactionForThisCompany = quiverData?.filter(
     (transaction) => transaction.Ticker === companyData?.symbol
   );
