@@ -27,6 +27,7 @@ export default function Navbar() {
     <>
     <input type="checkbox" id="toggle"/>
     <nav id="top">
+    <h1 id="title">Tradetivity</h1>
       <label className="navbar-toggler" htmlFor="toggle">
                 <span className="bar"></span>
                 <span className="bar"></span>

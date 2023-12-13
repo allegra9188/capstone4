@@ -2,12 +2,13 @@
   display: flex;
   justify-content: right;
   position: sticky;
-  padding: 0 15%;
+  padding: 0 10px;
   height: 75px;
   line-height: 75px;
   align-items: center;
   justify-items: right;
   z-index: 1;
+  flex-wrap: nowrap;
   background: linear-gradient(
     to bottom,
     rgba(30, 87, 153, 0) 0%,
@@ -75,6 +76,12 @@
   }
 }
 
+#title{
+  display: inline-flex;
+  justify-self: left;
+  float: left;
+  margin-right: 800px;
+}
 
 @media (max-width: 675px) {
   nav {
@@ -142,7 +149,12 @@
 }
 
 @media (max-width: 821px) {
-
+  #title{
+    display: inline;
+    justify-self: left;
+    float: left;
+    margin-right: 175px;
+  }
   main {
       padding-bottom: 40px ;
   }
@@ -197,3 +209,9 @@
 }
 
 
+@media (min-width: 700px) {
+  #title{
+    margin-right: 45px;
+  }
+
+}
