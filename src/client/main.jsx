@@ -14,6 +14,8 @@ import "./features/homepage/Homepage.less";
 import "./layout/main.less";
 import "./features/companies/companies.less";
 import "./features/politicians/styling/PoliticiansList.less";
+import "./features/homepage/graph.less";
+
 
 import store from "./store";
 import router from "./mainDetails";

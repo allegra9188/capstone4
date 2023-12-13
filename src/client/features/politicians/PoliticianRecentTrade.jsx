@@ -6,6 +6,7 @@ import { useGetSenateDataQuery } from "./slices/senateApiSlice";
 import { useGetHouseDataQuery } from "./slices/houseApiSlice";
 import "./styling/PoliticianDetails.less";
 import TradeActivityChecker from "./transactions/TradeActivityChecker";
+import { Graph } from "../homepage/graph";
 
 function PoliticianRecentTrade() {
   const { id } = useParams();
@@ -39,7 +40,7 @@ function PoliticianRecentTrade() {
         })
         .slice(0, 5) // slice to first 5 transactions
     : [];
-
+        
   if (isLoading) {
     return <h1 className="loading">Loading Politician...</h1>;
   }
@@ -82,11 +83,14 @@ function PoliticianRecentTrade() {
         </>
       )}
       {politician.role && (
-        <TradeActivityChecker
-          politician={politician}
-          houseTrades={houseTrades}
-          senateTrades={senateTrades}
-        />
+        <>
+          <Graph transactions={firstFiveTransaction || firstFiveSenateTransactions} />
+        </>
+        // <TradeActivityChecker
+        //   politician={politician}
+        //   houseTrades={houseTrades}
+        //   senateTrades={senateTrades}
+        // />
       )}
     </section>
   );
