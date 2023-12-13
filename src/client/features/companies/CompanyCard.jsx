@@ -32,7 +32,7 @@ export default function CompanyCard({ company }) {
       <>
         {companyData && (
           <div className="company-card">
-            <h2>{companyData.symbol}</h2>
+            <h2 className="h2-title">{companyData.symbol}</h2>
             <div className="company-detail">
               <p>
                 Company: <span id="company-name">{companyData.security}</span>
@@ -55,7 +55,7 @@ export default function CompanyCard({ company }) {
                   : "Favorite"}
               </button>
             )}
-            <h2>Politician Trading Activity</h2>
+            <h2 className="h2-title">Politician Trading Activity</h2>
             {transactionForThisCompany?.map((element, index) => {
               return (
                 <div className="trade-card" key={index}>

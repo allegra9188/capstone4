@@ -21,7 +21,7 @@ export default function Homepage({ article }) {
   return (
     <div className="total-container">
       <div className="copy-container">
-        <h2>Welcome To Capstone 4!</h2>
+        <h2>Welcome To Tradetivity!</h2>
         <div className="copy-item">
           <h3>
             See recent congress trading activity by politician or company!

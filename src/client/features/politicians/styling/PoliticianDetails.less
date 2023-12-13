@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 1em;
   padding: 15px;
-  max-width: 50%;
   max-height: fit-content;
+  align-items: center;
 }
 
 .politician-details{
@@ -17,14 +17,37 @@
   border-radius: 15px;
   border: 2px solid black;
   background-color: floralwhite;
+  width: 275px;
+  
+  h2{
+    color: black;
+  }
+}
+
+h2{
+  // color: lighten(#333, 60%);
 }
 
 .recent-trades-container{
   order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  h2{
+    color: lighten(#333, 60%);
+  }
+}
+
+.rep-transaction-list{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .recent-trades-item{
  margin-bottom: 1em;
+ width: 375px;
  padding: 10px;
  display: flex;
  flex-direction: column;
@@ -34,6 +57,7 @@
  border-radius: 15px;
  border: 2px solid black;
  background-color: floralwhite;
+ max-width: 75%;
 }
 
 .more-info{
