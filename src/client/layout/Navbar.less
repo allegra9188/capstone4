@@ -64,6 +64,14 @@
   font-size: 18px;
   font-weight: 500;
 }
+#title{
+  display: inline-flex;
+  justify-self: left;
+  position: fixed;
+  left: 25px;
+  float: left;
+  // margin-right: 650px;
+}
 
 @media (max-width: 935px) {
   #top { 
@@ -76,14 +84,9 @@
   }
 }
 
-#title{
-  display: inline-flex;
-  justify-self: left;
-  float: left;
-  margin-right: 800px;
-}
 
-@media (max-width: 675px) {
+
+@media (max-width: 700px) {
   nav {
     position: sticky;
   }
@@ -149,12 +152,6 @@
 }
 
 @media (max-width: 821px) {
-  #title{
-    display: inline;
-    justify-self: left;
-    float: left;
-    margin-right: 175px;
-  }
   main {
       padding-bottom: 40px ;
   }
@@ -208,10 +205,3 @@
   transform: rotate(-45deg);
 }
 
-
-@media (min-width: 700px) and (max-width: 950px) {
-  #title{
-    margin-right: 45px;
-  }
-
-}
