@@ -11,8 +11,14 @@ async function seed() {
     const politiciansData = await readCSV(politiciansFilePath);
 
     for (const politician of politiciansData) {
-      await prisma.politician.create({
-        data: {
+      await prisma.politician.upsert({
+        where: {
+          first_name: politician.first_name,
+          middle_name: politician.middle_name,
+          last_name: politician.last_name,
+          party: politician.party,
+        },
+        create: {
           first_name: politician.first_name,
           middle_name: politician.middle_name,
           last_name: politician.last_name,
@@ -21,6 +27,9 @@ async function seed() {
           district: politician.district,
           // Add other fields based on your schema
         },
+        update: {
+          role: politician.role,
+        }
       });
     }
 
@@ -32,7 +41,10 @@ async function seed() {
       // Check if the required fields are present
       if (company.Symbol) {
         await prisma.company.create({
-          data: {
+          where: {
+            symbol: company.Symbol,
+          },
+          create: {
             symbol: company.Symbol,
             security: company.Security || null,
             sector: company["GICS Sector"] || null,
@@ -43,6 +55,9 @@ async function seed() {
               : null,
             // Add other fields based on your schema
           },
+          update: {
+            sub_industry: company["GICS Sub-Industry"] || null,
+          }
         });
       } else {
         console.error(
