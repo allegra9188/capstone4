@@ -34,6 +34,7 @@ export default function QuiverData() {
             <p>{entry.Transaction}</p>
             <p>{entry.Range}</p>
             <p>{entry.District}</p>
+            <p>{entry.Tyle} {entry.Option_Type} {entry.Strike} {entry.Expiry}</p>
           </li>
         ))}
       </ul>
