@@ -20,9 +20,7 @@ import router from "./mainDetails";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // take out strict mode before deployment
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
