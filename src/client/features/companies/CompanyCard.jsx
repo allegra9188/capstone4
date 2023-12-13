@@ -4,17 +4,18 @@ import { selectToken } from "../auth/authSlice";
 import { useParams, Link } from "react-router-dom";
 import { useGetCompanyByIdQuery } from "./companySlice";
 import { useFavorites } from "../Account/favorites/favUtility";
-import { useGetQuiverDataFromApiQuery } from "../quiver/quiverSlice";
+import { useGetQuiverDataFromCsvQuery } from "../quiver/quiverSlice";
+//import { useGetQuiverDataFromApiQuery } from "../quiver/quiverSlice";
 export default function CompanyCard({ company }) {
   const { id } = useParams();
   const token = useSelector(selectToken);
   const { handleAddFavorite, favoriteCompanies } = useFavorites();
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
-  const { data: quiverData } = useGetQuiverDataFromApiQuery();
+  const { data: quiverData } = useGetQuiverDataFromCsvQuery();
   const transactionForThisCompany = quiverData?.filter(
     (transaction) => transaction.Ticker === companyData?.symbol
   );
-
+    
   if (id !== undefined) {
     if (isLoading) {
       return <p className="loading">Loading ......</p>;
