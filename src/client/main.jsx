@@ -7,7 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import "./main/index.less";
 import "./layout/Root.less";
 import "./layout/Navbar.less";
-import "./features/auth/authForm.css";
+import "./features/auth/AuthForm.css";
 import "./features/Account/Account.less";
 import "./features/politicians/styling/PoliticianDetails.less";
 import "./features/homepage/Homepage.less";
