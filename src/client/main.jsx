@@ -8,7 +8,7 @@ import "./main/index.less";
 import "./layout/Root.less";
 import "./layout/Navbar.less";
 import "./features/auth/AuthForm.css";
-import "./features/Account/Account.less";
+import "./features/Account/account.less";
 import "./features/politicians/styling/PoliticianDetails.less";
 import "./features/homepage/Homepage.less";
 import "./layout/main.less";
