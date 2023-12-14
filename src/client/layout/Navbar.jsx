@@ -20,7 +20,7 @@ export default function Navbar() {
     navigate("/");
   };
 
-  // const [filter, setFilter] = useState("");
+
 
   return (
     <>
