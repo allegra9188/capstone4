@@ -29,7 +29,7 @@ function saveDataToCsvFile(data) {
     Range,
     District
   }));
-  console.log(newArray);
+  
   const x = createObjectCsvWriter({
     path: fileName,
     header: [
@@ -79,7 +79,7 @@ router.get("/", async (req, res, next) => {
 
 // read data from csv, and send back to front end
 router.get("/csv", async (req, res, next) => {
-  console.log("csv file read");
+  
   try {
     // initialize an empty array
     const data = [];
@@ -88,7 +88,7 @@ router.get("/csv", async (req, res, next) => {
       .on("data", (row) => {
         const { Representative, ReportDate, 
           House,Party, TransactionDate, Ticker, Transaction, Range,District } = row;
-        console.log(row);
+        
         data.push({ Representative, ReportDate, 
           House,Party, TransactionDate, Ticker, Transaction, Range,District });
       })
