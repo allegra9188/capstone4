@@ -5,7 +5,7 @@ import { useGetAccountQuery, useEditUserMutation } from "../auth/authSlice";
 import { useState } from "react";
 import { useFavorites } from "../Account/favorites/favUtility";
 import { useFollows } from "../Account/follows/followUtility";
-import { Graph } from "../homepage/graph";
+// import { Graph } from "../homepage/graph";
 
 export default function Account() {
   const { id } = useParams();
@@ -45,9 +45,9 @@ export default function Account() {
 
   return (
     <div id="myAccount-html">
-      <div className="graph-div">
+      {/* <div className="graph-div">
       <Graph />
-      </div>
+      </div> */}
       <div
         id="sidebar"
         className={isSidebarOpen ? "expanded" : ""}
