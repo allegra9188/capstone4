@@ -4,9 +4,10 @@ const { createObjectCsvWriter } = require("csv-writer");
 const fs = require("fs");
 const csv = require("csv-parser");
 
-const url =
-  "https://api.marketaux.com/v1/news/all?countries=us&filter_entities=true&limit=10&published_after=2023-11-27T17:04&api_token=lVsq6J81NrdSum7Ba0fdlihd1rxpFzA1lRk5YwLT";
-// since ArticleList only need title, snipet and url, then we do not need to store everything
+const baseUrl =
+  "https://api.marketaux.com/v1/news/all?countries=us&filter_entities=true&limit=10&published_after=2023-11-27T17:04&api_token=";
+const url = baseUrl+process.env.articleToken
+  // since ArticleList only need title, snipet and url, then we do not need to store everything
 function saveDataToCsvFile(data) {
   const fileName = "./src/server/csv_files/article.csv";
 
@@ -54,7 +55,7 @@ router.get("/", async (req, res, next) => {
 });
 // read data from csv, and send back to front end
 router.get("/csv", async (req, res, next) => {
-  console.log("csv file read");
+  //console.log("csv file read");
   try {
     // initialize an empty array
     const data = [];
