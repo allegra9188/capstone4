@@ -1,4 +1,5 @@
 import React from "react";
+import "../styling/PoliticianDetails.less";
 export const checkActivity = (politician, houseTrades, senateTrades) => {
   if (!politician) {
     return false;
@@ -12,7 +13,7 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
         transaction.representative
           .toLowerCase()
           .includes(politician.first_name.toLowerCase()) &&
-          transaction.representative
+        transaction.representative
           .toLowerCase()
           .includes(politician.last_name.toLowerCase())
       );
@@ -24,9 +25,12 @@ export const checkActivity = (politician, houseTrades, senateTrades) => {
     const senatorTrades = senateTrades.filter((transaction) => {
       return (
         transaction.senator &&
-        transaction.senator.toLowerCase().includes(politician.first_name.toLowerCase())
-        &&
-        transaction.senator.toLowerCase().includes(politician.last_name.toLowerCase())
+        transaction.senator
+          .toLowerCase()
+          .includes(politician.first_name.toLowerCase()) &&
+        transaction.senator
+          .toLowerCase()
+          .includes(politician.last_name.toLowerCase())
       );
     });
 
@@ -40,7 +44,7 @@ const TradeActivityChecker = ({ politician, houseTrades, senateTrades }) => {
   const activityStatus = checkActivity(politician, houseTrades, senateTrades);
 
   return (
-    <div>
+    <div className="activity-status">
       <p>Account is {activityStatus ? "active" : "inactive"}</p>
     </div>
   );
