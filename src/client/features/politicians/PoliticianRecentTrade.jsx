@@ -61,7 +61,7 @@ function PoliticianRecentTrade() {
               ))}
             </ul>
           ) : (
-            <p>No recent trades.</p>
+            <p className="none-recent">No recent trades.</p>
           )}
         </>
       )}
@@ -75,7 +75,7 @@ function PoliticianRecentTrade() {
               ))}
             </ul>
           ) : (
-            <p>No recent trades.</p>
+            <p className="none-recent">No recent trades.</p>
           )}
         </>
       )}
