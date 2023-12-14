@@ -17,7 +17,6 @@ function saveDataToCsvFile(data) {
     snippet,
     url,
   }));
-  console.log(newArray);
   const x = createObjectCsvWriter({
     path: fileName,
     header: [
@@ -63,7 +62,6 @@ router.get("/csv", async (req, res, next) => {
       .pipe(csv())
       .on("data", (row) => {
         const { uuid, title, snippet, url } = row;
-        console.log(row);
         data.push({ uuid, title, snippet, url });
       })
       .on("end", () => {

@@ -47,6 +47,7 @@ function PoliticianRecentTrade() {
   }
 
   return (
+    <div id="pd-main">
     <section className="recent-trades-container">
       <h2>Recent Transactions</h2>
       {politician.role === "Rep" && (
@@ -87,6 +88,7 @@ function PoliticianRecentTrade() {
         />
       )}
     </section>
+    </div>
   );
 }
 

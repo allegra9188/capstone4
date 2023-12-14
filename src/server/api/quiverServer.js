@@ -29,7 +29,6 @@ function saveDataToCsvFile(data) {
     Range,
     District
   }));
-  console.log(newArray);
   const x = createObjectCsvWriter({
     path: fileName,
     header: [
@@ -88,7 +87,7 @@ router.get("/csv", async (req, res, next) => {
       .on("data", (row) => {
         const { Representative, ReportDate, 
           House,Party, TransactionDate, Ticker, Transaction, Range,District } = row;
-        console.log(row);
+      
         data.push({ Representative, ReportDate, 
           House,Party, TransactionDate, Ticker, Transaction, Range,District });
       })
