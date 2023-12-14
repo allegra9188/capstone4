@@ -6,9 +6,10 @@ const fs = require("fs");
 const csv = require("csv-parser");
 
 const baseURL = "https://api.quiverquant.com";
-const token = "1a553590ac3a1682d03bbf13426960c6772a371e";
+//const token = "1a553590ac3a1682d03bbf13426960c6772a371e";
 const endpoint = "/beta/live/congresstrading";
 const url = baseURL + endpoint;
+
 
 // we need Representative, ReportDate, House, Party,TransactionDate, Ticker,Transaction,
 // Range, and District
@@ -57,7 +58,7 @@ router.get("/", async (req, res, next) => {
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${process.env.QuiverToken}`,
       },
     });
     if (!response.ok) {
@@ -98,5 +99,6 @@ router.get("/csv", async (req, res, next) => {
     next(error);
   }
 });
+
 
 module.exports = router;
