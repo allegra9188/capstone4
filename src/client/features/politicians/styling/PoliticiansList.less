@@ -137,4 +137,33 @@
       flex-basis: calc(100% - 20px);
     }
   
-  
+    .pagination {
+      text-align: center;
+      margin-top: 20px; /* Adjust as needed for spacing */
+      color: floralwhite;
+    }
+    
+    .pagination p {
+      margin-bottom: 10px;
+    }
+    
+    .pagination button {
+      background-color: white;
+      color: darkblue;
+      border: 1px solid darkblue;
+      padding: 8px 16px;
+      margin: 0 5px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .pagination button:hover {
+      background-color: darkblue;
+      color: white;
+    }
+    
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
