@@ -12,6 +12,7 @@ import AuthForm from "./features/auth/AuthForm";
 import ErrorPage from "./main/ErrorPage.jsx";
 import Account from "./features/Account/Account.jsx";
 import Homepage from "./features/homepage/Homepage.jsx";
+import Congress from "./features/politicians/Congress.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <AuthForm /> },
       { path: "*", element: <ErrorPage /> },
       { path: "/user/:id", element: <Account /> },
+      { path: "/congress", element: <Congress /> },
     ],
   },
 ]);
