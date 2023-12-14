@@ -25,12 +25,14 @@ const PaginationLogic = ({ data, renderItem }) => {
           Page {currentPage} of {totalPages}
         </p>
         <button
+          className="pagination-prev"
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
         >
           Previous
         </button>
         <button
+          className="pagination-next"
           disabled={currentPage === totalPages}
           onClick={() => handlePageChange(currentPage + 1)}
         >
