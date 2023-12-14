@@ -1,79 +1,18 @@
-/* eslint-disable max-classes-per-file */
 import React, { PureComponent } from 'react';
 import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
 
 const data = [
-  {
-    name: 'Communication Services',
-    children: [
-      { name: 'volume', size: 99.68 },
-    ],
-  },
-  {
-    name: 'Consumer Discretionary',
-    children: [
-      { name: 'volume', size: 79.52 },
-    ],
-  },
-  {
-    name: 'Consumer Stapes',
-    children: [
-      { name: 'volume', size: 48.64 },
-    ],
-  },
-  {
-    name: 'Energy',
-    children: [
-      { name: 'volume', size: 105.19 },
-    ],
-  },
-  {
-    name: 'Financials',
-    children: [
-      { name: 'volume', size: 184.85 },
-    ],
-  },
-  {
-    name: 'Healthcare',
-    children: [
-      {
-        name: 'distortion',
-        children: [
-          { name: 'volume', size: 87.64 },
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Industrials',
-    children: [
-      { name: 'volume', size: 82.45 },
-    ],
-  },
-  {
-    name: 'Information Technology',
-    children: [
-      { name: 'volume', size: 419.5 },
-    ],
-  },
-  {
-    name: 'Materials',
-    children: [
-      { name: 'volume', size: 31.45 },
-    ],
-  },
-  {
-    name: 'Real Estate',
-    children: [
-      { name: 'volume', size: 20.89 },
-    ],
-  },
-  {
-    name: 'Ultilities',
-    children: [
-      { name: 'volume', size: 11.37 },
-    ],
-  },
+  { name: 'Communication Services', size: 99.68 },
+  { name: 'Consumer Discretionary', size: 79.52 },
+  { name: 'Consumer Stapes', size: 48.64 },
+  { name: 'Energy', size: 105.19 },
+  { name: 'Financials', size: 184.85 },
+  { name: 'Healthcare', size: 87.64 },
+  { name: 'Industrials', size: 82.45 },
+  { name: 'Information Technology', size: 419.5 },
+  { name: 'Materials', size: 31.45 },
+  { name: 'Real Estate', size: 20.89 },
+  { name: 'Ultilities', size: 11.37 },
 ];
 
 const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'];
@@ -94,8 +33,8 @@ class CustomizedContent extends PureComponent {
             stroke: '#fff',
             strokeWidth: 2 / (depth + 1e-10),
             strokeOpacity: 1 / (depth + 1e-10),
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center',
           }}
         />
         {depth === 1 ? (
@@ -128,7 +67,11 @@ export default class Example extends PureComponent {
           fill="#8884d8"
           content={<CustomizedContent colors={COLORS} />}
         >
-          <Tooltip content={({ payload }) => payload[0] && `Volume: ${payload[0].value}MM`} />
+          <Tooltip
+            formatter={(value, name, props) => {
+              return [`${value} MM`];
+            }}
+          />
         </Treemap>
       </ResponsiveContainer>
     );
