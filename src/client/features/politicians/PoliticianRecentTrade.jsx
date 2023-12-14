@@ -12,7 +12,6 @@ function PoliticianRecentTrade() {
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { data: senateTrades } = useGetSenateDataQuery();
   const { data: houseTrades } = useGetHouseDataQuery();
-  // console.log(houseTrades);
 
   const firstFiveTransaction = houseTrades
     ? houseTrades
@@ -43,7 +42,6 @@ function PoliticianRecentTrade() {
   if (isLoading) {
     return <h1 className="loading">Loading Politician...</h1>;
   }
-  //console.log('politician', politician)
   if (isError) {
     return <h1>Error loading data</h1>;
   }
