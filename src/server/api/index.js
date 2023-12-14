@@ -37,3 +37,4 @@ router.use("/quiverquant", require("./quiverServer"));
 router.use("/senate", require("./senate"));
 router.use("/house", require("./house"));
 router.use("/articles", require("./articles"));
+router.use("/lobbying", require("./propublica_lobbying"));
