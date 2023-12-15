@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+
 export default function Transaction({ transaction }) {
   return (
     <section className="recent-trades-item">

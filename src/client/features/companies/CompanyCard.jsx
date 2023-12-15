@@ -57,6 +57,7 @@ export default function CompanyCard({ company }) {
               </button>
             )}
             <h2 className="h2-title">Politician Trading Activity</h2>
+            <div className="recentComp-activity">
             {transactionForThisCompany?.map((element, index) => {
               return (
                 <div className="trade-card" key={index}>
@@ -80,6 +81,7 @@ export default function CompanyCard({ company }) {
                 </div>
               );
             })}
+            </div>
           </div>
         )}
       </>

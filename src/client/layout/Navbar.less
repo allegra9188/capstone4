@@ -1,6 +1,7 @@
 #top {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  // justify-content: right;
   position: sticky;
   padding: 0 10px;
   height: 75px;
@@ -44,8 +45,10 @@
 }
 
 #top .nav-list {
+  order: 2;
   display: flex;
 }
+
 
 #top .nav-list .nav-item {
   cursor: pointer;
@@ -65,13 +68,63 @@
   font-weight: 500;
 }
 #title{
-  display: inline-flex;
-  justify-self: left;
-  position: fixed;
-  left: 25px;
-  float: left;
-  // margin-right: 650px;
+  order: 1;
+  display: inline;
+  font-size: 26px;
+  // position: fixed;
+  // left: 25px;
 }
+
+#top .navbar-toggler {
+  order: 3;
+  display: none;
+  height: min-content;
+  margin: 18px -10px 0 0;
+  cursor: pointer;
+  transition: var(--animation-timing);
+}
+
+#top .navbar-toggler .bar {
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 10%;
+  transition: var(--animation-timing);
+}
+
+#toggle {
+  display: none;
+
+}
+
+#toggle:checked ~ #top .nav-list {
+  position: absolute;
+  transform: translateY(0);
+  z-index: 5;
+  border-radius: 10px;
+  margin-top: -5px;
+  
+}
+
+#toggle:checked ~ #top.navbar-toggler {
+  margin-top: 35px;
+}
+
+#toggle:checked ~ #top .navbar-toggler .bar:nth-child(1) {
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+#toggle:checked ~ #top .navbar-toggler .bar:nth-child(2) {
+  display: none;
+}
+
+#toggle:checked ~ #top .navbar-toggler .bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+
 
 @media (max-width: 935px) {
   #top { 
@@ -86,7 +139,7 @@
 
 
 
-@media (max-width: 700px) {
+@media (max-width: 855px) {
   nav {
     position: sticky;
   }
@@ -157,51 +210,5 @@
   }
 }
 
-#top .navbar-toggler {
-  display: none;
-  height: min-content;
-  margin: 18px -10px 0 0;
-  cursor: pointer;
-  transition: var(--animation-timing);
-}
 
-#top .navbar-toggler .bar {
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background: #ffffff;
-  border-radius: 10%;
-  transition: var(--animation-timing);
-}
-
-#toggle {
-  display: none;
-
-}
-
-#toggle:checked ~ #top .nav-list {
-  position: absolute;
-  transform: translateY(0);
-  z-index: 5;
-  border-radius: 10px;
-  margin-top: -5px;
-  
-}
-
-#toggle:checked ~ #top.navbar-toggler {
-  margin-top: 35px;
-}
-
-#toggle:checked ~ #top .navbar-toggler .bar:nth-child(1) {
-  position: absolute;
-  transform: rotate(45deg);
-}
-
-#toggle:checked ~ #top .navbar-toggler .bar:nth-child(2) {
-  display: none;
-}
-
-#toggle:checked ~ #top .navbar-toggler .bar:nth-child(3) {
-  transform: rotate(-45deg);
-}
 

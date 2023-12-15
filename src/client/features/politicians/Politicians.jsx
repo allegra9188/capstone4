@@ -47,7 +47,7 @@ export default function Politicians() {
   return isLoading ? (
     <h2 className="loading">Loading...</h2>
   ) : (
-    <section>
+    <section className="politicianList-section">
       <div className="search-and-sort-container">
         <form className="search-bar">
           <label htmlFor="search"></label>
