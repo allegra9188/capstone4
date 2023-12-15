@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CompanyCard from "./CompanyCard";
 import { useGetCompaniesQuery } from "./companySlice";
-// import PaginationLogic from "../politicians/PaginationLogic";
 
 export default function Companies() {
   const { data: companies, isLoading } = useGetCompaniesQuery();

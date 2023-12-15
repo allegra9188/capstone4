@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { useGetCompanyByIdQuery } from "./companySlice";
 import { useFavorites } from "../Account/favorites/favUtility";
 import { useGetQuiverDataFromCsvQuery } from "../quiver/quiverSlice";
-//import { useGetQuiverDataFromApiQuery } from "../quiver/quiverSlice";
+
 export default function CompanyCard({ company }) {
   const { id } = useParams();
   const token = useSelector(selectToken);
