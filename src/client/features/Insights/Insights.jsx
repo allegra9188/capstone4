@@ -18,8 +18,8 @@ function Insights() {
       {data.map((entry, index) => (
         <div className="lobbying-card" key={index}>
           <p>Latest Filing Date: {entry.latest_filing_filing_date}</p>
-          <p>Specific Issues: {entry.specific_issues_0}</p>
-          <p>Lobbying Client: {entry.lobbying_client_name}</p>
+          <p><span id="bold">Specific Issues: </span>{entry.specific_issues_0}</p>
+          <p><span id="bold">Lobbying Client: </span>{entry.lobbying_client_name}</p>
           <p>Lobbying Client Description: {entry.lobbying_client_general_description}</p>
           <p>Lobbying Registrant: {entry.lobbying_registrant_name}</p>
           <p>Lobbying Registrant Description: {entry.lobbying_registrant_general_description}</p>
@@ -30,6 +30,7 @@ function Insights() {
           <p></p>
         </div>
       ))}
+      <h3>Sourced from ProPublica</h3>
     </div>
   );
 }
