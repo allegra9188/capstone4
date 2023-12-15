@@ -34,7 +34,7 @@ model Politician {
 
 model Company {
   id            Int     @id @default(autoincrement())
-  symbol        String
+  symbol        String  @unique
   security      String
   sector        String
   sub_industry  String
@@ -44,17 +44,17 @@ model Company {
 }
 
 model Favorite {
-  id  Int @id @default(autoincrement())
-  userId  Int
+  id        Int @id @default(autoincrement())
+  userId    Int
   companyId Int
-  user  User @relation(fields: [userId], references: [id])
-  company Company @relation(fields: [companyId], references: [id])
+  user      User @relation(fields: [userId], references: [id])
+  company   Company @relation(fields: [companyId], references: [id])
 }
 
 model Following {
-  id  Int @id @default(autoincrement())
-  userId  Int
+  id           Int @id @default(autoincrement())
+  userId       Int
   politicianId Int
-  user  User @relation(fields: [userId], references: [id])
-  politician Politician @relation(fields: [politicianId], references: [id])
+  user         User @relation(fields: [userId], references: [id])
+  politician   Politician @relation(fields: [politicianId], references: [id])
 }
