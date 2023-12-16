@@ -10,6 +10,7 @@ export default function LiveTrading() {
   const [filterBy, setFilterBy] = useState("All");
   const [showDems, setShowDems] = useState(false);
   const [showRepubs, setShowRepubs] = useState(false);
+  const [showOthers, setShowOthers] = useState(false);
 
   
   const handleFilter = (e) => {
@@ -35,9 +36,10 @@ export default function LiveTrading() {
 
   const filteredTradesByParty = filteredTrades 
   ? filteredTrades.filter((entry) => 
-      (!showDems && !showRepubs) || // Show all if neither checkbox is selected
+      (!showDems && !showRepubs && !showOthers) || // Show all if neither checkbox is selected
       (showDems && entry.Party === "D") || 
-      (showRepubs && entry.Party === "R"))
+      (showRepubs && entry.Party === "R") ||
+      (showOthers && entry.Party !== "D" && entry.Party !== "R"))
   : filteredTrades;
 
   if (isloading) {
@@ -77,8 +79,16 @@ export default function LiveTrading() {
             onChange={() => setShowRepubs(!showRepubs)}
           />
           </label>
+          <label className="other-checkbox party-checkbox">Other
+        <input
+            type="checkbox"
+            className="others-checkbox-input checkbox-input"
+            name="Others"
+            checked={showOthers}
+            onChange={() => setShowOthers(!showOthers)}
+          />
+          </label>
       </div>
-
       <ul className="liveTrading-List">
         {filteredTrades && (
           <PaginationLogic
