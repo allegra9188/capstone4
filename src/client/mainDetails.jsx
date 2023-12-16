@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 import Root from "./layout/Root.jsx";
 import Politicians from "./features/politicians/Politicians.jsx";
@@ -12,7 +12,7 @@ import AuthForm from "./features/auth/AuthForm";
 import ErrorPage from "./main/ErrorPage.jsx";
 import Account from "./features/Account/Account.jsx";
 import Homepage from "./features/homepage/Homepage.jsx";
-import Congress from "./features/politicians/Congress.jsx";
+import Insights from "./features/Insights/Insights.jsx";
 import LiveTrading from "./features/congressTrading/LiveTrading.jsx";
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <AuthForm /> },
       { path: "*", element: <ErrorPage /> },
       { path: "/user/:id", element: <Account /> },
-      { path: "/congress", element: <Congress /> },
+      { path: "/insights", element: <Insights /> },
       { path: "/livetrading", element: <LiveTrading /> },
     ],
   },

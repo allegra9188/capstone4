@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout, selectToken, selectUserId } from "../features/auth/authSlice";
-import { useState } from "react";
 
 import "./Navbar.less";
 
@@ -19,8 +18,6 @@ export default function Navbar() {
     await dispatch(logout());
     navigate("/");
   };
-
-
 
   return (
     <>
@@ -43,7 +40,7 @@ export default function Navbar() {
             <NavLink to="/companies">Companies</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/congress">Congress</NavLink>
+            <NavLink to="/insights">Insights</NavLink>
           </li>
           {token ? (
             <>

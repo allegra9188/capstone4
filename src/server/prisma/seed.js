@@ -17,6 +17,7 @@ async function seed() {
           middle_name: politician.middle_name,
           last_name: politician.last_name,
           party: politician.party,
+          id: +politician.people_id,
         },
         create: {
           first_name: politician.first_name,
@@ -25,6 +26,7 @@ async function seed() {
           party: politician.party,
           role: politician.role,
           district: politician.district,
+          id: +politician.people_id,
           // Add other fields based on your schema
         },
         update: {
@@ -40,7 +42,7 @@ async function seed() {
     for (const company of companiesData) {
       // Check if the required fields are present
       if (company.Symbol) {
-        await prisma.company.create({
+        await prisma.company.upsert({
           where: {
             symbol: company.Symbol,
           },

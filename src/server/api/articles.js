@@ -55,7 +55,6 @@ router.get("/", async (req, res, next) => {
 });
 // read data from csv, and send back to front end
 router.get("/csv", async (req, res, next) => {
-  //console.log("csv file read");
   try {
     // initialize an empty array
     const data = [];
