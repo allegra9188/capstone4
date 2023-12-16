@@ -1,0 +1,88 @@
+#congressLive-Trading {
+display: flex;
+flex-direction: column;
+// align-content: space-evenly;
+text-align: center;
+box-sizing: border-box;
+h2 {
+    order: 1;
+    color: floralwhite;
+}
+}
+
+.liveTrading-List {
+    order: 3;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+row-gap: 10px;
+// height: 300px;
+overflow: auto;
+}
+
+.liveTrading-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: space-around;
+    height: 40px;
+    width: 880px;
+    gap: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid black;
+    color: white;
+    background-color: #232323;
+    // background-color: grey;
+    box-shadow: 1px 2px 2px 2px #232323;
+}
+.filter-container{
+    // background-color: wheat;
+    order: 2;
+    padding: 2px;
+    margin-bottom: 2px;
+    p {
+        display: inline;
+        color: floralwhite;
+    }
+}
+#filter {
+    // margin-bottom: 5px;
+    background-color: floralwhite;
+}
+
+.filterlabel{
+    color: floralwhite;
+    font-weight: 600;
+}
+
+.democrats{
+    // background-image: url("https://www.capitoltrades.com/_next/static/media/bg-politician-card-blue.7c3ad17f.svg");
+    border: 3px solid  darken(blue, 15%);
+}
+
+.republicans{
+    // background-image: url(https://www.capitoltrades.com/_next/static/media/bg-politician-card-red.85fa32ee.svg);
+   border: 3px solid  darken(#f95959, 40%);
+}
+
+#liveTrade-ticker{
+    text-decoration: none;
+}
+
+.party-checkbox{
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: floralwhite;
+
+    
+}
+.checkbox-input{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: green;
+}
