@@ -17,6 +17,39 @@ const PaginationLogic = ({ data, pageSize, renderItem }) => {
 
   return (
     <>
+    <div className="pagination">
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
+        <button
+          className="pagination-first"
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(1)}
+        >
+          First
+        </button>
+        <button
+          className="pagination-prev"
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          Previous
+        </button>
+        <button
+          className="pagination-next"
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          Next
+        </button>
+        <button
+          className="pagination-last"
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(totalPages)}
+        >
+          Last
+        </button>
+      </div>
       <div className="politicians-list-container">
         {paginatedData.map((item, index) => renderItem(item, index))}
       </div>
@@ -39,6 +72,7 @@ const PaginationLogic = ({ data, pageSize, renderItem }) => {
           Next
         </button>
       </div>
+      
     </>
   );
 };
