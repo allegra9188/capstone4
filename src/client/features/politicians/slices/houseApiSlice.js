@@ -2,15 +2,12 @@ import api from "../../../store/api";
 
 const houseDataApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getHouseDataFromS3: builder.query({
-      query: () => "/house/s3",
-    }),
-    getHouseDataFromProPublica: builder.query({
-      query: () => "/house/propublica",
+    getHouseData: builder.query({
+      query: () => "/house",
     }),
   }),
 });
 
-export const { useGetHouseDataFromS3Query, useGetHouseDataFromProPublicaQuery } = houseDataApi;
+export const { useGetHouseDataQuery } = houseDataApi;
 
 export default houseDataApi;
