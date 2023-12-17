@@ -6,6 +6,7 @@ import { selectToken } from "../auth/authSlice";
 import PoliticianRecentTrade from "./PoliticianRecentTrade";
 import { useFollows } from "../Account/follows/followUtility";
 import "./styling/PoliticianDetails.less";
+import MemberHouseData from "./Member_houseData";
 
 function PoliticianDetails() {
   const { id } = useParams();
@@ -50,6 +51,7 @@ function PoliticianDetails() {
             </button>
           </section>
           <PoliticianRecentTrade />
+          <MemberHouseData />
         </>
       ) : (
         // not signed in
@@ -62,6 +64,7 @@ function PoliticianDetails() {
             <p>District: {politician.district}</p>
           </section>
           <PoliticianRecentTrade />
+          <MemberHouseData />
         </>
       )}
     </div>

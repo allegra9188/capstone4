@@ -46,33 +46,33 @@ function saveDataToCsvFile(data) {
     );
 }
 
-router.get("/", async (req, res, next) => {
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        'X-API-Key': token,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTPS error! Status: ${response.status}`);
+router.get("/propublica", async (req, res, next) => {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          'X-API-Key': token,
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTPS error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      const results = data.results;
+  
+      if (Array.isArray(results[0].members) && results[0].members.length > 0) {
+        await saveDataToCsvFile(results[0].members);
+        res.json("Data saved to CSV file");
+      } else {
+        res.json("Error, data not found");
+      }
+    } catch (error) {
+      next(error);
     }
-
-    const data = await response.json();
-    const results = data.results;
-
-    if (Array.isArray(results[0].members) && results[0].members.length > 0) {
-      await saveDataToCsvFile(results[0].members);
-      res.json("Data saved to CSV file");
-    } else {
-      res.json("Error, data not found");
-    }
-  } catch (error) {
-    next(error);
-  }
-});
+  });
 
 router.get("/csv", async (req, res, next) => {
   try {
