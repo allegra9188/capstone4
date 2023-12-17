@@ -6,7 +6,7 @@ const houseDataApi = api.injectEndpoints({
       query: () => "/house/s3",
     }),
     getHouseDataFromProPublica: builder.query({
-      query: () => "/house/propublica",
+      query: () => "/member/house/csv",
     }),
   }),
 });
