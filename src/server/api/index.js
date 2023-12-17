@@ -39,3 +39,5 @@ router.use("/house", require("./house"));
 router.use("/articles", require("./articles"));
 router.use("/lobbying", require("./propublica_lobbying"));
 router.use("/member/house", require("./propublica_house"));
+router.use("/member/senate", require("./propublica_senate"))
+router.use("/bills", require("./propublica_bills"))

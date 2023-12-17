@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import { useGetQuiverDataFromCsvQuery } from "../quiver/quiverSlice";
 import { Link } from "react-router-dom";
 import PaginationLogic from "../politicians/PaginationLogic";
-// import { useGetPoliticiansQuery } from "../politicians/slices/politicianSlice";
 
 export default function LiveTrading() {
-  // const { data: politicians, isLoading } = useGetPoliticiansQuery();
   const { data: quiverData2, isloading } = useGetQuiverDataFromCsvQuery();
   const [filterBy, setFilterBy] = useState("All");
   const [showDems, setShowDems] = useState(false);
   const [showRepubs, setShowRepubs] = useState(false);
   const [showOthers, setShowOthers] = useState(false);
 
-  
   const handleFilter = (e) => {
     setFilterBy(e.target.value);
   };
@@ -22,32 +19,31 @@ export default function LiveTrading() {
       return quiverData2.filter((entry) => entry.House === "Representatives");
     } else if (filterBy === "Senate") {
       return quiverData2.filter((entry) => entry.House === "Senate");
-    } else if (filterBy === "Democrats"){
-      return  quiverData2.filter((entry) => entry.Party === "D");
-    } else if (filterBy === "Republicans"){
+    } else if (filterBy === "Democrats") {
+      return quiverData2.filter((entry) => entry.Party === "D");
+    } else if (filterBy === "Republicans") {
       return quiverData2.filter((entry) => entry.Party === "R");
-    } 
-    else {
+    } else {
       return quiverData2; // No filtering
     }
   };
 
   const filteredTrades = filterTrades(quiverData2, filterBy);
 
-  const filteredTradesByParty = filteredTrades 
-  ? filteredTrades.filter((entry) => 
-      (!showDems && !showRepubs && !showOthers) || // Show all if neither checkbox is selected
-      (showDems && entry.Party === "D") || 
-      (showRepubs && entry.Party === "R") ||
-      (showOthers && entry.Party !== "D" && entry.Party !== "R"))
-  : filteredTrades;
+  const filteredTradesByParty = filteredTrades
+    ? filteredTrades.filter(
+        (entry) =>
+          (!showDems && !showRepubs && !showOthers) || // Show all if neither checkbox is selected
+          (showDems && entry.Party === "D") ||
+          (showRepubs && entry.Party === "R") ||
+          (showOthers && entry.Party !== "D" && entry.Party !== "R")
+      )
+    : filteredTrades;
 
   if (isloading) {
     return <h1 className="loading">Loading</h1>;
   }
-  // console.log("filteredTrades", filteredTrades);
-  // console.log("filteredDems", filteredDems);
-  // console.log("filteredRepubs", filteredRepubs);
+
   return (
     <section id="congressLive-Trading">
       <h2>Live Congress Trading</h2>
@@ -60,34 +56,36 @@ export default function LiveTrading() {
           <option value="Representatives">Representatives</option>
           <option value="Senate">Senate</option>
         </select>
-        {/* {filteredTrades && <p className="filter-results">{`(${filteredTrades.length})`}</p>} */}
-        <label className="dems-checkbox party-checkbox">Democrats
-        <input
+        <label className="dems-checkbox party-checkbox">
+          Democrats
+          <input
             type="checkbox"
             className="dems-checkbox-input checkbox-input"
             name="Democrat"
             checked={showDems}
             onChange={() => setShowDems(!showDems)}
           />
-          </label>
-          <label className="repubs-checkbox party-checkbox">Republicans
-        <input
+        </label>
+        <label className="repubs-checkbox party-checkbox">
+          Republicans
+          <input
             type="checkbox"
             className="repubs-checkbox-input checkbox-input"
             name="Republican"
             checked={showRepubs}
             onChange={() => setShowRepubs(!showRepubs)}
           />
-          </label>
-          <label className="other-checkbox party-checkbox">Other
-        <input
+        </label>
+        <label className="other-checkbox party-checkbox">
+          Other
+          <input
             type="checkbox"
             className="others-checkbox-input checkbox-input"
             name="Others"
             checked={showOthers}
             onChange={() => setShowOthers(!showOthers)}
           />
-          </label>
+        </label>
       </div>
       <ul className="liveTrading-List">
         {filteredTrades && (
