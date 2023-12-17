@@ -11,7 +11,9 @@ export default function QuiverData() {
   const quiverData = quiverData2?.slice(0, 4);
   return (
     <section className="trades-container">
-      <h2>Live Congress Trading</h2>
+      <h2 className="liveCongress-text">Live Congress Trading </h2>
+      <span className="seeAll-span"><Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link></span>
+      {/* <Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link> */}
       <ul className="trading-full-list">
         {quiverData?.map((entry) => (
           <li className="trading-item" key={entry.ReportDate}>

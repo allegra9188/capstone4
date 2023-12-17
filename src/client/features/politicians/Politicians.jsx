@@ -81,6 +81,7 @@ export default function Politicians() {
           (politician) =>
             (politician.first_name + politician.last_name).match(searchRegex)
         )}
+        pageSize={30}
         renderItem={(politician) => (
           <PoliticianCard key={politician.id} politician={politician} />
         )}

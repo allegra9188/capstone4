@@ -13,7 +13,7 @@ import ErrorPage from "./main/ErrorPage.jsx";
 import Account from "./features/Account/Account.jsx";
 import Homepage from "./features/homepage/Homepage.jsx";
 import Insights from "./features/Insights/Insights.jsx";
-
+import LiveTrading from "./features/congressTrading/LiveTrading.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
       { path: "*", element: <ErrorPage /> },
       { path: "/user/:id", element: <Account /> },
       { path: "/insights", element: <Insights /> },
+      { path: "/livetrading", element: <LiveTrading /> },
     ],
   },
 ]);

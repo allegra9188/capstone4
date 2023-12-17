@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-const PaginationLogic = ({ data, renderItem }) => {
+const PaginationLogic = ({ data, pageSize, renderItem }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 30;
+  // const pageSize = 30;
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
@@ -17,8 +17,41 @@ const PaginationLogic = ({ data, renderItem }) => {
 
   return (
     <>
+    <div className="pagination">
+        <p>
+          Page {currentPage} of {totalPages}
+        </p>
+        <button
+          className="pagination-first"
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(1)}
+        >
+          First
+        </button>
+        <button
+          className="pagination-prev"
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          Previous
+        </button>
+        <button
+          className="pagination-next"
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          Next
+        </button>
+        <button
+          className="pagination-last"
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(totalPages)}
+        >
+          Last
+        </button>
+      </div>
       <div className="politicians-list-container">
-        {paginatedData.map((item) => renderItem(item))}
+        {paginatedData.map((item, index) => renderItem(item, index))}
       </div>
       <div className="pagination">
         <p>
@@ -39,6 +72,7 @@ const PaginationLogic = ({ data, renderItem }) => {
           Next
         </button>
       </div>
+      
     </>
   );
 };

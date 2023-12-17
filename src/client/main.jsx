@@ -15,6 +15,7 @@ import "./layout/main.less";
 import "./features/companies/companies.less";
 import "./features/politicians/styling/PoliticiansList.less";
 import "./features/Insights/insights.less"
+import "./features/congressTrading/LiveTrading.less";
 
 import store from "./store";
 import router from "./mainDetails";
