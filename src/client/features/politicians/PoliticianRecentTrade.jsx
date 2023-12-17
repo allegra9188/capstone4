@@ -3,7 +3,7 @@ import Transaction from "./transactions/Transaction";
 import { useParams } from "react-router-dom";
 import { useGetPoliticianQuery } from "./slices/politicianSlice";
 import { useGetSenateDataQuery } from "./slices/senateApiSlice";
-import { useGetHouseDataFromS3Query } from "./slices/houseApiSlice";
+import { useGetHouseDataQuery } from "./slices/houseApiSlice";
 import "./styling/PoliticianDetails.less";
 import TradeActivityChecker from "./transactions/TradeActivityChecker";
 
@@ -11,7 +11,7 @@ function PoliticianRecentTrade() {
   const { id } = useParams();
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { data: senateTrades } = useGetSenateDataQuery();
-  const { data: houseTrades } = useGetHouseDataFromS3Query();
+  const { data: houseTrades } = useGetHouseDataQuery();
 
   const firstFiveTransaction = houseTrades
     ? houseTrades
