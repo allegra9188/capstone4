@@ -96,6 +96,7 @@ router.get("/csv", async (req, res, next) => {
           office,
           phone,
           state,
+          leadership_role,
         } = row;
 
         data.push({
@@ -113,6 +114,7 @@ router.get("/csv", async (req, res, next) => {
           office,
           phone,
           state,
+          leadership_role,
         });
       })
       .on("end", () => {
