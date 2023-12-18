@@ -5,32 +5,41 @@ const { createObjectCsvWriter } = require("csv-writer");
 const fs = require("fs");
 const csv = require("csv-parser");
 
-
 // recent nominations by Category that are confirmed
 const baseURL = "https://api.propublica.org/congress/v1/117";
 const token = "EelGWX11q8JX99U9wQ7mapcVt4842HgeFBoGnMAp";
 const endpoint = "/nominees/confirmed.json";
 const url = baseURL + endpoint;
 
-// we need results: name, date_recieved, description, nominee_state, 
+// we need results: name, date_recieved, description, nominee_state,
 // organization, latest_action_text, status
 
 function saveDataToCsvFile(data) {
-   const fileName = "./src/server/csv_files/quiver.csv";
+  const fileName = "./src/server/csv_files/quiver.csv";
 
-  const newArray = data.map(({ Representative, ReportDate, 
-    House,Party, TransactionDate, Ticker, Transaction, Range,District }) => ({
-    
-    Representative,
-    ReportDate,
-    House,
-    Party,
-    TransactionDate,
-    Ticker,
-    Transaction,
-    Range,
-    District
-  }));
+  const newArray = data.map(
+    ({
+      Representative,
+      ReportDate,
+      House,
+      Party,
+      TransactionDate,
+      Ticker,
+      Transaction,
+      Range,
+      District,
+    }) => ({
+      Representative,
+      ReportDate,
+      House,
+      Party,
+      TransactionDate,
+      Ticker,
+      Transaction,
+      Range,
+      District,
+    })
+  );
   console.log(newArray);
   const x = createObjectCsvWriter({
     path: fileName,
@@ -88,11 +97,29 @@ router.get("/csv", async (req, res, next) => {
     fs.createReadStream("./src/server/csv_files/quiver.csv")
       .pipe(csv())
       .on("data", (row) => {
-        const { Representative, ReportDate, 
-          House,Party, TransactionDate, Ticker, Transaction, Range,District } = row;
+        const {
+          Representative,
+          ReportDate,
+          House,
+          Party,
+          TransactionDate,
+          Ticker,
+          Transaction,
+          Range,
+          District,
+        } = row;
         console.log(row);
-        data.push({ Representative, ReportDate, 
-          House,Party, TransactionDate, Ticker, Transaction, Range,District });
+        data.push({
+          Representative,
+          ReportDate,
+          House,
+          Party,
+          TransactionDate,
+          Ticker,
+          Transaction,
+          Range,
+          District,
+        });
       })
       .on("end", () => {
         res.json(data);

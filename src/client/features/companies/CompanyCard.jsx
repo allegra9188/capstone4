@@ -15,7 +15,7 @@ export default function CompanyCard({ company }) {
   const transactionForThisCompany = quiverData?.filter(
     (transaction) => transaction.Ticker === companyData?.symbol
   );
-    
+
   if (id !== undefined) {
     if (isLoading) {
       return <p className="loading">Loading ......</p>;
@@ -58,29 +58,29 @@ export default function CompanyCard({ company }) {
             )}
             <h2 className="h2-title">Politician Trading Activity</h2>
             <div className="recentComp-activity">
-            {transactionForThisCompany?.map((element, index) => {
-              return (
-                <div className="trade-card" key={index}>
-                  <p>
-                    <Link
-                      className="politician-detail"
-                      to={`/politicians/name/${element.Representative}`}
-                    >
-                      <span id="rep-name">{element.Representative}</span>
-                    </Link>
-                  </p>
-                  <p>
-                    {element.House}, {element.Party}
-                  </p>
-                  <p>Date Reported: {element.ReportDate}</p>
-                  <p>Transaction Date: {element.TransactionDate}</p>
-                  <p>
-                    <span id="transaction-type">{element.Transaction}</span>
-                  </p>
-                  <p>Range: {element.Range}</p>
-                </div>
-              );
-            })}
+              {transactionForThisCompany?.map((element, index) => {
+                return (
+                  <div className="trade-card" key={index}>
+                    <p>
+                      <Link
+                        className="politician-detail"
+                        to={`/politicians/name/${element.Representative}`}
+                      >
+                        <span id="rep-name">{element.Representative}</span>
+                      </Link>
+                    </p>
+                    <p>
+                      {element.House}, {element.Party}
+                    </p>
+                    <p>Date Reported: {element.ReportDate}</p>
+                    <p>Transaction Date: {element.TransactionDate}</p>
+                    <p>
+                      <span id="transaction-type">{element.Transaction}</span>
+                    </p>
+                    <p>Range: {element.Range}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

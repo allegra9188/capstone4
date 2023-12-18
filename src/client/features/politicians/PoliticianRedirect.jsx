@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useGetPoliticianIdByNameQuery } from "./slices/politicianSlice";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
+
 export default function PoliticianRedirect() {
   const { name, isloading: isloading2 } = useParams();
   if (isloading2) {

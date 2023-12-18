@@ -6,7 +6,6 @@ const fs = require("fs");
 const csv = require("csv-parser");
 const { type } = require("os");
 
-
 // recent nominations by Category that are confirmed
 const baseURL = "https://api.propublica.org/congress/v1/";
 const token = process.env.lobbyingToken;
@@ -21,36 +20,36 @@ const url = baseURL + endpoint;
 function saveDataToCsvFile(data) {
   const fileName = "./src/server/csv_files/lobbying.csv";
 
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+  const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
-const flattenData = (data) => {
-    return data.map(entry => {
-        const flatEntry = {};
-        flattenObject(entry, flatEntry);
-        return flatEntry;
+  const flattenData = (data) => {
+    return data.map((entry) => {
+      const flatEntry = {};
+      flattenObject(entry, flatEntry);
+      return flatEntry;
     });
-};
-//because there is obj inside array, we need to make the data flat
-const flattenObject = (obj, result, parentKey = '') => {
+  };
+  //because there is obj inside array, we need to make the data flat
+  const flattenObject = (obj, result, parentKey = "") => {
     for (const key in obj) {
-        const newKey = parentKey ? `${parentKey}_${key}` : key;
-        if (typeof obj[key] === 'object' && obj[key] !== null) {
-            flattenObject(obj[key], result, newKey);
-        } else {
-            result[newKey] = obj[key];
-        }
+      const newKey = parentKey ? `${parentKey}_${key}` : key;
+      if (typeof obj[key] === "object" && obj[key] !== null) {
+        flattenObject(obj[key], result, newKey);
+      } else {
+        result[newKey] = obj[key];
+      }
     }
-};
-const flatData = flattenData(data);
-const x = createCsvWriter({
-  path: fileName,
-  header: Object.keys(flatData[0]).map(key => ({ id: key, title: key }))
-});
- x.writeRecords(flatData)
-   .then(() => console.log(`CSV file ${fileName} created successfully`))
-   .catch((error) =>
-     console.error(`Error writing CSV file: ${error.message}`)
-   );
+  };
+  const flatData = flattenData(data);
+  const x = createCsvWriter({
+    path: fileName,
+    header: Object.keys(flatData[0]).map((key) => ({ id: key, title: key })),
+  });
+  x.writeRecords(flatData)
+    .then(() => console.log(`CSV file ${fileName} created successfully`))
+    .catch((error) =>
+      console.error(`Error writing CSV file: ${error.message}`)
+    );
 }
 
 //read data from api, save data to csv file to be read later
@@ -62,17 +61,19 @@ router.get("/", async (req, res, next) => {
         Accept: "application/json",
         // we do not use Authorization here,
         // instead, we use X-API-KEY accordingly
-        'X-API-Key': token,
+        "X-API-Key": token,
       },
-    })
+    });
     if (!response.ok) {
       throw new Error(`HTTPS error! Status: ${response.status}`);
     }
     const data = await response.json();
-    const results = data.results
+    const results = data.results;
 
-    if (Array.isArray(results[0].lobbying_representations) 
-    && results[0].lobbying_representations.length > 0) {
+    if (
+      Array.isArray(results[0].lobbying_representations) &&
+      results[0].lobbying_representations.length > 0
+    ) {
       await saveDataToCsvFile(results[0].lobbying_representations);
       res.json("data saved to csv file");
     }
@@ -88,7 +89,6 @@ router.get("/", async (req, res, next) => {
 // we need inhouse, specific_issues, latest_filing: filing_date, pdf_url
 // we need lobbyists: name, covered_position
 
-
 // read data from csv, and send back to front end
 router.get("/csv", async (req, res, next) => {
   console.log("csv file read");
@@ -98,28 +98,30 @@ router.get("/csv", async (req, res, next) => {
     fs.createReadStream("./src/server/csv_files/lobbying.csv")
       .pipe(csv())
       .on("data", (row) => {
-        const { lobbying_client_name
-          , lobbying_client_general_description
-          , lobbying_registrant_name
-          ,lobbying_registrant_general_description
-          ,inhouse
-          ,specific_issues_0
-          ,latest_filing_filing_date
-          ,latest_filing_pdf_url
-          , lobbyists_0_name
-          ,lobbyists_0_covered_position
+        const {
+          lobbying_client_name,
+          lobbying_client_general_description,
+          lobbying_registrant_name,
+          lobbying_registrant_general_description,
+          inhouse,
+          specific_issues_0,
+          latest_filing_filing_date,
+          latest_filing_pdf_url,
+          lobbyists_0_name,
+          lobbyists_0_covered_position,
         } = row;
-        
-        data.push({ lobbying_client_name
-          , lobbying_client_general_description
-          , lobbying_registrant_name
-          ,lobbying_registrant_general_description
-          ,inhouse
-          ,specific_issues_0
-          ,latest_filing_filing_date
-          ,latest_filing_pdf_url
-          , lobbyists_0_name
-          ,lobbyists_0_covered_position
+
+        data.push({
+          lobbying_client_name,
+          lobbying_client_general_description,
+          lobbying_registrant_name,
+          lobbying_registrant_general_description,
+          inhouse,
+          specific_issues_0,
+          latest_filing_filing_date,
+          latest_filing_pdf_url,
+          lobbyists_0_name,
+          lobbyists_0_covered_position,
         });
       })
       .on("end", () => {
