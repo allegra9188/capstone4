@@ -2,94 +2,95 @@
   padding-bottom: 5px;
 }
 .search-and-sort-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: floralwhite;
-    width: 75vw;
-    margin: auto;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1{
-    color: lighten(#333, 60%);
-  }
-  
-  .search-bar {
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-bar label {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .search-bar input {
-    padding: 8px;
-    border: 1px solid #888888;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  label, select {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  select {
-    padding: 8px;
-    border: 1px solid #888888;
-    border-radius: 4px;
-  }
-  
-  .toggle-active-only {
-    display: flex;
-    align-items: center;
-    width:fit-content;
-  }
-  
-  .toggle-active-only label {
-    margin-left: 10px;
-    font-size: 14px;
-    color: black;
-  }
-  
-  /* Fun Colors! */
-  .search-and-sort-container {
-    background-color: floralwhite;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .search-bar input {
-    background-color: #f7f7f7;
-  }
-  
-  select, .toggle-active-only label {
-    color: black;
-  }
-  
-  
-    .politicians-header{
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: floralwhite;
+  width: 75vw;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.politicians-list-container{
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    height: 545px;
-    overflow: auto;
+
+h1 {
+  color: lighten(#333, 60%);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar label {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #888888;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+label,
+select {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #888888;
+  border-radius: 4px;
+}
+
+.toggle-active-only {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.toggle-active-only label {
+  margin-left: 10px;
+  font-size: 14px;
+  color: black;
+}
+
+/* Fun Colors! */
+.search-and-sort-container {
+  background-color: floralwhite;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar input {
+  background-color: #f7f7f7;
+}
+
+select,
+.toggle-active-only label {
+  color: black;
+}
+
+.politicians-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.politicians-list-container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 545px;
+  overflow: auto;
 }
 
 .politicians-list-container::-webkit-scrollbar {
@@ -97,84 +98,80 @@
 }
 
 .cards-container {
-    max-width:160px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .politicianDetails-Card {
+  max-width: 160px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
 
-    width:  160px;
-    min-width: 160px;
-    height: 200px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    row-gap: 5px;
-    // margin-bottom: 10px;
-    text-align: center;
-    align-items: center;
-    border-radius: 15px;
-    border: 2px solid black;
-    background-color: floralwhite;
-        h2{
-            width: 153px;
-            max-height: 45px;
-            font-size: 16px;
-        }
-        p{
-            font-size: 15px;
-        }
-        a{
-            font-size: 14px;
-        }
+.politicianDetails-Card {
+  width: 160px;
+  min-width: 160px;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 5px;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 2px solid black;
+  background-color: floralwhite;
+  h2 {
+    width: 153px;
+    max-height: 45px;
+    font-size: 16px;
   }
-  
-    /* Other styling properties */
-  
-    /* Optional: Adjust for smaller screens */
-    @media (max-width: 768px) {
-      flex-basis: calc(50% - 20px);
-    }
-  
-    @media (max-width: 480px) {
-      flex-basis: calc(100% - 20px);
-    }
-  
-    .pagination {
-      text-align: center;
-      margin-top: 20px; /* Adjust as needed for spacing */
-      color: floralwhite;
-    }
-    
-    .pagination p {
-      margin-bottom: 5px;
-    }
-    
-    .pagination button {
-      background-color: white;
-      color: darkblue;
-      border: 1px solid darkblue;
-      padding: 8px;
-      margin: 0 5px;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      width: 85px;
-      margin-bottom: 2px;
-    }
-    
-    .pagination button:hover {
-      background-color: darkblue;
-      color: white;
-    }
-    
-    .pagination button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+  p {
+    font-size: 15px;
+  }
+  a {
+    font-size: 14px;
+  }
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 768px) {
+  flex-basis: calc(50% - 20px);
+}
+
+@media (max-width: 480px) {
+  flex-basis: calc(100% - 20px);
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px; /* Adjust as needed for spacing */
+  color: floralwhite;
+}
+
+.pagination p {
+  margin-bottom: 5px;
+}
+
+.pagination button {
+  background-color: white;
+  color: darkblue;
+  border: 1px solid darkblue;
+  padding: 8px;
+  margin: 0 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 85px;
+  margin-bottom: 2px;
+}
+
+.pagination button:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

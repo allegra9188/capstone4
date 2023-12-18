@@ -14,11 +14,9 @@ function PoliticianDetails() {
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { handleAddFollow, followedPoliticians } = useFollows();
 
-
   if (isLoading) {
     return <h1 className="loading">Loading Politician...</h1>;
   }
-  //console.log('politician', politician)
   if (isError) {
     return <h1>Error loading data</h1>;
   }
@@ -47,7 +45,6 @@ function PoliticianDetails() {
             </button>
           </section>
           <PoliticianRecentTrade />
-          <MemberHouseData />
         </>
       ) : (
         // not signed in

@@ -10,26 +10,35 @@ const baseURL = "https://api.quiverquant.com";
 const endpoint = "/beta/live/congresstrading";
 const url = baseURL + endpoint;
 
-
 // we need Representative, ReportDate, House, Party,TransactionDate, Ticker,Transaction,
 // Range, and District
 function saveDataToCsvFile(data) {
   const fileName = "./src/server/csv_files/quiver.csv";
 
-  const newArray = data.map(({ Representative, ReportDate, 
-    House,Party, TransactionDate, Ticker, Transaction, Range,District }) => ({
-    
-    Representative,
-    ReportDate,
-    House,
-    Party,
-    TransactionDate,
-    Ticker,
-    Transaction,
-    Range,
-    District
-  }));
-  
+  const newArray = data.map(
+    ({
+      Representative,
+      ReportDate,
+      House,
+      Party,
+      TransactionDate,
+      Ticker,
+      Transaction,
+      Range,
+      District,
+    }) => ({
+      Representative,
+      ReportDate,
+      House,
+      Party,
+      TransactionDate,
+      Ticker,
+      Transaction,
+      Range,
+      District,
+    })
+  );
+
   const x = createObjectCsvWriter({
     path: fileName,
     header: [
@@ -79,18 +88,35 @@ router.get("/", async (req, res, next) => {
 
 // read data from csv, and send back to front end
 router.get("/csv", async (req, res, next) => {
-  
   try {
     // initialize an empty array
     const data = [];
     fs.createReadStream("./src/server/csv_files/quiver.csv")
       .pipe(csv())
       .on("data", (row) => {
-        const { Representative, ReportDate, 
-          House,Party, TransactionDate, Ticker, Transaction, Range,District } = row;
-        
-        data.push({ Representative, ReportDate, 
-          House,Party, TransactionDate, Ticker, Transaction, Range,District });
+        const {
+          Representative,
+          ReportDate,
+          House,
+          Party,
+          TransactionDate,
+          Ticker,
+          Transaction,
+          Range,
+          District,
+        } = row;
+
+        data.push({
+          Representative,
+          ReportDate,
+          House,
+          Party,
+          TransactionDate,
+          Ticker,
+          Transaction,
+          Range,
+          District,
+        });
       })
       .on("end", () => {
         res.json(data);
@@ -99,6 +125,5 @@ router.get("/csv", async (req, res, next) => {
     next(error);
   }
 });
-
 
 module.exports = router;

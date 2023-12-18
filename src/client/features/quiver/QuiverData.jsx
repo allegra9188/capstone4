@@ -12,8 +12,11 @@ export default function QuiverData() {
   return (
     <section className="trades-container">
       <h2 className="liveCongress-text">Live Congress Trading </h2>
-      <span className="seeAll-span"><Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link></span>
-      {/* <Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link> */}
+      <span className="seeAll-span">
+        <Link className="seeAll-link" to={`/livetrading`}>
+          See All Transactions
+        </Link>
+      </span>
       <ul className="trading-full-list">
         {quiverData?.map((entry, index) => (
           <li className="trading-item" key={index}>
@@ -25,7 +28,9 @@ export default function QuiverData() {
                 <span id="trade-rep">{entry.Representative}</span>
               </p>
             </Link>
-            <p>{entry.House} {entry.Party}</p>
+            <p>
+              {entry.House} {entry.Party}
+            </p>
             <p>Transaction Date: {entry.TransactionDate}</p>
             <Link to={`/companies/name/${entry.Ticker}`}>
               <p>
@@ -36,7 +41,9 @@ export default function QuiverData() {
             <p>{entry.Transaction}</p>
             <p>{entry.Range}</p>
             <p>{entry.District}</p>
-            <p>{entry.Tyle} {entry.Option_Type} {entry.Strike} {entry.Expiry}</p>
+            <p>
+              {entry.Tyle} {entry.Option_Type} {entry.Strike} {entry.Expiry}
+            </p>
           </li>
         ))}
       </ul>
