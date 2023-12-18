@@ -69,14 +69,13 @@ function saveBillsDataToCsvFile(data) {
   
       const data = await response.json();
       const results = data.results;
-      res.json("Bills data saved", results)
 
-    //   if (Array.isArray(results)) {
-    //     await saveBillsDataToCsvFile(results);
-    //     res.json("Bills data saved to CSV file");
-    //   } else {
-    //     res.json("Error, bills data not found");
-    //   }
+      if (Array.isArray(results)) {
+        await saveBillsDataToCsvFile(results);
+        res.json("Bills data saved to CSV file");
+      } else {
+        res.json("Error, bills data not found");
+      }
     } catch (error) {
       next(error);
     }
