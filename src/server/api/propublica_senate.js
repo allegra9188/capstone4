@@ -82,7 +82,7 @@ router.get("/", async (req, res, next) => {
 router.get("/csv", async (req, res, next) => {
   try {
     const data = [];
-    fs.createReadStream("./src/server/csv_files/senate.csv")
+    fs.createReadStream("./src/server/csv_files/senate_members.csv")
       .pipe(csv())
       .on("data", (row) => {
         // Modify this part based on your CSV structure
@@ -101,6 +101,7 @@ router.get("/csv", async (req, res, next) => {
           office,
           phone,
           state,
+          leadership_role,
         } = row;
 
         data.push({
@@ -118,6 +119,7 @@ router.get("/csv", async (req, res, next) => {
           office,
           phone,
           state,
+          leadership_role,
         });
       })
       .on("end", () => {
