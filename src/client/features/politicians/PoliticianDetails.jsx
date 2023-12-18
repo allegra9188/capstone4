@@ -14,11 +14,6 @@ function PoliticianDetails() {
   const { data: politician, isLoading, isError } = useGetPoliticianQuery(id);
   const { handleAddFollow, followedPoliticians } = useFollows();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // will add function to add to favorite list once api is functional
-    // need slice and connectivity to api and database
-  };
 
   if (isLoading) {
     return <h1 className="loading">Loading Politician...</h1>;
@@ -52,6 +47,7 @@ function PoliticianDetails() {
             </button>
           </section>
           <PoliticianRecentTrade />
+          <MemberHouseData />
         </>
       ) : (
         // not signed in
