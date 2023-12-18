@@ -28,7 +28,6 @@ router.use(async (req, res, next) => {
 
 router.use("/auth", require("./auth"));
 router.use("/companies", require("./companies"));
-
 router.use("/politicians", require("./politicians"));
 router.use("/user", require("./users"));
 router.use("/user-favorites", require("./favorites"));
@@ -38,6 +37,6 @@ router.use("/senate", require("./senate"));
 router.use("/house", require("./house"));
 router.use("/articles", require("./articles"));
 router.use("/lobbying", require("./propublica_lobbying"));
-router.use("/member/house", require("./propublica_house"));
-router.use("/member/senate", require("./propublica_senate"))
-router.use("/bills", require("./propublica_bills"))
+router.use("/member/house", require("./propublica_house")); // New endpoint
+router.use("/member/senate", require("./propublica_senate")); // New endpoint
+router.use("/bills", require("./propublica_bills"));

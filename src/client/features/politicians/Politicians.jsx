@@ -5,7 +5,7 @@ import PaginationLogic from "./PaginationLogic";
 import "./styling/PoliticiansList.less";
 import { checkActivity } from "./transactions/TradeActivityChecker";
 import { useGetSenateDataQuery } from "./slices/senateApiSlice";
-import { useGetHouseDataQuery } from "./slices/houseApiSlice";
+import { useGetHouseDataFromS3Query } from "./slices/houseApiSlice";
 
 export default function Politicians() {
   const { data: politicians, isLoading } = useGetPoliticiansQuery();
@@ -13,7 +13,7 @@ export default function Politicians() {
   const [sortBy, setSortBy] = useState("first-name"); // Set default sorting by first_name
   const [showActiveOnly, setShowActiveOnly] = useState(false);
   const { data: senateTrades } = useGetSenateDataQuery();
-  const { data: houseTrades } = useGetHouseDataQuery();
+  const { data: houseTrades } = useGetHouseDataFromS3Query();
 
   const searchRegex = new RegExp(filter, "i");
 
