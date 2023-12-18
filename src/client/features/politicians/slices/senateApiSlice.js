@@ -5,9 +5,12 @@ const senateDataApi = api.injectEndpoints({
     getSenateData: builder.query({
       query: () => "/senate",
     }),
+    getSenateDataFromProPublica: builder.query({
+      query: () => "/member/senate/csv",
+    }),
   }),
 });
 
-export const { useGetSenateDataQuery } = senateDataApi;
+export const { useGetSenateDataQuery, useGetSenateDataFromProPublicaQuery } = senateDataApi;
 
 export default senateDataApi;

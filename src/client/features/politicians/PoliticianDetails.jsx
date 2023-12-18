@@ -7,6 +7,7 @@ import PoliticianRecentTrade from "./PoliticianRecentTrade";
 import { useFollows } from "../Account/follows/followUtility";
 import "./styling/PoliticianDetails.less";
 import MemberHouseData from "./Member_houseData";
+import MemberSenateData from "./Member_senateData";
 
 function PoliticianDetails() {
   const { id } = useParams();
@@ -32,6 +33,7 @@ function PoliticianDetails() {
             </p>
             <p>District: {politician.district}</p>
             <MemberHouseData />
+            <MemberSenateData />
             <button
               className="favButton"
               onClick={() => handleAddFollow(politician)}
@@ -56,6 +58,7 @@ function PoliticianDetails() {
             </p>
             <p>District: {politician.district}</p>
             <MemberHouseData />
+            <MemberSenateData />
           </section>
           <PoliticianRecentTrade />
         </>
