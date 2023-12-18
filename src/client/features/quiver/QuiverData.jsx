@@ -15,8 +15,8 @@ export default function QuiverData() {
       <span className="seeAll-span"><Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link></span>
       {/* <Link className="seeAll-link" to={`/livetrading`}>See All Transactions</Link> */}
       <ul className="trading-full-list">
-        {quiverData?.map((entry) => (
-          <li className="trading-item" key={entry.ReportDate}>
+        {quiverData?.map((entry, index) => (
+          <li className="trading-item" key={index}>
             <Link
               className="politician-detail"
               to={`/politicians/name/${entry.Representative}`}
