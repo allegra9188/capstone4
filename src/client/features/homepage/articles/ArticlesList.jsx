@@ -3,8 +3,11 @@ import ArticlesCard from "./ArticlesCard";
 import QuiverData from "../../quiver/QuiverData";
 import { useGetArticlesDataFromCsvQuery } from "./articlesSlice";
 export default function ArticlesList({ article }) {
-
-  const { data: articledata, isLoading, isError } = useGetArticlesDataFromCsvQuery();
+  const {
+    data: articledata,
+    isLoading,
+    isError,
+  } = useGetArticlesDataFromCsvQuery();
 
   if (!articledata || articledata.length === 0) {
     return <p>No articles available.</p>;
@@ -18,7 +21,6 @@ export default function ArticlesList({ article }) {
           <ArticlesCard key={article.uuid} article={article} />
         ))}
       </div>
-
       <QuiverData />
     </>
   );

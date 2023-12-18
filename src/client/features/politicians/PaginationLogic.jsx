@@ -17,7 +17,7 @@ const PaginationLogic = ({ data, pageSize, renderItem }) => {
 
   return (
     <>
-    <div className="pagination">
+      <div className="pagination">
         <p>
           Page {currentPage} of {totalPages}
         </p>
@@ -72,7 +72,6 @@ const PaginationLogic = ({ data, pageSize, renderItem }) => {
           Next
         </button>
       </div>
-      
     </>
   );
 };

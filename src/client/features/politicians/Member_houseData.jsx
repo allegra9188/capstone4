@@ -39,7 +39,9 @@ const MemberHouseData = () => {
     <div className="member-house-details">
       {matchedPolitician ? (
         <>
-          <p><a href={matchedPolitician.url}>{matchedPolitician.url}</a></p>
+          <p>
+            <a href={matchedPolitician.url}>{matchedPolitician.url}</a>
+          </p>
           <p>Updated: {matchedPolitician.last_updated}</p>
           <br />
           <p>{matchedPolitician.office}</p>
@@ -49,8 +51,7 @@ const MemberHouseData = () => {
           <p>Total Votes: {matchedPolitician.total_votes}</p>
         </>
       ) : (
-        <div>
-        </div>
+        <div></div>
       )}
     </div>
   );
