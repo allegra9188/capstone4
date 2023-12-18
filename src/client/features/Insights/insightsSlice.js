@@ -5,7 +5,10 @@ const insightsApi = api.injectEndpoints({
     getInsights: builder.query({
       query: () => "/lobbying/csv",
     }),
+    getSummaries: builder.query({
+        query: () => "/summaries/csv",
+      }),
   }),
 });
 
-export const { useGetInsightsQuery } = insightsApi;
+export const { useGetInsightsQuery, useGetSummariesQuery } = insightsApi;

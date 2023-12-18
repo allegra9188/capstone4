@@ -1,11 +1,15 @@
 import React from "react";
-import { useGetInsightsQuery } from "./insightsSlice";
+import { useGetInsightsQuery, useGetSummariesQuery } from "./insightsSlice";
 import PaginationLogic from "../politicians/PaginationLogic";
 
 function Insights() {
-  const { data, error, isLoading } = useGetInsightsQuery();
+  const { data, error: insightsError, isLoading: insightsLoading } = useGetInsightsQuery();
+  const { data: summaryData, error: summariesError, isLoading: summariesLoading } = useGetSummariesQuery();
 
-  if (isLoading) {
+  const loading = insightsLoading || summariesLoading;
+  const error = insightsError || summariesError;
+
+  if (loading) {
     return <div>Loading...</div>;
   }
 
@@ -43,12 +47,28 @@ function Insights() {
     </div>
   );
 
+  // Define the renderSummary function
+  const renderSummary = (summary, index) => (
+    <div className="summary-card" key={index}>
+      <p><span id="bold">Action Description: </span>{summary.actionDesc}</p>
+      <p>Current Chamber: {summary.currentChamber}</p>
+      <p><span id="bold">Summary Text: </span>{summary.text}</p>
+      <p>Action Date: {summary.actionDate}</p>
+      <p>Update Date: {summary.updateDate}</p>
+    </div>
+  );
+  
+
   return (
     <div>
       <div className="lobbying-container">
         <h2>Live Lobbying</h2>
         <PaginationLogic data={data} pageSize={2} renderItem={renderItem} />
-        <h3>Sourced from ProPublica</h3>
+      </div>
+      
+      <div className="summaries-container">
+        <h2>Live Summaries</h2>
+        <PaginationLogic data={summaryData} pageSize={2} renderItem={renderSummary} />
       </div>
     </div>
   );
