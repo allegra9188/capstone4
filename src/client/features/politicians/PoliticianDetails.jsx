@@ -47,7 +47,7 @@ function PoliticianDetails() {
             </button>
           </section>
           <PoliticianRecentTrade />
-          
+          <MemberHouseData />
         </>
       ) : (
         // not signed in
@@ -58,9 +58,9 @@ function PoliticianDetails() {
               {politician.role}, {politician.party}
             </p>
             <p>District: {politician.district}</p>
+            <MemberHouseData />
           </section>
           <PoliticianRecentTrade />
-          <MemberHouseData />
         </>
       )}
     </div>
