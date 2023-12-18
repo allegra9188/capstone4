@@ -7,7 +7,7 @@ export default function Companies() {
   const { data: companies, isLoading } = useGetCompaniesQuery();
   const [filter, setFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 40; // Adjust the page size as needed
+  const pageSize = 24; // Adjust the page size as needed
 
   const searchRegex = new RegExp(filter, "i");
 
