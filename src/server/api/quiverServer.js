@@ -6,7 +6,6 @@ const fs = require("fs");
 const csv = require("csv-parser");
 
 const baseURL = "https://api.quiverquant.com";
-//const token = "1a553590ac3a1682d03bbf13426960c6772a371e";
 const endpoint = "/beta/live/congresstrading";
 const url = baseURL + endpoint;
 
