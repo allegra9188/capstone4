@@ -40,9 +40,9 @@ class CustomizedContent extends PureComponent {
       name,
     } = this.props;
 
-    const fontSize = window.innerWidth <= 650 ? 9 : 14;
+    const fontSize = window.innerWidth <= 650 ? 8 : 14;
 
-    const fontWeight = window.innerWidth <= 650 ? 'lighter' : 'normal';
+    const fontWeight = window.innerWidth <= 650 ? 100 : 'normal';
   
 
     return (
