@@ -4,16 +4,17 @@ import { useGetCompanyByIdQuery } from "./companySlice";
 import { useGetQuiverDataFromCsvQuery } from "../quiver/quiverSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
+import { useFavorites } from "../Account/favorites/favUtility";
 
 function CompanyDetails() {
   const { id } = useParams();
   const token = useSelector(selectToken);
   const { data: companyData, isLoading } = useGetCompanyByIdQuery(id);
   const { data: quiverData } = useGetQuiverDataFromCsvQuery();
+  const { handleAddFavorite, favoriteCompanies } = useFavorites();
   const transactionForThisCompany = quiverData?.filter(
     (transaction) => transaction.Ticker === companyData?.symbol
   );
-  console.log(id);
 
   if (id !== undefined) {
     if (isLoading) {
