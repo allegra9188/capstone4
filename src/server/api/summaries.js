@@ -6,18 +6,17 @@ const fs = require("fs");
 const csv = require("csv-parser");
 const { type } = require("os");
 
-// recent SENATE members data
-const baseURL = "https://api.propublica.org/congress/v1/";
-const token = process.env.lobbyingToken;
-const endpoint = "/117/senate/members.json";
-const url = baseURL + endpoint;
+// recent nominations by Category that are confirmed
+const baseURL = "https://api.congress.gov/v3";
+const token = process.env.summariesToken;
+const endpoint = "/summaries";
+const billsUrl = baseURL + endpoint;
 
-// we need short_title, title, first_name, last_name, twitter_account
-// facebook_account, url, contact_form, next_election, total_votes
-// last_updated, office, phone, state,
 
-function saveDataToCsvFile(data) {
-  const fileName = "./src/server/csv_files/senate_members.csv";
+// recent summaries https://gpo.congress.gov/#/summaries/bill_summaries_all
+
+function saveSummariesDataToCsvFile(data) {
+  const fileName = "./src/server/csv_files/summaries.csv";
 
   const flattenData = (data) => {
     return data.map((entry) => {
@@ -53,7 +52,7 @@ function saveDataToCsvFile(data) {
 
 router.get("/", async (req, res, next) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(baseURL + endpoint, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -66,13 +65,13 @@ router.get("/", async (req, res, next) => {
     }
 
     const data = await response.json();
-    const results = data.results;
+    const summaries = data.summaries; // Assuming the summaries are in a 'summaries' property
 
-    if (Array.isArray(results[0].members) && results[0].members.length > 0) {
-      await saveDataToCsvFile(results[0].members);
-      res.json("Data saved to CSV file");
+    if (Array.isArray(summaries)) {
+      await saveSummariesDataToCsvFile(summaries); // Fix the function name
+      res.json("Summaries data saved to CSV file");
     } else {
-      res.json("Error, data not found");
+      res.json("Error, summaries data not found");
     }
   } catch (error) {
     next(error);
@@ -82,44 +81,36 @@ router.get("/", async (req, res, next) => {
 router.get("/csv", async (req, res, next) => {
   try {
     const data = [];
-    fs.createReadStream("./src/server/csv_files/senate_members.csv")
+    fs.createReadStream("./src/server/csv_files/summaries.csv")
       .pipe(csv())
       .on("data", (row) => {
         // Modify this part based on your CSV structure
         const {
-          short_title,
-          title,
-          first_name,
-          last_name,
-          twitter_account,
-          facebook_account,
-          url,
-          contact_form,
-          next_election,
-          total_votes,
-          last_updated,
-          office,
-          phone,
-          state,
-          leadership_role,
+          actionDate,
+          actionDesc,
+          bill_congress,
+          bill_number,
+          bill_title,
+          bill_url,
+          currentChamber,
+          lastSummaryUpdateDate,
+          text,
+          updateDate,
         } = row;
 
         data.push({
-          short_title,
-          title,
-          first_name,
-          last_name,
-          twitter_account,
-          facebook_account,
-          url,
-          contact_form,
-          next_election,
-          total_votes,
-          last_updated,
-          office,
-          phone,
-          state,
-          leadership_role,
+          actionDate,
+          actionDesc,
+          bill: {
+            congress: bill_congress,
+            number: bill_number,
+            title: bill_title,
+            url: bill_url,
+          },
+          currentChamber,
+          lastSummaryUpdateDate,
+          text,
+          updateDate,
         });
       })
       .on("end", () => {
@@ -131,5 +122,3 @@ router.get("/csv", async (req, res, next) => {
 });
 
 module.exports = router;
-
-// https://projects.propublica.org/api-docs/congress-api/members/

@@ -31,10 +31,12 @@ export default function Homepage({ article }) {
         </div>
         <h2>Past 3 Years Trading Volume by Sector:</h2>
       </div>
+      <div className="chartDiv">
       <Example />
+      </div>
       <div className="article-trade-container">
+      <h2>Latest Articles</h2>
         <div className="article-container">
-          <h2>Latest Articles</h2>
           {articledata?.map((article) => (
             <ArticlesCard key={article.uuid} article={article} />
           ))}

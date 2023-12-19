@@ -40,6 +40,11 @@ class CustomizedContent extends PureComponent {
       name,
     } = this.props;
 
+    const fontSize = window.innerWidth <= 650 ? 8 : 14;
+
+    const fontWeight = window.innerWidth <= 650 ? 100 : 'normal';
+  
+
     return (
       <g>
         <rect
@@ -65,7 +70,7 @@ class CustomizedContent extends PureComponent {
             y={y + height / 2 + 7}
             textAnchor="middle"
             fill="#fff"
-            fontSize={14}
+            fontSize={fontSize}
           >
             {name}
           </text>
@@ -92,7 +97,7 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width="70%" height="20%">
+      <ResponsiveContainer width="100%" height="100%">
         <Treemap
           width={400}
           height={200}

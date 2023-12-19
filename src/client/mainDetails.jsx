@@ -6,6 +6,7 @@ import Politicians from "./features/politicians/Politicians.jsx";
 import PoliticianRedirect from "./features/politicians/PoliticianRedirect.jsx";
 import PoliticianDetails from "./features/politicians/PoliticianDetails.jsx";
 import Companies from "./features/companies/Companies.jsx";
+import CompanyDetails from "./features/companies/CompanyDetails.jsx";
 import CompanyRedirect from "./features/companies/CompanyRedirect.jsx";
 import CompanyCard from "./features/companies/CompanyCard.jsx";
 import AuthForm from "./features/auth/AuthForm";
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       { path: "/politicians/:id", element: <PoliticianDetails /> },
       { path: "/companies", element: <Companies /> },
       { path: "/companies/name/:name", element: <CompanyRedirect /> },
-      { path: "/companies/:id", element: <CompanyCard /> },
+      { path: "/companies/:id", element: <CompanyDetails /> },
       { path: "/login", element: <AuthForm /> },
       { path: "*", element: <ErrorPage /> },
       { path: "/user/:id", element: <Account /> },
