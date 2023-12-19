@@ -81,3 +81,44 @@
   margin-right: 5px;
   background-color: green;
 }
+
+
+@media (max-width: 785px) {
+  #congressLive-Trading{
+    height: 100%;
+    // padding-bottom: 2px;
+  }
+  .liveTrading-List {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    row-gap: 5px;
+    width: 100%;
+  }
+  
+  .liveTrading-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 185px;
+    width: 180px;
+    gap: 5px;
+  }
+
+  .filter-container{
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 90%;
+  
+    align-self: center;
+  }
+
+  .filterlabel {
+    display: inline-flex;
+    flex-direction: row;
+  }
+  
+}
