@@ -29,9 +29,9 @@ router.get("/name/:name", async (req, res, next) => {
 });
 
 /** Display the corresponding company when the url matches /companies/:companyId */
-router.get("/:companyId", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    const companyId = +req.params.companyId;
+    const companyId = +req.params.id;
 
     if (isNaN(companyId)) {
       console.log("NAN running");

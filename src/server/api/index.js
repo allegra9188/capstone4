@@ -39,4 +39,4 @@ router.use("/articles", require("./articles"));
 router.use("/lobbying", require("./propublica_lobbying"));
 router.use("/member/house", require("./propublica_house")); // New endpoint
 router.use("/member/senate", require("./propublica_senate")); // New endpoint
-router.use("/bills", require("./propublica_bills"));
+router.use("/summaries", require("./summaries"));
