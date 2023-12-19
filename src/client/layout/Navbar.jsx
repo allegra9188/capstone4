@@ -19,6 +19,10 @@ export default function Navbar() {
     navigate("/");
   };
 
+  const closeNav = () => {
+    document.getElementById('toggle').checked = false;
+  };
+
   return (
     <>
       <input type="checkbox" id="toggle" />
@@ -30,30 +34,30 @@ export default function Navbar() {
           <span className="bar"></span>
         </label>
         <menu className="nav-list">
-          <li className="nav-item">
-            <NavLink to="/">Home</NavLink>
+        <li className="nav-item">
+            <NavLink to="/" onClick={closeNav}>Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/politicians">Politicians</NavLink>
+            <NavLink to="/politicians" onClick={closeNav}>Politicians</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/companies">Companies</NavLink>
+            <NavLink to="/companies" onClick={closeNav}>Companies</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/insights">Insights</NavLink>
+            <NavLink to="/insights" onClick={closeNav}>Insights</NavLink>
           </li>
           {token ? (
             <>
               <li className="nav-item">
-                <NavLink to={`/user/${userid}`}>My Account</NavLink>
+                <NavLink to={`/user/${userid}`} onClick={closeNav}>My Account</NavLink>
               </li>
               <li className="nav-item">
-                <a onClick={handleLogout}>Log Out</a>
+                <a onClick={() => {handleLogout(); closeNav();}}>Log Out</a>
               </li>
             </>
           ) : (
             <li className="nav-item">
-              <NavLink to="/login">Log In</NavLink>
+              <NavLink to="/login" onClick={closeNav}>Log In</NavLink>
             </li>
           )}
         </menu>
