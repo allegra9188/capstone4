@@ -36,12 +36,12 @@ The parser was used in our `csv_files` folder located within `server/api` folder
 - Our data for lobbying was obtained from [ProPublica](https://www.propublica.org).
 - Our data for S&P 500 was obtained from [Datahub](https://datahub.io/core/s-and-p-500-companies).
 
-### Chart JS
+### Recharts
 
-Installed `chart.js` for use in data visualization.
+Installed `recharts`, a React library, for use in data visualization.
 
 ```bash
-npm install chart.js
+npm install recharts
 ```
 
 ## Usage
